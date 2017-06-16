@@ -1,0 +1,8 @@
+/rsync.exclude
+/access.log
+/error.log
+/vendor
+/app/logs
+/web/upload/*
+/web/app_local.php
+/*.cmd

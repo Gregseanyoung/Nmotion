@@ -1,0 +1,24 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\User:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        firstName:
+            expose: true
+            type: string
+            serialized_name: firstName
+            groups: [api, backoffice, api.list]
+        lastName:
+            expose: true
+            type: string
+            serialized_name: lastName
+            groups: [api, backoffice, api.list]
+        registered:
+            expose: true
+            type: boolean
+            groups: [backoffice]
+        registrationOrigin:
+            expose: false
+            type: string
+            serialized_name: registrationOrigin
+            groups: []

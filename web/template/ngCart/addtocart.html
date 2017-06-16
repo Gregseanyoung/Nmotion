@@ -1,0 +1,16 @@
+<div ng-hide="attrs.id">
+    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+
+</div>
+<div ng-show="attrs.id" class="row">
+    <div class="medium-6 columns">
+        <span ng-show="quantityMax">
+            <select name="quantity" id="quantity" ng-model="q" ng-options="v for v in qtyOpt">
+            </select>
+        </span>
+        </div>
+    <div class="medium-6 columns">
+        <a class="button tiny round success"
+           ng-click="ngCart.addItem(id, name, price, q, data)">Tilføj</a>
+    </div>
+</div>

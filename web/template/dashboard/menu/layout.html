@@ -1,0 +1,10 @@
+<div class="menu_section" id="sidebar-menu">
+    <h3>General</h3>
+    <ul class="nav side-menu" ng-repeat="item in menuItems">
+        <li class="{[{ item.active }]}"><a ng-click="menuClick(item)"><i class="fa fa-{[{ item.icon }]}"></i> {[{ item.desc }]}</a>
+            <ul class="nav child_menu" ng-repeat="child in item.children" style="display: {[{ item.child }]};">
+                <li><a href="{[{ child.link }]}">{[{ child.desc }]}</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

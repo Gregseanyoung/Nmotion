@@ -1,0 +1,53 @@
+{% extends 'NmotionNmotionBundle::public.html.twig' %}
+{% block title %}{{ 'layout.page.default.title'|trans({}, 'NmotionNmotionBundle') }}{% endblock %}
+{% block content %}
+
+        <div class="tabsBlock homeTabs">
+            <div class="tabsItems">
+                <ul>
+                    <li class="first active"><a><span>Hjælp</span></a></li>
+                </ul>
+            </div>
+            <div class="tabsBlocks scrollTabContent">
+                <div class="tabsBlocksInner">
+                    <div class="tabItem active">
+                        <div class="tabItemColumn flexcroll">
+                            <div class="faqItem" id="q1">
+                                <h3 class="faqItemQuestion">Kan Nmotion bruges alle steder ?</h3>
+
+                                <div class="faqItemAnswer">
+                                    Nmotion app kan bruges på de tilmeldte steder, der kan ses i app’en eller på
+                                    Nmotion.dk
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q2">
+                                <h3 class="faqItemQuestion">Er mine kortdetaljer sikret ?</h3>
+
+                                <div class="faqItemAnswer">
+                                    Ja, vi gemmer ikke alle dine kortoplysninger og de er derfor aldrig er i fare.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q3">
+                                <h3 class="faqItemQuestion">Kan man ændre sprog ?</h3>
+
+                                <div class="faqItemAnswer">
+                                    Nmotion findes på dansk og engelsk
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q4">
+                                <h3 class="faqItemQuestion">Koster det noget at downloade Nmotion’s app?</h3>
+
+                                <div class="faqItemAnswer">
+                                    Nej, Nmotion den er gratis. Du betaler som andre steder gebyr for at benytte dit
+                                    betalingskort.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cb"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

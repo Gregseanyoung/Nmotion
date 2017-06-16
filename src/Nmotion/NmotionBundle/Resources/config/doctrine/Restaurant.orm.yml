@@ -1,0 +1,261 @@
+Nmotion\NmotionBundle\Entity\Restaurant:
+    type: entity
+    table: nmtn_restaurant
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\RestaurantRepository
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        facebookPlaceId:
+            type: string
+            length: 32
+            fixed: false
+            nullable: true
+            column: facebook_place_id
+            gedmo: [ versioned ]
+        fullDescription:
+            type: text
+            nullable: false
+            column: full_description
+            gedmo: [ versioned ]
+        feedbackUrl:
+            type: string
+            length: 120
+            fixed: false
+            nullable: true
+            column: feedback_url
+            gedmo: [ versioned ]
+        videoUrl:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: video_url
+            gedmo: [ versioned ]
+        timeZone:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: time_zone
+            gedmo: [ versioned ]
+        checkOutTime:
+            type: integer
+            scale: 5
+            unsigned: true
+            nullable: false
+            column: check_out_time
+            gedmo: [ versioned ]
+        visible:
+            type: boolean
+            nullable: false
+            default: false
+            gedmo: [ versioned ]
+        nmWebsite:
+            type: boolean
+            nullable: false
+            default: false
+            column: nm_website
+        inHouse:
+            type: boolean
+            nullable: false
+            default: true
+            column: in_house
+            gedmo: [ versioned ]
+        takeaway:
+            type: boolean
+            nullable: false
+            default: false
+            gedmo: [ versioned ]
+        roomService:
+            type: boolean
+            nullable: false
+            default: false
+            column: room_service
+            gedmo: [ versioned ]
+        taMember:
+            type: boolean
+            nullable: false
+            default: false
+            column: ta_member
+            gedmo: [ versioned ]
+        phone:
+            type: string
+            length: 40
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        email:
+            type: string
+            length: 120
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        siteUrl:
+            type: string
+            length: 120
+            fixed: false
+            nullable: true
+            column: site_url
+            gedmo: [ versioned ]
+        nmSiteUrl:
+            type: string
+            length: 120
+            fixed: false
+            nullable: true
+            column: nm_site_url
+        contactPersonName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: contact_person_name
+            gedmo: [ versioned ]
+        contactPersonEmail:
+            type: string
+            length: 120
+            fixed: false
+            nullable: false
+            column: contact_person_email
+            gedmo: [ versioned ]
+        contactPersonPhone:
+            type: string
+            length: 40
+            fixed: false
+            nullable: false
+            column: contact_person_phone
+            gedmo: [ versioned ]
+        legalEntity:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: legal_entity
+            gedmo: [ versioned ]
+        invoicingPeriod:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: invoicing_period
+            gedmo: [ versioned ]
+        vatNo:
+            type: string
+            length: 8
+            fixed: false
+            nullable: false
+            column: vat_no
+            gedmo: [ versioned ]
+        regNo:
+            type: string
+            length: 4
+            fixed: false
+            nullable: false
+            column: reg_no
+            gedmo: [ versioned ]
+        kontoNo:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+            column: konto_no
+            gedmo: [ versioned ]
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            gedmo:
+                timestampable:
+                    on: create
+            column: created_at
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+            column: updated_at
+    oneToOne:
+        adminUser:
+            targetEntity: RestaurantAdmin
+            inversedBy: restaurant
+            cascade:
+              - persist
+              - remove
+            joinColumn:
+              name: admin_user_id
+              referencedColumnName: id
+        address:
+            targetEntity: RestaurantAddress
+            cascade:
+              - persist
+              - remove
+            joinColumn:
+              name: restaurant_address_id
+              referencedColumnName: id
+    oneToMany:
+        operationTimes:
+            targetEntity: RestaurantOperationTime
+            mappedBy: restaurant
+            cascade:
+              - persist
+              - remove
+        menuCategories:
+            targetEntity: MenuCategory
+            mappedBy: restaurant
+            cascade:
+              - persist
+              - remove
+        menuMeals:
+            targetEntity: Meal
+            mappedBy: restaurant
+            cascade:
+              - remove
+        checkins:
+            targetEntity: RestaurantCheckin
+            mappedBy: restaurant
+            cascade:
+              - remove
+    manyToOne:
+        logoAsset:
+            targetEntity: Asset
+            cascade:
+                - persist
+            joinColumn:
+                name: logo_asset_id
+                referencedColumnName: id
+        currency:
+            targetEntity: Currency
+            cascade:
+              - persist
+            joinColumn:
+              name: currency_id
+              referencedColumnName: id
+    manyToMany:
+        staff:
+            targetEntity: RestaurantStaff
+            mappedBy: restaurant
+    indexes:
+        fk_nmtn_restaurant_nmtn_user1_idx:
+            columns: [admin_user_id]
+        fk_nmtn_restaurant_nmtn_restaurant_address1_idx:
+            columns: [restaurant_address_id]
+    options:
+        charset: utf8
+        type: InnoDB
+    lifecycleCallbacks: {  }

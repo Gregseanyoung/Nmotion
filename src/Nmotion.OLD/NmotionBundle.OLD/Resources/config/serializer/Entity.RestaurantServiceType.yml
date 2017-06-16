@@ -1,0 +1,12 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\RestaurantServiceType:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, api.orders.entity, backoffice]
+        name:
+            groups: [api, api.orders.entity, backoffice]
+        description:
+            groups: [api, backoffice.entity]

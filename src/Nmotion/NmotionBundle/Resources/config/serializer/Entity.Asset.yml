@@ -1,0 +1,33 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Asset:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [backoffice]
+        mimeType:
+            type: string
+            serialized_name: mimeType
+            groups: [backoffice]
+        name:
+            type: string
+            groups: [backoffice]
+        originalFilename:
+            type: string
+            serialized_name: originalFilename
+            groups: [backoffice]
+        width:
+            read_only: true
+            groups: [backoffice]
+        height:
+            read_only: true
+            groups: [backoffice]
+        md5:
+            read_only: true
+            groups: [export]
+    virtual_properties:
+        getUrl:
+            read_only: true
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+            serialized_name: url

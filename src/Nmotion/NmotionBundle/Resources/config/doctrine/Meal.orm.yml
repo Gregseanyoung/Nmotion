@@ -1,0 +1,134 @@
+Nmotion\NmotionBundle\Entity\Meal:
+    type: entity
+    table: nmtn_meal
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\MealRepository
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        description:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        price:
+            type: decimal
+            precision: 14
+            scale: 4
+            nullable: false
+            default: 0
+            gedmo: [ versioned ]
+        discountPercent:
+            type: smallint
+            unsigned: true
+            nullable: false
+            default: 0
+            column: discount_percent
+            gedmo: [ versioned ]
+        visible:
+            type: boolean
+            nullable: false
+            default: false
+            gedmo: [ versioned ]
+        timeFrom:
+            type: integer
+            unsigned: true
+            nullable: true
+            default: 0
+            column: time_from
+            gedmo: [ versioned ]
+        timeTo:
+            type: integer
+            unsigned: true
+            nullable: true
+            default: 0
+            column: time_to
+            gedmo: [ versioned ]
+        position:
+            type: integer
+            nullable: false
+            gedmo:
+                - versioned
+                - sortablePosition
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+            column: updated_at
+        mealOptionDefaultId:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: meal_option_default_id
+            gedmo: [ versioned ]
+    oneToMany:
+        mealOptions:
+            targetEntity: MealOption
+            mappedBy: meal
+            cascade:
+                - persist
+                - remove
+            orphanRemoval: true
+        mealExtraIngredients:
+            targetEntity: MealExtraIngredient
+            mappedBy: meal
+            cascade:
+                - persist
+                - remove
+            orphanRemoval: true
+    manyToOne:
+        restaurant:
+            targetEntity: Restaurant
+            inversedBy: menuMeals
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
+        menuCategory:
+            targetEntity: MenuCategory
+            inversedBy: menuMeals
+            joinColumn:
+                name: menu_category_id
+                referencedColumnName: id
+            gedmo:
+                - sortableGroup
+        logoAsset:
+            targetEntity: Asset
+            cascade:
+              - persist
+            joinColumn:
+              name: logo_asset_id
+              referencedColumnName: id
+        thumbLogoAsset:
+            targetEntity: Asset
+            cascade:
+              - persist
+            joinColumn:
+              name: thumb_logo_asset_id
+              referencedColumnName: id
+    lifecycleCallbacks: {  }

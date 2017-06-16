@@ -1,0 +1,47 @@
+Nmotion\NmotionBundle\Entity\UserDevice:
+    type: entity
+    table: nmtn_user_device
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        deviceIdentity:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: device_identity
+        salt:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade:
+                - persist
+            mappedBy: null
+            inversedBy: null
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+            gedmo: [ versioned ]
+    indexes:
+        fk_nmtn_user_device_nmtn_user1_idx:
+            columns: [user_id]
+        device_identity:
+            columns: [device_identity]
+            type: unique
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

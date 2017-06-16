@@ -1,0 +1,15 @@
+Nmotion\NmotionBundle\Entity\RestaurantStaff:
+    type: entity
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\UserRepository
+    manyToMany:
+        restaurant:
+            targetEntity: Restaurant
+            inversedBy: staff
+            joinTable:
+                name: nmtn_restaurant_staff
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    restaurant_id:
+                        referencedColumnName: id

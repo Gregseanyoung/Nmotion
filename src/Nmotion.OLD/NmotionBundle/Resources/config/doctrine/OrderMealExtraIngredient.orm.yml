@@ -1,0 +1,49 @@
+Nmotion\NmotionBundle\Entity\OrderMealExtraIngredient:
+    type: entity
+    table: nmtn_order_meal_extra_ingredient
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        price:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+    manyToOne:
+        orderMeal:
+            targetEntity: OrderMeal
+            inversedBy: orderMealExtraIngredients
+            joinColumns:
+                order_meal_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        mealExtraIngredient:
+            targetEntity: MealExtraIngredient
+            joinColumns:
+                meal_extra_ingredient_id:
+                    referencedColumnName: id
+            onDelete: 'SET NULL'
+            orphanRemoval: false
+    indexes:
+        fk_nmtn_order_meal_extra_ingridient_nmtn_meal_extra_ingredi_idx:
+            columns: [meal_extra_ingredient_id]
+        fk_nmtn_order_meal_extra_ingridient_nmtn_order_meal1_idx:
+            columns: [order_meal_id]
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

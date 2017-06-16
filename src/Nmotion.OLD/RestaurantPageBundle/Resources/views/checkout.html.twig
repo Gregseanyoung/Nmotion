@@ -1,0 +1,13 @@
+{% extends 'NmotionLandingPageBundle::base_restaurant.html.twig' %}
+
+{% block body %}
+<FORM NAME="RedirForm" ACTION="https://payment.architrade.com/paymentweb/start.action" METHOD="POST" CHARSET="UTF-8">
+    <input type="hidden" name="merchant" value="{{ cart.getMerchant() }}" />
+    <input type="hidden" name="amount" value="{{ cart.getAmount() }}" />
+    <input type="hidden" name="accepturl" value="http://nm.agamborg.dk/paymentconfirmation/" />
+    <input type="hidden" name="orderid" value="{{ cart.getOrderId() }}" />
+    <input type="hidden" name="currency" value="{{ cart.getCurrency() }}" />
+    <input type="hidden" name="md5key" value="{{ cart.getChecksum() }}" />
+    <input type="submit" value="Send">
+</FORM>
+{% endblock %}

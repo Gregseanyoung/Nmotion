@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionNmotionBundle/Resources/public/css/home.css'
+    %}
+    <link rel="stylesheet" href="{{  asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <body class="home">
+
+        {% block header %}
+            <div id="podlojka" onclick="hidePopup()"></div>
+            <div class="popupBlock" id="popupVideo">
+                <div class="formBlock">
+                    <div>
+                        <a class="close" onClick="hidePopup()">X</a>
+                        <div class="contactInfoPopup" style="margin-left: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header">
+                <a class="logo" href="{{ path('nmotion_nmotion_default_index') }}"><img src="img/logo.gif"></a>
+                <div class="rightTopMenu">
+                    <ul>
+                        <li><a onClick="showVideoPopup('gi6WurQljZg')">Sådan virker Nmotion</a></li>
+                        <li><a href="{{ path('nmotion_nmotion_default_contacts') }}">Kontakt</a></li>
+                        <li class="last"><a href="{{ path('nmotion_nmotion_default_faq') }}">Hjælp</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        {% endblock %}
+
+        <div class="content noSmallBlock">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block footer %}
+            <div class="footer">
+                <table class="footerTable">
+                    <tr>
+                        <td class="noBorder"><a href="http://facebook.com/nmotion.dk">Follow Us</a></td>
+                        <td>
+                            <a href="http://facebook.com/nmotion.dk"><img src="img/f.png"></a>
+                        </td>
+                        <td><a href="{{ path('nmotion_nmotion_default_contacts') }}">Kontakt</a></td>
+                        <td><a href="{{ path('nmotion_nmotion_default_terms') }}">Vilkår</a></td>
+                        <td>
+                            <a href="{{ path('nmotion_nmotion_default_login') }}">Restaurant login</a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="rights">Copyright by Nmotion ApS</div>
+            </div>
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+            {% javascripts
+            '@NmotionNmotionBundle/Resources/public/js/homeFoodapp.js'
+            %}
+            <script src="{{ asset_url }}" type="text/javascript"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+    </body>
+{% endblock %}

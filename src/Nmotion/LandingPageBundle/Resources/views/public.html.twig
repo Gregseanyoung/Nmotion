@@ -1,0 +1,376 @@
+{% extends 'NmotionLandingPageBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionLandingPageBundle/Resources/public/css/foundation.css'
+    '@NmotionLandingPageBundle/Resources/public/css/style.css'
+    '@NmotionLandingPageBundle/Resources/public/css/component.css'
+    %}
+    <link rel="stylesheet" href="{{  asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" /> 
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" /> 
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone4.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-ipad3.png" />
+
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        {% block fbroot %}
+            <div id="fb-root"></div>
+            <script type="text/javascript" language="javascript">
+            //<![CDATA[
+            (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            //]]>
+            </script>
+        {% endblock %}
+
+    {% block popup %}
+    <div class="profile-popup">
+        <div class="profile-container">
+            <div class="popup-close">
+                <a href="#" class="close-button">
+                    <img src="/bundles/nmotionlandingpage/img/close-button.png" alt="close button"/>
+                </a>
+            </div>
+
+            <div class="popup-content">
+                <div class="popup-inner">
+                    <img src="/bundles/nmotionlandingpage/img/logo_s.png" alt=""/>
+                        <div class="row">
+                            <div class="six columns centered" id="content_head" > 
+                                <h2>Vilkår &amp; Faq</h2>
+                            </div> 
+                        </div> 
+ 
+                        <div class="row">            
+                            <div class="twelve columns" id="vilkår">    
+                                <div class="six columns" id="vilkår_row">
+                                    <h3>Handels og leveringsbetingelser</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Ved køb via Nmotion accepterer du Nmotions vilkår i handelsbetingelserne. Du opfordres til at læse alle betingelserne igennem så du er bekendt med forpligtelserne inden du forsætter købet.</p>
+
+
+                                    <h3>Priser</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Priser angivet på Nmotion systemet er angivet i danske kroner (DKK) og er inklusiv 25% moms. Alle priser er dagspriser og opdateres løbende, da systemet opdateres løbende.</p>
+                                    <p>Der kan betales med Dankort, MasterCard, Maestro, Visa, Visa Electron, JCB og American Express.</p>
+
+
+                                    <h3>Levering</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion skal betragtes som formidler af mad mellem restaurant og bruger. Såfremt der er forsinkelser, mangler, eller ligende kan Nmotion skal der rettes henvendelse til restaurantens personale.</p>
+                                    <p>Løses problemet ikke, skal bruger kontakte Nmotion indenfor 48 timer fra bestillingen er fortaget.</p>
+
+
+                                    <h3>Fortrydelsesret</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Eftersom mad, drikke og andre varer anses for at værende påbegyndt efter bekræftelse af bestillingen, er der ingen fortrydelsesret efter forbrugeraftaleloven.</p>
+                                    <p>Nmotion kan stadig opkræve fuld betaling, selvom kunden ønsker at annullere ordren efter at have bekræftet. Det er brugers eget ansvar at tilsikre ordren er korrekt inden bekræftelsen.</p>
+                                               
+
+                                    <h3>Fejl &amp; Mangler</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Bruger er selv ansvarlig for at kontrollere maden for evt. fejl og mangler og der skal straks rettes henvendelse til restaurantens personale.</p>
+                                    <p>Nmotion bestræber sig på at holde systemet og kontakt indgangende uden driftsforstyrrelser, men uden garanti.</p>
+
+
+                                    <h3>Personlige Data</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Alle personlige data der indtastes via vores system, videregives eller sælges på ingen måde til tredjemand.</p>
+                                    <p>Alle kredit kort oplysninger håndteres krypteret og opbevares af DIBS A/S i deres system, der er godkendt af Finanstilsynet.</p>
+                                    <p>Nmotion gemmer ingen oplysninger omkring brugers kredit kort.</p>
+                                    <p>Nmotion anbefaler bruger til at have adgangskode på brugers smartphone.</p>
+                                    <p>Nmotion kan ikke drages til ansvar for misbrug ved stjålet eller mistet smartphone.</p>
+
+
+
+                                    <h3>Generelt</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion systemet er ejet og drevet af</p>
+                                    <ul class="adress">
+                                        <li>Nmotion ApS</li> 
+                                        <li>Tinghøjvej 40</li> 
+                                        <li>2860 Søborg</li>
+                                        <li>CVR 34803706</li>
+                                        <li>Tlf. +45 71 99 41 99</li>
+                                        <li><a href="mailto:mail@nmotion.dk">mail@nmotion.dk</a></li>
+                                    </ul>
+                                </div>
+
+
+
+                                <div class="six columns">
+                                    <h3>Hvor kan man benytte Nmotion?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion kan benyttes PT. i Danmark, Sverige, Norge, Tyskland og Ukraine.</p>
+
+
+                                    <h3>Koster det noget at benytte Nmotion?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nej, Nmotion er gratis at bruge, der kan dog forekomme data trafik til dit teleselskab.</p>
+
+
+                                    <h3>Hvad skal Nmotion have adgang til, hvis jeg logger ind med min facebookkonto?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion skal bruge mailadresse for at kunne sende en kopi af regningen til din mail og Nmotion skal kende din lokalitet for at kunne vise dig de nærmeste Nmotion steder.</p>
+
+
+                                    <h3>Hvorfor bliver der ikke vist nogle restauranter?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Ved download har du ikke givet Nmotion tilladelse til at kende din lokation. Du kan slette Nmotion App, hente den igen og give tilladelse første gang du starter App'en</p>
+
+
+                                    <h3>Gemmer Nmotion mine kreditkort oplysninger sikkert?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion har ikke på noget tidspunkt dine kreditkort oplysninger. Dine kreditkort oplysninger bliver gemt og krypteret af vores kreditkort gateway leverandør DIBS. Dette sikre at alle oplysninger bliver gemt sikkert og krypteret.</p>
+
+
+                                    <h3>Kan man skifte sprog?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Ja, Nmotion findes på Dansk og Engelsk. Bemærk at det ikke er alle menukort, der også findes på andre sprog.</p>
+                                    <p>Du skifter sprog ved at går ind under Hovedmenu &rang; Indstillinger &rang; Sprog.</p>
+
+
+                                    <h3>Jeg har fået nyt kreditkort. Hvordan ændrer jeg mine kreditkort oplysninger?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Du logger ind på din Nmotion konto &rang; Hovedmenu &rang; Min konto &rang; Redigere kreditkort &rang; Redigere &rang; Slet tidligere kort &rang; Tilføj nyt.</p>
+
+
+                                    <h3>Kan jeg gemme flere kreditkort?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Ja.</p> 
+                                    <p>Du logger ind på din Nmotion konto &rang; Hovedmenu &rang; Min konto &rang; Redigere kreditkort og Redigere &rang; Tilføj nyt.</p>
+
+
+                                    <h3>Hvordan får jeg en kopi af regningen?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Alle dine køb bliver gemt på din Nmotion konto, Hovedmenu &rang; Min konto &rang; Mine bestillinger.</p>
+                                    <p>Hvis du ønsker at få den fysisk skal du; Hovedmenu &rang; Min konto &rang; Mine bestillinger &rang; Vælg regningen &rang; Send til e-mail.</p>
+
+
+                                    <h3>Jeg ønsker ikke at blive checket ind på min facebookvæg. Hvordan deaktiverer jeg det?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Hvis du ikke ønsker blive checket ind på den restaurant du besøger på din facebookvæg skal du; Hovedmenu &rang; Indstillinger &rang; Check ind på Facebook.</p>
+                                    <p>Bemærk, du vil fortsat stadig kunne logge ind på Nmotion via din facebookkonto.</p>
+                                </div>
+                            </div>
+
+                            <div class="twelve columns" id="vilkår_english">
+                                <h2>English</h2>  
+                                <div class="six columns" id="vilkår_row_english">
+                                    <h3>Trade &amp; Delivery</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>When you buy at Nmotion you accept Nmotions terms in hand detailed conditions and make a agreement with Nmotion. You are encouraged to read all conditions through, so you are aware of the obligations before you continue your purchase.</p>
+
+
+                                    <h3>Prices</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Prices listed on Nmotion system are given in Danish Kroner (DKK) and include 25% VAT. All prices are current prices and are continuously updated as the system is updated.</p>
+                                    <p>You can pay with VISA, MasterCard, Maestro, Visa, Visa Electron, JCB and American Express.</p>
+
+
+                                    <h3>Delivery</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion is regarded as a provider of food between the restaurant and user. If there are delays, defects or similar, contact the restaurant's staff. If issues are not solved between restaurant and guest, contact Nmotion for possible refund.</p>
+                                    <p>Nmotion has to received guest's complaint within 48 hour's from order time for further treatment.</p>
+
+
+                                    <h3>eturns</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Since food, drinks and other items are considered to be commenced shortly after the confirmation of the order, there is no right of withdrawal.</p>
+                                    <p>Nmotion can still withdraw from user's account, even if the user wishes to cancel the order after confirming. It is the user's responsibility to ensure the order is correct before confirming.</p>
+                                               
+
+                                    <h3>Flaws</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Users are responsible for checking the food for any. deficiencies and to be immediately addressed to the restaurant's staff.</p>
+                                    <p>Nmotion endeavor to keep the system and contact input end without interruption, but without warranty.</p>
+
+
+                                    <h3>Personal Data</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>All personal data entered on our system, transmitted or sold in any way to third parties.</p>
+                                    <p>All credit card information is handled encrypted and stored by DIBS A / S in their system, approved by the FSA.</p>
+                                    <p>Nmotion not store the information about user's credit card.</p>
+                                    <p>Nmotion recommend's user to have a PIN code on user's smartphone.</p>
+                                    <p>Nmotion can not be held responsible for abuse in case of lost or stolen user smartphone.</p>
+
+
+                                    <h3>General</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion system is owned and operated by</p>
+                                    <ul class="adress">
+                                        <li>Nmotion ApS</li> 
+                                        <li>Tinghøjvej 40</li> 
+                                        <li>2860 Søborg</li>
+                                        <li>CVR 34803706</li>
+                                        <li>Tlf. +45 71 99 41 99</li>
+                                        <li><a href="mailto:mail@nmotion.dk">mail@nmotion.dk</a></li>
+                                    </ul>
+                                </div>
+
+
+
+
+                                <div class="six columns">
+                                    <h3>Where can I use Nmotion?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion can be used in Denmark, Sweden, Norway, Germany &amp; Ukraine.</p>
+
+
+                                    <h3>Does it cost anything to use Nmotion?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>No, Nmotion is free to use, there may be some data traffic to your telephone company.</p>
+
+
+                                    <h3>What will Nmotion have access to if I log in with my facebook account?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion will use mail addr. to send a copy of the bill to your email and Nmotion need to know your location, in order to show you the nearest Nmotion places.</p>
+
+
+                                    <h3>Why can't I see any restaurants?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>You have not given Nmotion permission to know your location. You can delete Nmotion App, download it again and give permission the first time you start the app.</p>
+
+
+                                    <h3>Is my credit card information stored safe?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Nmotion hasn't at any time your credit card information. Your credit card information is stored and encrypted by our credit card gateway provider DIBS. This ensures that all information is stored securely and encrypted.</p>
+
+
+                                    <h3>Can I change language?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Yes, Nmotion is available in Danish and English. Note that, not all menu cards are available in other languages.</p>
+                                    <p>To change the language, go to Main menu &rang; Settings &rang; Language.</p>
+
+
+                                    <h3>I have got a new credit card. How do I change my credit card information?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>You log in to your Nmotion account &rang; Main menu &rang; My Account &rang; Edit credit card &rang; Edit &rang; Delete previous card &rang; Add new.</p>
+
+
+                                    <h3>Can I store multiple credit cards?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>Yes.</p> 
+                                    <p>You log in to your Nmotion account All your purchases are stored on your Nmotion account Main Menu -> My Account -> My orders. Main menu &rang; My Account &rang; Edit credit card &rang; Edit &rang; Add new.
+                                    </p>
+
+
+                                    <h3>How do I get a copy of the bill?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>All your purchases are stored on your Nmotion account Main menu &rang; My Account &rang; My orders.</p>
+                                    <p>If you want to get the physical, this is how you do; You log in to your account Nmotion &rang; Main Menu &rang; My Account &rang; My Orders &rang; Select the bill &rang; Send to e-mail.</p>
+
+
+                                    <h3>I do not want to be checked in on my Facebook wall how do I deactivate it?</h3>
+                                    <div class="middle-hr"></div>
+                                    <p>If you do not want to be Checked at the restaurant you visit on your Facebook wall you can do following; You log in to your account Nmotion &rang; Main Menu &rang; Settings &rang; Check in on Facebook.</p>
+                                    <p>Note that you will continue to still be able to log in to Nmotion using your Facebook account.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="twelve columns" id="logo_header_small">
+                <a href="{{ path('nmotion_landing_page_index') }}">
+                    <img src="/bundles/nmotionlandingpage/img/logo_small.png" class="logo_header_small" alt="logo" />
+                </a>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block header %}
+
+    <div class="row" id="header">
+        <div class="twelve columns" id="nav">
+            <div class="nav">
+                <a href="{{ path('nmotion_landing_page_index') }}">
+                    <img src="/bundles/nmotionlandingpage/img/logo.png" alt="" class="logo" />
+                </a>
+                <ul>
+                    <li><a href="{{ path('nmotion_landing_page_index') }}">home</a></li>
+                    <li><a href="{{ path('nmotion_nmotion_default_login') }}">Login</a></li>
+                    <li><a href="#profile" class="profile-popup-link">Vilkår &amp; Faq</a></li>
+                    <li><a href="{{ path('nmotion_landing_page_contacts') }}">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <div class="page-fade-in">
+        {% block content %}{% endblock %}
+
+    {% block footer %}
+    <div id="footer_wrap">
+        <div class="row">
+            <div class="twelve columns" id="footer">
+                <div class="four columns" id="contact_foot">
+                    <ul id="info">
+                        <li>Nmotion ApS</li> 
+                        <li>Tinghøjvej 40, 2860 Søborg</li> 
+                        <li>Tlf. +45 71 99 41 99</li>
+                        <li><a href="mailto:mail@nmotion.dk">mail@nmotion.dk</a></li>
+                    </ul>
+                </div>
+
+                <div class="four columns" id="facebook">
+                    <h2 >Find Nmotion på</h2><a href="https://www.facebook.com/nmotion.dk?fref=ts" target="_blank">f</a>
+                    <h2>Og bliv opdateret på de seneste nyheder</h2>
+                </div>
+
+
+                <div class="four columns" id="footer_socials">
+                    <ul id="follow">
+                        <li><a href="https://twitter.com/nmotiondk" target="_blank"><img src="/bundles/nmotionlandingpage/img/icons/twitter_social.png" alt="Twitter"/></a></li>
+                        <li><a href="http://www.vimeo.com/nmotiondk" target="_blank"><img src="/bundles/nmotionlandingpage/img/icons/vimeo_social.png" alt="Vimeo"/></a></li>
+                        <li><a href="http://www.youtube.com/nmotiondk" target="_blank"><img src="/bundles/nmotionlandingpage/img/icons/youtube_social.png" alt="Youtube"/></a></li>
+                    </ul>
+                    <div class="fb_like" >
+                        <script type="text/javascript" language="javascript">
+                            // <![CDATA[
+                            document.write('<fb:like href="https://www.facebook.com/nmotion.dk?fref=ts" send="false" width="200" show_faces="false" colorscheme="dark"></fb:like>');
+                            // ]]>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                
+                
+    <div class="twelve columns centered" id="happy">
+        <a href="http://www.happy-app.dk" target="_blank"><img src="/bundles/nmotionlandingpage/img/happy.png" alt="Happy App" /></a>
+    </div>
+    {% endblock %}
+
+</div>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            {% javascripts
+            '@NmotionLandingPageBundle/Resources/public/js/plugins.js'
+            '@NmotionLandingPageBundle/Resources/public/js/script.js'
+            %}
+            <script src="{{ asset_url }}" type="text/javascript"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+</body>
+{% endblock %}

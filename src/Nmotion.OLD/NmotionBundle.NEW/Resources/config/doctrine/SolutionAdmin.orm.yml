@@ -1,0 +1,3 @@
+Nmotion\NmotionBundle\Entity\SolutionAdmin:
+    type: entity
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\UserRepository

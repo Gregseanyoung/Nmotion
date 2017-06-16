@@ -1,0 +1,24 @@
+
+_main:
+    resource: routing.yml
+
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler_login:
+    pattern: /profiler/login
+    defaults: { _controller: NmotionNmotionBundle:ProfilerSecurity:login }
+    requirements: { _method:  GET }
+
+_profiler_login_check:
+    pattern: /profiler/login_check
+    defaults: { _controller: NmotionNmotionBundle:ProfilerSecurity:check }
+    requirements: { _method:  GET }
+
+_profiler_prod:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /profiler
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"

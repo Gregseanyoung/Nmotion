@@ -1,0 +1,28 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\RestaurantAddress:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice]
+        longitude:
+            type: float
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+        latitude:
+            type: float
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+        addressLine1:
+            type: string
+            serialized_name: addressLine1
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+        city:
+            type: string
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+        state:
+            type: string
+            groups: [api, backoffice]
+        postalCode:
+            type: string
+            serialized_name: postalCode
+            groups: [api, backoffice, restaurant.search, api.orders.entity]

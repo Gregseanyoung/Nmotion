@@ -1,0 +1,7 @@
+parameters:
+#    nmotion_restaurant_page.example.class: Nmotion\RestaurantPageBundle\Example
+
+services:
+#    nmotion_restaurant_page.example:
+#        class: %nmotion_restaurant_page.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,21 @@
+<div class="panel">
+    <div class="panel-heading">Meals</div>
+    <table style="width:600px" class="table">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(meals, function(meal) { %>
+        <tr>
+            <td><%= meal.name %></td>
+            <td><%= meal.price %> DKK</td>
+            <td><%= meal.quantity %></td>
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>

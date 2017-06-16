@@ -1,0 +1,14 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Currency:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [backoffice,api, api.list, api.orders.entity]
+        sign:
+            type: string
+            groups: [backoffice,api, api.list, api.orders.entity]
+        description:
+            type: string
+            groups: [backoffice,api, api.list, api.orders.entity]

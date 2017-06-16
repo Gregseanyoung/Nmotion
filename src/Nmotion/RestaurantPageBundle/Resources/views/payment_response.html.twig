@@ -1,0 +1,66 @@
+{% extends 'NmotionLandingPageBundle::base_restaurant.html.twig' %}
+
+{% block title %}
+    {{ restaurant.getName() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionRestaurantPageBundle/Resources/public/css/foundation.min.css'
+    '@NmotionRestaurantPageBundle/Resources/public/css/foundation-icons.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block headScripts %}
+    <script type="text/javascript" language="javascript">
+        var NmotionApp = NmotionApp || {};
+        NmotionApp.TaxRate = {{ tax_rate }};
+        NmotionApp.CurrentSiteId = {{ restaurant.getId() }};
+    </script>
+{% endblock %}
+
+{% block body %}
+<body ng-app="NmotionApp">
+    <div class="row">
+        <div class="medium-12 columns">
+            <h2><img src="/upload/{{ restaurant.getLogoAsset().getPath() }}/{{ restaurant.getLogoAsset().getFilename() }}" alt="Logo" style="height: 45px" /> {{ restaurant.getName() }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-12 columns">
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 medium-8 columns">
+            <h3>Tak for din bestilling.</h3>
+            Din bestilling er nu gennemført og bliver leveret næstkommende fredag.<br />
+            <br />
+            Alle bestillinger bliver leveret på lageret.
+        </div>
+        <div class="small-12 medium-3 columns">
+            <div style="position: relative;" id="summary-wrapper">
+                <ngcart-summary template-url="/template/ngCart/summary.html"></ngcart-summary>
+            </div>
+        </div>
+    </div>
+    <ngcart-checkout-form></ngcart-checkout-form>
+    {% block javascripts %}
+        {% javascripts
+        '@NmotionRestaurantPageBundle/Resources/public/js/vendor/jquery.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.accordion.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.reveal.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.abide.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular.min.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular/locale_da-dk.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular/ngCart.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/app.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+    {% endblock %}
+</body>
+{% endblock %}

@@ -1,0 +1,254 @@
+user:
+    email:
+        unique: "User with such email is already existing."
+        notBlank: "Email must not be blank."
+        email: "Email \"{{ value }}\" is not a valid email."
+        maxMessage: "Email is too long. It must have {{ limit }} character or less.|Email is too long. It must have {{ limit }} characters or less."
+    firstName:
+        notBlank: "First name must not be blank."
+        maxMessage: "First name is too long. It must have {{ limit }} character or less.|First name is too long. It must have {{ limit }} characters or less."
+    lastName:
+        notBlank: "Last name must not be blank."
+        maxMessage: "Last name is too long. It must have {{ limit }} character or less.|Last name is too long. It must have {{ limit }} characters or less."
+    password:
+        notBlank: "Password must not be blank."
+        minMessage: "Password is too short. It must have {{ limit }} character or more.|Password is too short. It must have {{ limit }} characters or more."
+        maxMessage: "Password is too long. It must have {{ limit }} character or less.|Password is too long. It must have {{ limit }} characters or less."
+
+restaurant:
+    name:
+        notBlank: "Restaurant name must not be blank."
+        minMessage: "|Restaurant name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Restaurant name is too long. It must have {{ limit }} characters or less."
+    fullDescription:
+        notBlank: "Full description must not be blank."
+        minMessage: "|Full description is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Full description is too long. It must have {{ limit }} characters or less."
+    facebookPlaceId:
+        maxMessage: "|Facebook place ID is too long. It must have {{ limit }} characters or less."
+    feedbackUrl:
+        url: "Feedback URL should be a valid URL."
+        maxMessage: "|Feedback URL is too long. It must have {{ limit }} characters or less."
+    videoUrl:
+        url: "Video URL should be a valid URL."
+        maxMessage: "|Video URL is too long. It must have {{ limit }} characters or less."
+    checkOutTime:
+        notBlank: "Check-out time must not be blank."
+        minMessage: "|Check-out time must be {{ limit }} or more."
+        maxMessage: "|Check-out time must be {{ limit }} or less."
+    phone:
+        notBlank: "Phone must not be blank."
+        minMessage: "|Phone is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Phone is too long. It must have {{ limit }} characters or less."
+    email:
+        notBlank: "Email must not be blank."
+        email: "|Email \"{{ value }}\" is not a valid email."
+        maxMessage: "|Email is too long. It must have {{ limit }} characters or less."
+    siteUrl:
+        url: "Site URL should be a valid URL."
+        maxMessage: "|Site URL is too long. It must have {{ limit }} characters or less."
+    contactPersonName:
+        minMessage: "|Contact person name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Contact person name is too long. It must have {{ limit }} characters or less."
+    contactPersonEmail:
+        email: "Contact person email \"{{ value }}\" is not a valid email."
+        maxMessage: "|Contact person email is too long. It must have {{ limit }} characters or less."
+    contactPersonPhone:
+        minMessage: "|Contact person phone is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Contact person phone is too long. It must have {{ limit }} characters or less."
+    legalEntity:
+        maxMessage: "|Legal entity is too long. It must have {{ limit }} characters or less."
+    invoicingPeriod:
+        notBlank: "Invoicing period must not be blank."
+        regex: "Invoicing period must be \"monthly\", \"weekly\" or \"14 days\"."
+    vatNo:
+        notBlank: "VAT no. must not be blank."
+        type: "VAT no. {{ value }} is not a valid {{ type }}."
+        minMessage: "|VAT no. is too short. It must have {{ limit }} digits or more."
+        maxMessage: "|VAT no. is too long. It must have {{ limit }} digits or less."
+        exactMessage: "|VAT no. must have exactly {{ limit }} digits."
+    regNo:
+        notBlank: "Reg no. must not be blank."
+        type: "Reg no. {{ value }} is not a valid {{ type }}."
+        minMessage: "|Reg no. is too short. It must have {{ limit }} digits or more."
+        maxMessage: "|Reg no. is too long. It must have {{ limit }} digits or less."
+        exactMessage: "|Reg no. must have exactly {{ limit }} digits."
+    kontoNo:
+        notBlank: "Konto no. must not be blank."
+        type: "Konto no. {{ value }} is not a valid {{ type }}."
+        minMessage: "|Konto no. is too short. It must have {{ limit }} digits or more."
+        maxMessage: "|Konto no. is too long. It must have {{ limit }} digits or less."
+        exactMessage: "|Konto no. must have exactly {{ limit }} digits."
+    serviceType:
+        atLeastOneType: "At least one service type has to be selected."
+
+restaurantAddress:
+    longitude:
+        notBlank: "Longitude must not be blank."
+        type: "Longitude {{ value }} is not a valid {{ type }}."
+    latitude:
+        notBlank: "Latitude must not be blank."
+        type: "Latitude {{ value }} is not a valid {{ type }}."
+    addressLine1:
+        notBlank: "Address line must not be blank."
+        minMessage: "|Address line is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Address line is too long. It must have {{ limit }} characters or less."
+    city:
+        notBlank: "City must not be blank."
+        minMessage: "|City is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|City is too long. It must have {{ limit }} characters or less."
+    postalCode:
+        notBlank: "Postal code must not be blank."
+        minMessage: "|Postal code is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Postal code is too long. It must have {{ limit }} characters or less."
+
+restaurantOperationTime:
+    dayOfTheWeek:
+        notBlank: "Day of week must not be blank."
+        minMessage: "|Day of week must be be a valid weekday index for date (1 = Sunday, 2 = Monday, ..., 7 = Saturday)."
+        maxMessage: "|Day of week must be be a valid weekday index for date (1 = Sunday, 2 = Monday, ..., 7 = Saturday)."
+        invalidMessage: "Day of week must be be a valid number - weekday index for date (1 = Sunday, 2 = Monday, ..., 7 = Saturday)."
+    timeFrom:
+        notBlank: "Time \"from\" must not be blank."
+        minMessage: "|Time \"from\" must be {{ limit }} or more."
+        maxMessage: "|Time \"from\" must be {{ limit }} or less."
+        invalidMessage: "Time \"from\" must be a valid number."
+    timeTo:
+        notBlank: "Time \"to\" must not be blank."
+        minMessage: "|Time \"to\" must be {{ limit }} or more."
+        maxMessage: "|Time \"to\" must be {{ limit }} or less."
+        invalidMessage: "Time \"to\" must be a valid number."
+        laterThanTimeFrom: "Time \"to\" must be later than time \"from\""
+    invalidUseOfEmptyTime: "To mark day as \"not available\" you must set empty both From and To values"
+
+menuCategory:
+    name:
+        unique: "Category with such name is already exist for given restaurant."
+        notBlank: "Category name must not be blank."
+        minMessage: "|Category name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Category name is too long. It must have {{ limit }} characters or less."
+    timeFrom:
+        notBlank: "Time \"from\" must not be blank."
+        minMessage: "|Time \"from\" must be {{ limit }} or more."
+        maxMessage: "|Time \"from\" must be {{ limit }} or less."
+        invalidMessage: "Time \"from\" must be a valid number."
+    timeTo:
+        notBlank: "Time \"to\" must not be blank."
+        minMessage: "|Time \"to\" must be {{ limit }} or more."
+        maxMessage: "|Time \"to\" must be {{ limit }} or less."
+        invalidMessage: "Time \"to\" must be a valid number."
+    discountPercent:
+        type: "Discount {{ value }} is not a valid {{ type }}."
+        minMessage: "|Discount must be {{ limit }} percents or more."
+        maxMessage: "|Discount must be {{ limit }} percents or less."
+        invalidMessage: "Discount must be a valid number."
+    visible:
+        notBlank: "Category visible field must not be blank."
+        type: "Visible {{ value }} is not a valid {{ type }}."
+    position:
+        minMessage: "|Position must be {{ limit }} or more."
+        maxMessage: "|Position must be {{ limit }} or less."
+        invalidMessage: "Position must be a valid number."
+
+meal:
+    name:
+        unique: "Meal with such name is already exist for given category."
+        notBlank: "Meal name must not be blank."
+        minMessage: "|Meal name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Meal name is too long. It must have {{ limit }} characters or less."
+    description:
+        notBlank: "Description must not be blank."
+        minMessage: "|Description is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Description is too long. It must have {{ limit }} characters or less."
+    price:
+        notBlank: "Price must not be blank."
+        minMessage: "|Price must be {{ limit }} or more."
+        invalidMessage: "Price must be a valid number."
+    discountPercent:
+        type: "Discount {{ value }} is not a valid {{ type }}."
+        minMessage: "|Discount must be {{ limit }} percents or more."
+        maxMessage: "|Discount must be {{ limit }} percents or less."
+        invalidMessage: "Discount must be a valid number."
+    visible:
+        notBlank: "Visible field must not be blank."
+        type: "Visible {{ value }} is not a valid {{ type }}."
+    timeFrom:
+        minMessage: "|Time \"from\" must be {{ limit }} or more."
+        maxMessage: "|Time \"from\" must be {{ limit }} or less."
+        invalidMessage: "Time \"from\" must be a valid number."
+    timeTo:
+        minMessage: "|Time \"to\" must be {{ limit }} or more."
+        maxMessage: "|Time \"to\" must be {{ limit }} or less."
+        invalidMessage: "Time \"to\" must be a valid number."
+    position:
+        minMessage: "|Position must be {{ limit }} or more."
+        maxMessage: "|Position must be {{ limit }} or less."
+        invalidMessage: "Position must be a valid number."
+
+mealOption:
+    name:
+        notBlank: "Option name must not be blank."
+        minMessage: "|Option name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Option name is too long. It must have {{ limit }} characters or less."
+    price:
+        notBlank: "Price must not be blank."
+        minMessage: "|Price must be {{ limit }} or more."
+        invalidMessage: "Price must be a valid number."
+
+mealExtraIngredient:
+    name:
+        unique: "Ingredient with such name already exists for given meal."
+        duplicated: 'Ingredient with such name is duplicated for given meal.'
+        notBlank: "Ingredient name must not be blank."
+        minMessage: "|Ingredient name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Ingredient name is too long. It must have {{ limit }} characters or less."
+    price:
+        notBlank: "Price must not be blank."
+        minMessage: "|Price must be {{ limit }} or more."
+        invalidMessage: "Price must be a valid number."
+
+payment:
+    orderId:
+        notBlank: "OrderId must not be blank."
+        type: "OrderId {{ value }} is not a valid {{ type }}."
+        minMessage: "|OrderId must be {{ limit }} or more."
+        invalidMessage: "OrderId must be a valid number."
+    status:
+        maxMessage: "|Status is too long. It must have {{ limit }} characters or less."
+    amount:
+        minMessage: "|Amount must be {{ limit }} or more."
+        invalidMessage: "Amount must be a valid number."
+    fee:
+        minMessage: "|Fee must be {{ limit }} or more."
+        invalidMessage: "Fee must be a valid number."
+    currency:
+        maxMessage: "|Currency is too long. It must have {{ limit }} characters or less."
+    test:
+        maxMessage: "|Test is too long. It must have {{ limit }} characters or less."
+    transaction:
+        maxMessage: "|Transaction is too long. It must have {{ limit }} characters or less."
+    acquirer:
+        maxMessage: "|Acquirer is too long. It must have {{ limit }} characters or less."
+    cardNumberMasked:
+        maxMessage: "|CardNumberMasked is too long. It must have {{ limit }} characters or less."
+    expMonth:
+        maxMessage: "|ExpMonth is too long. It must have {{ limit }} characters or less."
+    expYear:
+        maxMessage: "|ExpYear is too long. It must have {{ limit }} characters or less."
+    cardTypeName:
+        maxMessage: "|CardTypeName is too long. It must have {{ limit }} characters or less."
+    merchant:
+        maxMessage: "|Merchant is too long. It must have {{ limit }} characters or less."
+    ticket:
+        maxMessage: "|Ticket is too long. It must have {{ limit }} characters or less."
+    allParameters:
+        notBlank: "All parameters field must be filled."
+
+config:
+    name:
+        unique: "Such config parameter name already exists."
+        notBlank: "Config parameter name must not be blank."
+        minMessage: "|Config parameter name is too short. It must have {{ limit }} characters or more."
+        maxMessage: "|Config parameter name is too long. It must have {{ limit }} characters or less."
+    value:
+        notBlank: "Config parameter value must not be blank."

@@ -1,0 +1,39 @@
+nmotion_landing_page_index:
+    pattern: /
+    host: "{domains}"
+    defaults:
+        _controller: NmotionLandingPageBundle:Default:index
+        domains: nmotion.dk
+    requirements:
+        _method:  GET
+        domains: nmotion.dk|www.nmotion.dk|nm.agamborg.dk
+
+nmotion_landing_page_business:
+    pattern: /business/
+    host: "{domains}"
+    defaults:
+        _controller: NmotionLandingPageBundle:Default:business
+        domains: nmotion.dk
+    requirements:
+        _method:  GET
+        domains: nmotion.dk|www.nmotion.dk|nm.agamborg.dk
+
+nmotion_landing_page_about:
+    pattern: /about/
+    host: "{domains}"
+    defaults:
+        _controller: NmotionLandingPageBundle:Default:about
+        domains: nmotion.dk
+    requirements:
+        _method:  GET
+        domains: nmotion.dk|www.nmotion.dk|nm.agamborg.dk
+
+nmotion_landing_page_contacts:
+    pattern: /contacts/
+    host: "{domains}"
+    defaults:
+        _controller: NmotionLandingPageBundle:Default:contacts
+        domains: nmotion.dk
+    requirements:
+        _method:  GET
+        domains: nmotion.dk|www.nmotion.dk|nm.agamborg.dk

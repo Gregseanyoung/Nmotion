@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Your order #{{order.id}}</title>
+    </head>
+    <body>
+        <p>Hi {{ user.firstname }}!</p>
+
+        <p>
+            {{order.restaurant.name}}<br/>
+            {{order.restaurant.address.addressLine1}}
+        </p>
+
+        <table style="padding: 5px">
+            <tr>
+                <td style="width: 200px"><b>Your Order</b></td><td><b>{{order.createdAt|date("d/m/Y")}}</b></td>
+            </tr>
+            {% for orderMeal in order.orderMeals %}
+            <tr>
+                <td>{{orderMeal.meal.name}}</td>
+                <td>
+                    x{{orderMeal.quantity}}, DKK
+
+                    {# evaluate meal extra ingredients price #}
+                    {% set mealExtrasPrice = 0 %}
+                    {% set discountMealExtrasPrice = 0 %}
+                    {% if orderMeal.orderMealExtraIngredients %}
+                        {% for extra in orderMeal.orderMealExtraIngredients %}
+                            {% set mealExtrasPrice = mealExtrasPrice + extra.mealExtraIngredient.priceIncludingTax %}
+                            {% set discountMealExtrasPrice = discountMealExtrasPrice + extra.mealExtraIngredient.discountPriceIncludingTax %}
+                        {% endfor %}
+                    {% endif %}
+
+                    {# evaluate current meal price #}
+                    {% set mealPrice = orderMeal.meal.priceIncludingTax %}
+                    {% set discountMealPrice = orderMeal.meal.discountPriceIncludingTax %}
+                    {% if orderMeal.mealOption and orderMeal.mealOption.priceIncludingTax %}
+                        {% set mealPrice = orderMeal.mealOption.priceIncludingTax %}
+                        {% set discountMealPrice = orderMeal.mealOption.discountPriceIncludingTax %}
+                    {% endif %}
+
+                    {# show meal price sum #}
+                    {% if orderMeal.mealDiscountPercent > 0 %}
+                        <strike>{{((mealPrice + mealExtrasPrice) * orderMeal.quantity)|number_format(2)}}</strike>
+                        {{((discountMealPrice + discountMealExtrasPrice) * orderMeal.quantity)|number_format(2)}}
+                    {% else %}
+                        {{((mealPrice + mealExtrasPrice) * orderMeal.quantity)|number_format(2)}}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Product Total</td><td>DKK {{order.consolidatedProductTotal|number_format(2)}}</td>
+            </tr>
+            <tr>
+                <td>Sales Tax</td><td>DKK {{order.consolidatedSalesTax|number_format(2)}}</td>
+            </tr>
+            <tr>
+                <td>Discount</td><td>DKK -{{order.consolidatedDiscount|number_format(2)}}</td>
+            </tr>
+            <tr>
+                <td>Tip</td><td>DKK {{order.consolidatedTips|number_format(2)}}</td>
+            </tr>
+            <tr>
+                <td><b>Your Order Total</b></td><td><b>DKK {{order.consolidatedOrderTotal|number_format(2)}}</b></td>
+            </tr>
+        </table>
+
+        <p>
+            Thank you,<br/>
+            The Nmotion Team<br/>
+            <br/>
+            Nmotion ApS, CVR. 34803706<br/>
+            Tinghøjvej 40, 2860 Søborg<br/>
+            +45 20207063
+        </p>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+parameters:
+#    nmotion_api.example.class: Nmotion\ApiBundle\Example
+
+#services:
+#    nmotion_api.example:
+#        class: %nmotion_api.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

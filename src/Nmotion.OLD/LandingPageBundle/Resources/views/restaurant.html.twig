@@ -1,0 +1,415 @@
+{% extends 'NmotionLandingPageBundle::base_restaurant.html.twig' %}
+
+{% block title %}
+	{{ restaurant.getName() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionLandingPageBundle/Resources/public/css/emil/foundation.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/style.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/app.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/animations.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/component.css'
+    %}
+    <link rel="stylesheet" href="{{  asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block headScripts %}
+    {% javascripts
+    '@NmotionLandingPageBundle/Resources/public/js/emil/modernizr.custom.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <body class="page-fade-in">
+        <div class="profile-container hide">	
+            <div class="popup-close">
+                <a href="#" class="close-button"><span class="icon-cross2"></span></a>
+            </div>
+
+            <div class="popup-content">
+                <div class="popup-inner">
+                    <div class="row_pad">     
+                        <div class="row">    
+                            <div class="small-10 small-centered columns">
+                                <a class="navbar-brand" href="/"><img src="/upload/{{ restaurant.getLogoAsset().getPath() }}/{{ restaurant.getLogoAsset().getFilename() }}" alt="Logo"></a>
+                                <div class="dummy-column">
+                                    <a class="dummy-media-object menu__link" href="#/menu.pdf">
+                                        <h3>Menu</h3>
+                                    </a>
+                                    <a class="dummy-media-object menu__link" href="/#contact">
+                                        <h3>Kontakt</h3>
+                                    </a>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row_pad">
+                        <div class="row">
+                            <div class="small-10 medium-12 small-centered medium-centered columns">
+                                <div class="panel">
+                                    <p class="text-center">Bordbestilling</p>
+                                    <span class="icon-phone center grey"></span>
+                                    
+                                    <h5><a href="tel:+4545412240">+45 45 41 22 40</a></h5>
+                                    <p class="form_underline"><a href="mailto:info@cafeemilholte.dk">info@cafeemilholte.dk</a></p>
+                                    <div class="center">
+                                        <ul class="menu__list">
+                                            <li class="menu__item"><a href="https://www.facebook.com/holtecafeemil/?ref=ts&fref=ts" class="menu__link social footer" target="_blank"><span class="icon-facebook-with-circle"></span></a></li>
+                                            <li class="menu__item"><a href="https://www.instagram.com/explore/locations/292148079/" class="menu__link social footer" target="_blank"><span class="icon-instagram-with-circle"></span></a></li>
+                                        </ul>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+<div class="divider_menu"></div>
+    <nav class="navbar navbar-inverse" id="menu" role="navigation">
+        <div class="row collapse">
+            <div class="large-12 columns">	
+                <div class="nav_container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">	
+                        <a class="navbar-brand" href="#"><img src="/upload/{{ restaurant.getLogoAsset().getPath() }}/{{ restaurant.getLogoAsset().getFilename() }}" alt="Logo" id="demo_logo"></a>
+                    </div>		
+                    <section class="section--menu">
+                        <nav class="menu">
+                            <ul class="menu__list">
+                                <li class="menu__item"><a href="/menu.pdf" target="_blank" class="menu__link">Menu</a></li>
+                                <li class="menu__item"><a href="#" onclick="$('#contact').animatescroll();" class="menu__link">Kontakt</a></li>
+                                <li class="menu__item">|</li>
+                                <li class="menu__item"><a href="https://www.facebook.com/holtecafeemil/?ref=ts&fref=ts" class="menu__link social first" target="_blank"><span class="icon-facebook-with-circle"></span></a></li>
+                                <li class="menu__item social"><a href="https://www.instagram.com/explore/locations/292148079/" class="menu__link social" target="_blank"><span class="icon-instagram-with-circle"></span></a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                    <div id="m_button">
+                        <a href="#profile" class="profile-popup-link">
+                            <span class="icon-menu"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row animatedParent">
+        <div class="large-12 columns">
+            <img src="/img/emil/hero2.jpg" alt="" class="animated fadeInUpShort">
+            <div class="product product_head">
+                <div class="product_content animated fadeInLeftShort delay-500">
+                    <div class="burger wrap_dark">
+                        <div class="panel">
+                        <h3 class="gold">Café Emil Burger</h3>
+                        <h4 class="white">10% rabat ved Take Away</h4>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>Café Emil</h3>
+                        <div class="middle_hr_small"></div>
+                        <h5 class="gold">The Meeting Point</h5>
+                        <p>Café Emil er en tidstypisk cafe, hvor du kan snakke, grine, tænke og hygge, alt imens du nyder en friskbrygget kvalitetskaffe, læser dagens avis, får et stykke kage, nyder dagens frokost, eller aftenens menu - der altid er lavet af de friskeste råvarer.</p>
+                        <p>Café Emil er beliggende i Holte, på velsagtens Holte's mest velkendte indkøbssted - nemlig i <span class="gold">Holte Midtpunkt.</span></p>
+                    </div>
+                    
+                </div>
+                <div class="quote animated fadeInUpShort delay-1000 slower">
+                    <h3 class="gold">Brunch</h3>
+                    <div class="middle_hr_small"></div>
+                    <h5>mandag - fredag / <span class="month">10 - 14</span></h5>
+                    <h5>lørdag - søndag / <span class="month">10 - 15</span></h5>
+                    <p class="gold">
+                        Skyr med friske bær, musli og sirup, røræg m/ pølser og bacon, brieost, marmelade, knækbrød, varmrøget laks, lufttørret skinke, frisk frugt og hjemmelavet pandekage.<br>
+                        Serveres m/ kaffe/te og æble- eller appelsinjuice.</p>	
+                    <h3 class="dark">129,-</h3>
+                </div>
+            </div>					
+        </div>
+    </div>
+    <div class="divider"></div>
+
+
+
+    <div class="row_pad_large">
+        <div class="row animatedParent">
+            <div class="large-12 columns product product_right">
+                <div class="large-6 columns padding_small">
+                    <div class="contact-information">
+                        <h3>Varme drikke</h3>
+                        <div class="middle_hr_small"></div>
+                        <p class="address">Vi har et stort sortiment af forskellige kaffetyper og andre gode varme drikke. Kom ind og smag. Eventuelt med et stykke lækkert kage til kaffen.</p>
+                        <div class="medium-6 columns coffee_list">
+                            <ul class="list_coffee">
+                                <li class="animated fadeInUpShort"><span class="icon-stempelkande"></span>Stempelkande</li>
+                                <li class="animated fadeInUpShort delay-250"><span class="icon-espresso"></span>Espresso</li>
+                                <li class="animated fadeInUpShort delay-500"><span class="icon-latte"></span>Caffe Latte</li>
+                                <li class="animated fadeInUpShort delay-750"><span class="icon-cappuccino"></span>Cappuccino</li>
+                            </ul>
+                        </div>
+                        <div class="medium-6 columns coffee_list">
+                            <ul class="list_coffee">
+                                <li class="animated fadeInUpShort delay-1000"><span class="icon-chai"></span>Chai Latte</li>
+                                <li class="animated fadeInUpShort delay-1250"><span class="icon-irish"></span>Irish Coffee</li>
+                                <li class="animated fadeInUpShort delay-1500"><span class="icon-out"></span>To Go</li>
+                            </ul>	
+                        </div>
+                    </div>
+                </div>	
+                <div class="large-6 columns center">
+                    <img src="/img/emil/coffee2.jpg" alt="">
+                </div>		
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row_pad_large">
+        <div class="row">
+            <div class="large-12 columns product">
+                <div class="large-6 large-push-6 columns padding_small">
+                    <div class="contact-information to_right">
+                        <h3>Kolde Drikke</h3>
+                        <div class="middle_hr_small"></div>
+                        <p>Café Emil byder på et stort udvalg af kolde drikke. Vi har fad- og flaskeøl, sodavand, økologiske drikke fra <span class="product_logo"><img src="/img/emil/product_logo.svg" alt=""></span> og et velassorteret vinkort.<br>Prøv også vores udvalg af friskpresset juice.</p>							
+                    </div>
+                </div>
+                <div class="large-6 large-pull-6 columns center">
+                    <img src="/img/emil/1.jpg" alt="">
+                </div>			
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row_pad_large">
+        <div class="row animatedParent">
+            <div class="large-12 columns product product_right">
+                <div class="large-6 columns padding_small">
+                    <div class="contact-information">
+                        <h3 class="text-left">Frokost</h3>
+                            <div class="middle_hr_small"></div>
+                            <p class="text-left">Hos Café Emil kan du altid få en god frokost. Vi har en dejlig smørrebrødstallerken og vi har mange forskellige slags sandwiches på menuen.<br> Vi har også et godt traditionelt stjerneskud, og friske fiskefileter på rugbrød.<br> Du kan også prøve en af vores croissanter med hjemmelavet hønsesalat eller tunmoussé, eller vores udvalg af friske salater.</p>
+                    </div>
+                </div>	
+                <div class="large-6 columns center">
+                    <img src="/img/emil/2.jpg" alt="">
+                </div>		
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="divider"></div>
+
+
+
+    <div class="row_pad_large">
+        <div class="row">
+            <div class="large-12 columns product">
+                <div class="large-6 large-push-6 columns padding_small">
+                    <div class="contact-information to_right">
+                        <h3 class="text-left">Aften</h3>
+                            <div class="middle_hr_small"></div>
+                            <p class="text-left">Kl. 17:00 åbner vi for vores a la carte-menu og du kan bla. Få serveret et godt stykke mørbrad eller et velhængt stykke oksefilet (Rib-Eye). Altid tilberedt professionelt, og med en garniture af sæsonens friske råvarer.</p>						
+                    </div>
+                </div>
+                <div class="large-6 large-pull-6 columns center">
+                    <img src="/img/emil/beef.jpg" alt="">
+                </div>			
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="divider"></div>
+
+
+
+        
+    <div class="wrap_dark">
+        <div class="row expanded collapse">   
+            <div class="medium-8 large-7 columns medium-centered large-centered columns">
+                <div class="callout">
+                    <div class="text_padding">				
+                        <h3 class="gold text-left">Hold selskaber og arrangementer i lækre omgivelser.</h3>
+                        <div class="middle_hr_small"></div>
+                        <p class="white text-left">Vi har den fornødne erfaring i, at gøre din vigtige dag, til et vellykket helhedsoplevelse.
+    Vi kan stå for, eller bistå med mad, planlægning osv, så du kan fokusere dig om det vigtigste, nemlig dine gæster.<br>
+    Så uanset om det drejer sig om barnedåb, fødselsdag, firmaevent eller julefrokost, så kontakt os endelig for et uforpligtende tilbud.</p>
+
+
+                    </div>
+                    <p class="text-center">
+                        <a href="#" onclick="$('#contact').animatescroll();" class="menu__link">
+                            <img src="/img/emil/arrow_down.svg" class="center" alt="">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap_white2">	
+    <div id="contact"></div>
+        <div class="row">
+            <div class="small-10 medium-12 small-centered medium-centered columns center">
+                <div class="panel">
+                    <h3 class="text-center">Bordbestilling</h3>
+                    <span class="icon-phone center grey phone"></span>
+                    <h4><a href="tel:{{ restaurant.getPhone() }}">{{ restaurant.getPhone() }}</a></h4>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="row expanded collapse">   
+            <div class="medium-8 large-7 columns medium-centered large-centered columns" id="form_wrap">
+                <form id="myForm" data-abide>
+                    <div class="contactform">
+                        <div class="large-12 columns">
+                            <div class="name-field">
+                                <input id="name" type="text" required placeholder="Navn *" required>
+                                <small class="error">Navn Behøves!</small>
+                            </div>
+                        </div>
+    
+                        <div class="large-6 columns">  
+                            <div class="email-field">
+                                <input id="email" type="email" required placeholder="Email *" required>
+                                <small class="error">Email behøves!</small>
+                            </div>
+                        </div>
+    
+                        <div class="large-6 columns">
+                            <div class="phone-field">
+                                <input id="tel" type="text" placeholder="Telefon " >
+                                <small class="error">Tlfnr. behøves</small>
+                            </div>
+                        </div>
+    
+                        <div class="large-12 columns">
+                            <div class="text-field">
+                            <textarea id="message" required placeholder="Besked *" required></textarea>
+                            <small class="error">Skriv venligst en besked!</small>
+                        </div>
+                    </div>
+    
+                    <div class="large-6 columns">
+                        <button id="mailform" type="submit">Send</button>
+                    </div>
+    
+                    <div class="large-6 columns" id="mail_alt">
+                        <p class="form_underline">Vil du hellere bruge dit eget mailsystem?<br> Så klik her <a href="mailto:{{ restaurant.getEmail() }}">{{ restaurant.getEmail() }}</a></p> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="wrap_white3">
+	<div class="row expanded collapse">   
+		<div class="medium-8 large-7 columns medium-centered large-centered columns">
+			<div class="callout">
+				<div class="text_padding">				
+					<h3 class="text-left">Job på Café Emil</h3>
+					<div class="middle_hr_small"></div>
+					<p class="text-left">Café Emil har altid brug for flere medarbejdere, så kan du se dig selv i et job i en travl cafe med masser af glade kunder, så kontakt os meget gerne på tlf: <span class="gold">45 41 22 40</span>, eller send en ansøgning til <span class="form_underline"><a href="mailto:info@cafeemilholte.dk">info@cafeemilholte.dk</a></span>  – eller kom ned og besøg os (spørg efter Salo).<br>Det er altid glædeligt med café-erfaring – for det kan gå stærkt indimellem – men ellers sørger vi for den nødvendige oplæring. Vigtigst af alt er, at du er glad og smilende, og ser travlhed som en positiv ting.</p>
+					<p class="text-left">Din ansøgning skal indeholde følgende: navn, fødselsdato, køn, adresse, kørekort, telefon, mailadresse, CV og den stilling du søger.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>   
+   
+
+
+    
+
+<div class="row">
+	<div class="large-12 columns">
+		<div class="large-4 columns">
+			<div class="padding"> 
+				<ul class="list_footer">
+					<li><h3>{{ restaurant.getAddress().getAddressLine1() }}, {{ restaurant.getAddress().getPostalCode() }} {{ restaurant.getAddress().getCity() }}</h3></li>
+					<li><h3><a href="tel:{{ restaurant.getPhone() }}">{{ restaurant.getPhone() }}</a></h3></li>
+					<li><h3 class="form_underline"><a href="mailto:{{ restaurant.getEmail() }}">{{ restaurant.getEmail() }}</a></h3></li>
+				</ul>
+			</div>
+		</div>
+				
+		<div class="large-4 columns">
+			<div class="padding">     
+				<div class="dummy-column booking_mobile">
+					<a class="dummy-media-object menu__link" href="https://goo.gl/maps/Ck6V7LK1DCs" target="_blank">
+						<h3>rutevejledning</h3>
+					</a>
+				</div>  
+				<div class="center">
+					<ul class="menu__list">
+						<li class="menu__item"><a href="https://www.facebook.com/holtecafeemil/?ref=ts&fref=ts" class="menu__link social footer" target="_blank"><span class="icon-facebook-with-circle"></span></a></li>
+						<li class="menu__item"><a href="https://www.instagram.com/explore/locations/292148079/" class="menu__link social footer" target="_blank"><span class="icon-instagram-with-circle"></span></a></li>
+					</ul>   
+				</div>
+			</div>				
+		</div>
+								   
+		<div class="large-4 columns">
+			<ul class="list_footer">
+				<li><h3>mandag - torsdag / <span class="month">9:30 - 22</span></h3></li>
+				<li><h3>fredag - lørdag / <span class="month">9:30 - 23</span></h3></li>
+				<li><h3>søn- & helligdage / <span class="month">10 - 22</span></h3></li>
+			</ul>
+		</div>
+	</div>
+	<hr>
+	<div class="small-12 columns center callout">
+		<img src="/img/emil/smiley.svg" alt="Smiley">
+	</div>
+</div>
+
+
+<div class="wrap_white2">       
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="callout no_margin">     
+				<p class="copyright"><a href="http://www.nmotion.dk" target="_blank">&copy; - Hosted by NMotion</a></p>
+			</div>
+		</div>
+    </div>
+</div>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            {% javascripts
+            '@NmotionLandingPageBundle/Resources/public/js/emil/what-input.min.js'
+            '@NmotionLandingPageBundle/Resources/public/js/emil/foundation.min.js'
+            '@NmotionLandingPageBundle/Resources/public/js/emil/app.js'
+            '@NmotionLandingPageBundle/Resources/public/js/emil/css3-animate-it.js'
+            '@NmotionLandingPageBundle/Resources/public/js/emil/main.js'
+            '@NmotionLandingPageBundle/Resources/public/js/emil/nav.js'
+            '@NmotionLandingPageBundle/Resources/public/js/emil/animatescroll.js'
+            %}
+            <script src="{{ asset_url }}" type="text/javascript"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+</body>
+{% endblock %}

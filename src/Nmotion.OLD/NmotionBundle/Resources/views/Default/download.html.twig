@@ -1,0 +1,30 @@
+{% extends 'NmotionNmotionBundle::public.html.twig' %}
+{% block title %}{{ 'layout.page.default.title'|trans({}, 'NmotionNmotionBundle') }}{% endblock %}
+{% block content %}
+
+    <div class="tabsBlock homeTabs">
+        <div class="tabsItems">
+            <ul>
+                <li class="first active"><a><span>Message</span></a></li>
+            </ul>
+        </div>
+        <div class="tabsBlocks scrollTabContent" style="height:200px">
+            <div class="tabsBlocksInner">
+                <div class="tabItem active">
+                    <div class="tabItemColumn flexcroll">
+                        Sorry, your mobile device is either not yet supported, or we can't detect it.
+                        Please use links below to access your applications market.<br><br>
+                        <a href="{{ androidUrl }}">
+                            <img src="/bundles/nmotionnmotion/img/GooglePlayLogo.png" height="69">
+                        </a>
+                        <a href="{{ iosUrl }}">
+                            <img src="/bundles/nmotionnmotion/img/AppStoreLogo.jpg">
+                        </a>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

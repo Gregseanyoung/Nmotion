@@ -1,0 +1,18 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     192.168.1.17
+    database_port:     ~
+    database_name:     nmotion
+    database_user:     root
+    database_password: root
+
+    mailer_transport:  smtp
+    mailer_host:       smtpout.secureserver.net
+    mailer_user:       surya@vervesys.com
+    mailer_password:   sur^key264$
+
+    facebook_app_id:   464226443629957
+    facebook_secret:   ccb89c1b0fdff54e4f7c928bf344aea6
+
+    locale:            en
+    secret:            d9a7f53b978be44f8c8af10c2530444331c28a80

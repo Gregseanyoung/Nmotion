@@ -1,0 +1,6 @@
+imports:
+    - { resource: config_test.yml }
+    - { resource: parameters/dev_test.yml }
+
+parameters:
+    database_name: nmotion_dev2_test

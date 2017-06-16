@@ -1,0 +1,26 @@
+Nmotion\NmotionBundle\Entity\RestaurantServiceType:
+    type: entity
+    table: nmtn_restaurant_service_type
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 40
+            fixed: false
+            nullable: false
+        description:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+    options:
+        charset: utf8
+        type: InnoDB
+    lifecycleCallbacks: {  }

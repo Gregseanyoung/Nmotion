@@ -1,0 +1,107 @@
+<script>
+    $("#div_meal").css("display","none");
+    var orderId= $('#orderId').text();
+     var htm="";var htm1="";var htm2="";
+     var myhtml = "<div class='panel-heading'>Meal</div><table style='width:600px' class='table' id='ajax_tbl_op'>";
+                    var myhtml1 = "<div class='panel'><div class='panel-heading'>Meal Options</div><table style='width:600px' class='table' id='ajax_tbl_op'>";
+                    var myhtml2 = "<div class='panel'><div class='panel-heading'>Comments</div><table style='width:600px' class='table' id='ajax_tbl_cmt'>";
+             
+    var responseData = $.ajax({
+                        type: 'POST',
+                        url: "../getOrderMealExtraIngredients.php",
+                       // contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data:{orderId:orderId},
+                        async:false
+                    }).responseText;
+                    
+                    var responseData = $.parseJSON(responseData);
+                    var mealComments = "";
+                    var mealOption="";
+                    if (responseData.length > 0) {
+                        
+                       var flagmealop=0;
+                        $.each(responseData, function(i, e) {
+                            var sign = e.currency_sign;
+                            var opCnt=0;
+                           htm += "<tr ><th style='border:none;'>name</th><th style='border:none;'>price</th><th style='border:none;'>quantity</th></tr>";
+                            if(e.meal_option_name!=''){
+                                flagmealop++;
+                            }
+                            if(flagmealop > 0){
+                                  htm1 += "<thead><tr><th>name</th><th>price</th></tr></thead>";
+                            }
+                            if(e.meal_comment!='' && mealComments==''){
+                                mealComments +=e.meal_comment + " ";
+                            }else{
+                                mealComments = "No comments";
+                            }
+                            if( e.currency_sign==null || e.currency_sign=='')
+                                sign ="";
+                            htm += "<tr><td>" + e.name + "</td><td>"+ sign+" "+ Number(e.price).toFixed(2) + "</td><td>"+e.quantity+"</td></tr>";
+                            $.each(e.extra, function(ekey, eVal) {
+                               if(eVal.name!=''){
+                              htm += "<tr><td style='padding-left:25px;'>" + eVal.name + "</td><td>"+ sign+" "+ Number(eVal.price).toFixed(2) + "</td></tr>";  
+}
+                            });
+                            
+                            htm += "<tr><th colspan='2'>Options</th></tr>";
+                            if(mealOption != e.meal_option_name){
+                                 opCnt++;
+                                 htm += "<tr><td style='padding-left:25px;'>" + e.meal_option_name + "</td><td>"+ sign+" "+ Number(e.meal_option_price).toFixed(2) + "</td></tr>";
+                            }
+                            mealOption = e.meal_option_name;
+                            if(opCnt == 0){
+                                htm += "<tr><td colspan='2' style='border-top: medium none;padding-left:25px;'>No options</td></tr>";
+                            }
+                           htm += "<tr><th colspan='2'>Comments</th></tr>";
+                            htm += "<tr><td colspan='2' style='border: medium none;padding-left:25px;padding-bottom:20px'>" + mealComments + "</td></tr>";
+                            htm2 = "<tr><td colspan='2' style='border-top: medium none;'>" + mealComments + "</td></tr>";
+                        });
+                        
+                        if(flagmealop == 0){
+                            htm1 = "No meal optons";
+                        }
+
+                    } else {
+                        htm += "No extra ingredients";
+                        htm1 += "No meal optons";
+                        htm2 += "No comments";
+                    }
+                 
+                     myhtml += htm+"</table>";
+                     myhtml1 += htm1+"</table></div>";
+                     myhtml2 += htm2+"</table></div>";
+                     
+                   $("#ajax_tbl").html(myhtml);   
+                    
+    /*$.post("../getOrderMealExtraIngredients.php", {orderId: $('#orderId').text()})
+            .done(function(data) {
+        var data = $.parseJSON(data);
+        var html="";
+        
+        if( data.length > 0 ) {
+             html += "<thead><tr><th>name</th><th>price</th></tr></thead>";
+            $.each(data, function(i, e) {
+                var price = Number(e.price);
+                html += "<tr><td>" + e.name + "</td><td>"+$('#div_currecny').text()+" " + price.toFixed(2) + "</td></tr>";
+            });
+            html +="</table>";
+        }else{
+            html +="No extra ingredients";
+        }
+      $("#ajax_tbl").html(html);
+    });*/
+    
+    
+
+</script>
+
+
+<div class="panel">
+    <div id="div_currecny" style="display: none;"><%= currency %></div>
+    <div id="orderId" style="display:none;"><%= orderId %></div>
+    <div style="width:600px" class="table" id="ajax_tbl">
+       
+    </div>
+</div>

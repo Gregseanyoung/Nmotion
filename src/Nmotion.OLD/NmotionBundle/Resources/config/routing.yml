@@ -1,0 +1,62 @@
+nmotion_nmotion_download:
+    pattern: /download/
+    defaults: { _controller: NmotionNmotionBundle:Default:download }
+
+nmotion_nmotion_facebook_download:
+    pattern: /download/facebook
+    defaults: { _controller: NmotionNmotionBundle:Default:facebookDownload }
+
+nmotion_nmotion_upload_rest:
+    type: rest
+    resource: "@NmotionNmotionBundle/Resources/config/routing/uploader.yml"
+    prefix:   /upload
+
+nmotion_nmotion_default_index:
+    pattern: /
+    defaults:  { _controller: NmotionNmotionBundle:Default:index }
+    requirements:
+        _method:  GET
+
+nmotion_nmotion_default_login:
+    pattern: /login/
+    defaults:  { _controller: NmotionNmotionBundle:Default:login }
+    requirements:
+        _method:  GET
+
+nmotion_nmotion_default_faq:
+    pattern: /faq/
+    defaults:  { _controller: NmotionNmotionBundle:Default:faq }
+    requirements:
+        _method:  GET
+
+nmotion_nmotion_default_terms:
+    pattern: /terms/
+    defaults:  { _controller: NmotionNmotionBundle:Default:terms }
+    requirements:
+        _method:  GET
+
+nmotion_nmotion_default_contacts:
+    pattern: /contacts/
+    defaults:  { _controller: NmotionNmotionBundle:Default:contacts }
+    requirements:
+        _method:  GET
+
+nmotion_nmotion_reset_password:
+    pattern: /resetpassword/{token}
+    defaults: { _controller: NmotionNmotionBundle:User:resetPassword }
+
+nmotion_nmotion_forgot_password:
+    pattern: /forgotpassword/
+    defaults: { _controller: NmotionNmotionBundle:User:forgotPassword }
+
+nmotion_nmotion_payment_confirmation:
+    pattern: /paymentconfirmation/
+    defaults: { _controller: NmotionNmotionBundle:PaymentConfirmation:index }
+
+nmotion_nmotion_orders_excel:
+    pattern: /nmtn/ordersexcel/{dateFrom};{dateTo}
+    defaults: { _controller: NmotionNmotionBundle:Orders:excel }
+
+nmotion_nmotion_oblivion:
+    pattern: /nmtn/oblivion/
+    defaults: { _controller: NmotionNmotionBundle:Orders:oblivion }

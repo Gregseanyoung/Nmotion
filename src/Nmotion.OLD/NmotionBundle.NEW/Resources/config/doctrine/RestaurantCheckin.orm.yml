@@ -1,0 +1,87 @@
+Nmotion\NmotionBundle\Entity\RestaurantCheckin:
+    type: entity
+    table: nmtn_restaurant_checkin
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\RestaurantCheckinRepository
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        tableNumber:
+            type: string
+            length: 255
+            nullable: false
+            column: table_number
+            gedmo: [ versioned ]
+        checkedOut:
+            type: boolean
+            nullable: false
+            column: checked_out
+            gedmo: [ versioned ]
+        takeawayPickupTime:
+            type: integer
+            scale: 5
+            unsigned: true
+            nullable: false
+            column: takeaway_pickup_time
+            gedmo: [ versioned ]
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    manyToOne:
+        restaurant:
+            targetEntity: Restaurant
+            inversedBy: checkins
+            cascade: {  }
+            joinColumn:
+                restaurant_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+        user:
+            targetEntity: User
+            inversedBy: null
+            cascade: {  }
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+        serviceType:
+            targetEntity: RestaurantServiceType
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                service_type_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+    indexes:
+        fk_nmtn_restaurant_checkin_nmtn_restaurant1_idx:
+            columns: [restaurant_id]
+        fk_nmtn_restaurant_checkin_nmtn_user1_idx:
+            columns: [user_id]
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

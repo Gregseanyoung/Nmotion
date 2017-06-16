@@ -1,0 +1,25 @@
+order:
+    entry:
+        notFound: 'Order not found.'
+        update:
+            denied: 'You do not have rights to update an order.'
+            orderIsBeingPaidByOther: 'Your order is being paid by your friend.'
+            orderHasBeenPaidByOther: 'Your order has been paid by your friend.'
+        patch:
+            status:
+                denied: 'You can not change order status from {{ statusFrom }} to {{ statusTo }}.'
+    link:
+        action:
+            headersLinksNotFound: 'Link(s) header not found.'
+            invalidResource: 'Linked resource not found.'
+            resourceAlreadyHasOwnMaster: 'Order is paid by other user.'
+            slaveAlreadyHasMaster: 'Selected order is paying by other user.'
+            slaveNotLinkableOrderStatus: 'Selected order should be in the status "new".'
+    unlink:
+        action:
+            slaveNotUnlinkableOrderStatus: 'Selected order should be in the status "new".'
+
+restaurant:
+    checkin:
+        tableNotEmptyWonnaForceJoin: 'Table {{ tableNumber }} is not empty. Join them? Or change table number.'
+        submitCheckinIfTableEmpty: 'Submit check-in if table {{ tableNumber }} is empty.'

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DashboardApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Nmotion Backoffice</title>
+
+    {% stylesheets
+    '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css'
+    '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/vendors/font-awesome/css/font-awesome.min.css'
+    '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/build/css/custom.min.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all"/>
+    {% endstylesheets %}
+</head>
+
+<body id="body" class="nav-md" ng-controller="DashboardController">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="/backoffice/" class="site_title" style="text-align: center;"><img src="/bundles/nmotionbackoffice/images/logo_vector.png" height="55"/></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <br />
+
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <main-menu template-url="{{ asset('template/dashboard/menu/layout.html') }}"></main-menu>
+                </div>
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <top-navigation template-url="{{ asset('template/dashboard/menu/top-menu.html') }}"></top-navigation>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>{[{ pageTitle }]}</h3>
+                    </div>
+
+                    <search-box template-url="{{ asset('template/dashboard/partials/search.html') }}"></search-box>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12" ng-view>
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Plain Page</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Settings 1</a>
+                                            </li>
+                                            <li><a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                Add content to the page ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                &copy; <a href="http://nmotion.dk">Nmotion ApS</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+{% block javascripts %}
+    {% javascripts
+        '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/vendors/jquery/dist/jquery.min.js'
+        '@NmotionBackofficeBundle/Resources/public/js/components/angular/angular.min.js'
+        '@NmotionBackofficeBundle/Resources/public/js/components/angular-route/angular-route.min.js'
+        '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js'
+        '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/vendors/fastclick/lib/fastclick.js'
+        '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/vendors/nprogress/nprogress.js'
+        '@NmotionBackofficeBundle/Resources/public/js/components/gentelella/build/js/custom.min.js'
+        '@NmotionBackofficeBundle/Resources/public/js/dashboard/app.js'
+    %}
+        <script type="text/javascript" language="javascript" src="{{ asset_url }}"></script>
+    {%  endjavascripts %}
+
+{% endblock %}
+</body>
+</html>

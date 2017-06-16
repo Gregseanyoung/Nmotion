@@ -1,0 +1,83 @@
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+services:
+    user_password_encoder:
+        class: Nmotion\NmotionBundle\Security\User\UserPasswordEncoder
+
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: { id: user_password_encoder }
+
+    role_hierarchy:
+        ROLE_RESTAURANT_STAFF:  ROLE_RESTAURANT_GUEST
+        ROLE_RESTAURANT_ADMIN:  ROLE_RESTAURANT_STAFF
+        ROLE_SOLUTION_ADMIN:    ROLE_RESTAURANT_ADMIN
+        ROLE_SUPER_ADMIN:       [ROLE_SOLUTION_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        nmotion:
+            id: nmotion_user_provider
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+#    encoders:
+#        FOS\UserBundle\Model\UserInterface:
+#            algorithm: sha512
+#            encode_as_base64: false
+#            iterations: 1
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        wsse_secured:
+            pattern:   ^/(api|backoffice)/.*
+            wsse:      true
+            anonymous: ~
+            stateless: true
+        profiler_prod:
+            pattern: ^/profiler
+            anonymous: true
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path: /profiler/login
+                check_path: /profiler/login_check
+                default_target_path: /profiler/
+                always_use_default_target_path: true
+        nmtn_security_bridge:
+            pattern:   ^/nmtn/.*
+            wsse:      true
+            anonymous: ~
+            stateless: false
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        web_login:
+            path: ^/login$
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        web_forgot:
+            path: ^/resetting
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        api:
+            path: ^/api/
+            roles: [IS_AUTHENTICATED_ANONYMOUSLY, ROLE_RESTAURANT_GUEST]
+        backoffice_entry_point:
+            path: ^/backoffice/$
+            roles: [IS_AUTHENTICATED_ANONYMOUSLY]
+        backoffice_api:
+            path: ^/backoffice/.+
+            roles: [ROLE_SOLUTION_ADMIN, ROLE_RESTAURANT_ADMIN, ROLE_RESTAURANT_STAFF]
+        # profiler for production
+        profiler_login:    { path: ^/profiler/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        profiler_prod_ok:  { path: ^/profiler/.+, roles: ROLE_SOLUTION_ADMIN, ip: 194.105.144.244 }
+        profiler_prod_nok: { path: ^/profiler/.+, roles: ROLE_NO_ACCESS }

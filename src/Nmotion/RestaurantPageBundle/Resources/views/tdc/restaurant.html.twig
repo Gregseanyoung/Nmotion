@@ -1,0 +1,124 @@
+{% extends 'NmotionRestaurantPageBundle::base_restaurant.html.twig' %}
+
+{% block title %}
+    {{ restaurant.getName() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionRestaurantPageBundle/Resources/public/css/foundation.min.css'
+    '@NmotionRestaurantPageBundle/Resources/public/css/foundation-icons.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block headScripts %}
+    <script type="text/javascript" language="javascript">
+        var NmotionApp = NmotionApp || {};
+        NmotionApp.TaxRate = {{ tax_rate }};
+        NmotionApp.CurrentSiteId = {{ restaurant.getId() }};
+    </script>
+{% endblock %}
+
+{% block body %}
+<body ng-app="NmotionApp">
+    <div class="row">
+        <div class="medium-12 columns">
+            <h2>
+		<img src="/upload/769/800/511/cd3/73c/4cc/6e4/cbf/e66/055/90/o.png" alt="Logo" style="height: 45px">
+		<img src="/upload/{{ restaurant.getLogoAsset().getPath() }}/{{ restaurant.getLogoAsset().getFilename() }}" alt="Logo" style="height: 45px" /> Fredagsmorgenbr&oslash;d
+	    </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-12 columns">
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 medium-8 columns">
+            <ul class="accordion" data-accordion>
+                {% for item in categoryViewModel %}
+                    <li class="accordion-navigation">
+                        <a href="#Content{{ item.category.getId() }}"><h4>{{ item.category.getName() }}</h4></a>
+                        <div id="Content{{ item.category.getId() }}" class="content">
+                            {% for meal in item.meals %}
+                                <div class="row medium-collapse large-collapse">
+                                    <div class="medium-2 column">
+                                        {% if (meal.hasThumbLogoAsset()) %}
+                                            <img src="/upload/{{ meal.getLogoAsset().getPath() }}/{{ meal.getThumbLogoAsset().getFileName() }}" style="height: 35px;" />
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+                                    </div>
+                                    <div class="medium-5 column">
+                                        {{ meal.getName() }}
+                                    </div>
+                                    <div class="medium-2 column">
+                                        {{ meal.getPriceIncludingTax() | number_format(2, '.', ',') }} kr
+                                    </div>
+                                    <div class="medium-3 column">
+                                        <ngcart-addtocart
+                                                id="{{ meal.getId() }}"
+                                                name="{{ meal.getName() }}"
+                                                price="{{ meal.getPriceIncludingTax() }}"
+                                                quantity="1"
+                                                template-url="/template/ngCart/addtocart.html"
+                                                quantity-max="100">
+                                        </ngcart-addtocart>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div class="small-12 medium-3 columns">
+            <div style="position: relative;" id="summary-wrapper">
+                <ngcart-summary template-url="/template/ngCart/summary.html"></ngcart-summary>
+            </div>
+        </div>
+    </div>
+    <ngcart-checkout-form></ngcart-checkout-form>
+    {% block javascripts %}
+        {% javascripts
+        '@NmotionRestaurantPageBundle/Resources/public/js/vendor/jquery.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.accordion.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.reveal.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/foundation/foundation.abide.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular.min.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular/locale_da-dk.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular/ngCart.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/app.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+
+	<script type="text/javascript">
+/*	(function($){
+		'use strict';
+		var heightOffset = 120;
+		var height = jQuery(window).innerHeight() - heightOffset;
+		jQuery('#summary-wrapper').find('div').first().attr('style', 'height: ' + height + 'px; overflow-x: scroll; overflow-y: hidden');
+		jQuery(window).scroll(function() {
+			var top = jQuery(window).scrollTop();
+			height = jQuery(window).innerHeight() - heightOffset;
+			if (top > 70) {
+				top = top - 50;
+				jQuery('#summary-wrapper').find('div').first().attr('style', 'height: ' + height + 'px; overflow-x: scroll; overflow-y: hidden');
+			} else {
+				jQuery('#summary-wrapper').find('div').first().attr('style', 'height: ' + height + 'px; overflow-x: scroll; overflow-y: hidden');
+			}
+		});
+	})(jQuery);*/
+
+
+	</script>
+
+    {% endblock %}
+</body>
+{% endblock %}

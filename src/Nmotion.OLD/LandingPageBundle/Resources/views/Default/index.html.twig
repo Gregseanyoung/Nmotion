@@ -1,0 +1,103 @@
+{% extends 'NmotionLandingPageBundle::public.html.twig' %}
+
+{% block title %}
+	Velkommen til Nmotion
+{% endblock %}
+
+{% block metas %}
+	<meta name="description" content="Nmotion er appen, der gør din smartphone smartere. Download appen gratis og reserver bord, bestil mad og drikke eller take away og betal direkte via din smartphone og undgå ventetid." />
+	<meta name="keywords" content="nmotion, restaurant ordering app, app, nmotion app, applikation, application, iphone, samsung, appstore, google play, android, gratis, download gratis, makes ordering easy, download, download free, en let løsning, take away, barer, natklubber, mad, drinks, café, " />
+{% endblock %}
+
+{% block content %}
+
+<div id="big" class="twelve columns">
+	<div id="header-title">
+		<img alt="Nmotion Logo" class="big_logo" src="/bundles/nmotionlandingpage/img/big_logo.png">
+
+		<p id="share">
+			del <strong>Nmotion</strong> med dine venner
+			<span class="list">
+				<strong>
+					<img alt="Share Nmotion" src="/bundles/nmotionlandingpage/img/icons/share.png"><span></span>
+				</strong>
+				<a target="_blank" class="fb" onclick="return fb_like()" href="http://www.facebook.com/share.php?u=http://goo.gl/tsZw6">
+					<img alt="" src="/bundles/nmotionlandingpage/img/icons/fb.png">
+				</a>
+				<a target="_blank" class="tw" onclick="return tw_like()" href="https://twitter.com/intent/tweet?url=http://goo.gl/tsZw6">
+					<img alt="" src="/bundles/nmotionlandingpage/img/icons/twitter.png">
+				</a>
+				<a target="_blank" class="gp" onclick="return go_like()" href="https://plus.google.com/share?url=http://goo.gl/tsZw6">
+					<img alt="" src="/bundles/nmotionlandingpage/img/icons/g.png">
+				</a>
+			</span>
+		</p>
+	</div>
+</div>
+
+<div id="content">
+	<div class="row">
+		<div id="options" class="twelve columns">
+
+			<div onclick="location.href='/business';" style="cursor:pointer;" id="restauranter" class="six columns">
+				<h2>Nmotion til din virksomhed</h2>
+				<img alt="" src="/bundles/nmotionlandingpage/img/user.png">
+				<p>Lær mere om hvad Nmotion kan tilbyde dig</p>
+			</div>
+
+			<div onclick="location.href='/about';" style="cursor:pointer;" id="kunder" class="six columns">
+				<h2>Lær mere om nmotion</h2>
+					<img alt="" src="/bundles/nmotionlandingpage/img/question.png">
+					<p>Se hvad du kan bruge Nmotion til</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="twelve columns">
+		<div class="main">
+			<div class="ac-wrapper" id="ac-wrapper">
+				<h2><span>NEMT FOR ALLE</span></h2>
+				<div class="ac-device">
+					<a href="#">
+						<img alt="iPhone" src="/bundles/nmotionlandingpage/img/nmotion_screen.jpg">
+					</a>
+					<h3 class="ac-title">Download gratis fra appstores</h3>
+				</div>
+
+				<div class="ac-grid">
+					<a href="#">
+						<img alt="" src="/bundles/nmotionlandingpage/img/screen_places.jpg">
+						<span>Find nye &amp; lækre spisesteder nemt</span>
+					</a>
+					<a href="#">
+						<img alt="" src="/bundles/nmotionlandingpage/img/screen_bar.jpg">
+						<span>Nmotion kan også bruges på  barer, caféer og natklubber</span>
+					</a>
+					<a href="#">
+						<img alt="" src="/bundles/nmotionlandingpage/img/screen_order.jpg">
+						<span>Afgiv din ordre nemt online</span></a>
+					<a href="#">
+						<img alt="" src="/bundles/nmotionlandingpage/img/screen_payment.jpg">
+						<span>Afregn nemt &amp; hurtigt</span>
+					</a>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<div id="index_download" class="six columns centered">
+	<ul id="download">
+		<li><a target="_blank" href="http://itunes.com/apps/nmotion">
+			<img alt="apple appstore" src="/bundles/nmotionlandingpage/img/icons/appstore.png">
+			</a>
+		</li>
+		<li><a href="https://play.google.com/store/apps/details?id=com.nmotion">
+			<img alt="google play" src="/bundles/nmotionlandingpage/img/icons/googleplay.png">
+			</a>
+		</li>
+	</ul>
+</div>
+{% endblock %}

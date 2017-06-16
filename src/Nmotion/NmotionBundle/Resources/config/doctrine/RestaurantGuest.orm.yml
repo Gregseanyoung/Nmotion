@@ -1,0 +1,3 @@
+Nmotion\NmotionBundle\Entity\RestaurantGuest:
+    type: entity
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\UserRepository

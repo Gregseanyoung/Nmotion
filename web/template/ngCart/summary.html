@@ -1,0 +1,63 @@
+<div class="row small-collapse medium-uncollapse">
+	<div class="row small-collapse">
+		<div class="small-12 medium-12">
+			<div class="small-12">
+				<h3><i class="fi-shopping-cart"></i>&nbsp;Kurv</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row small-collapse medium-uncollapse">
+		<div class="small-12 medium-12">
+			<div class="row" ng-repeat="item in ngCart.getCart().items track by $index">
+				<div class="row">
+					<div class="small-4 medium-4 column">
+						<i ng-click="ngCart.removeItemById(item.getId())" class="fi-trash"></i>
+					</div>
+					<div class="small-8 medium-8 column text-right">
+						<i class="fi-minus" ng-class="{'disabled':item.getQuantity()==1}" ng-click="item.setQuantity(-1, true)"></i>&nbsp;
+						{{ item.getQuantity() | number }}&nbsp;
+						<i class="fi-plus" ng-click="item.setQuantity(1, true)"></i>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-8 medium-8 column">
+						{{ item.getName() }}
+						</div>
+					<div class="small-4 medium-4 column text-right">
+						<span class="text-right">{{ item.getTotal() | currency }}</span>
+					</div>
+				</div>
+				<hr ng-show="ngCart.getTotalItems() > 0"/>
+			</div>
+
+			<div class="row small-collapse medium-uncollapse">
+				<div class="small-12 medium-12">
+					{{ ngCart.getTotalItems() }} <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'vare', 'other':'varer'}"></ng-pluralize><br />
+				</div>
+			</div>
+			<div class="row small-collapse medium-uncollapse">
+				<div class="small-12 medium-12">
+					<div class="small-8 medium-8 column">Total:</div>
+					<div class="small-4 medium-4 column text-right">
+						{{ ngCart.totalCost() | currency }}
+					</div>
+				</div>
+				<div class="small-12 medium-12">
+					<div class="small-8 medium-8 column">Heraf moms:</div>
+					<div class="small-4 medium-4 column text-right">
+						{{ ngCart.getTotalTax() | currency }}
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row" ng-show="ngCart.getTotalItems() > 0">
+				<div class="small-6 medium-6 column">
+					<a ng-click="ngCart.empty()" class="button tiny round alert" ng-disabled="ngCart.getTotalItems() == 0">Tøm</a>
+				</div>
+				<div class="small-6 medium-6 column">
+					<ngcart-checkout service="dibs"></ngcart-checkout>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\OrderMealExtraIngredient:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api.orders.entity, api]
+        name:
+            groups: [api.orders.entity, api]
+        price:
+            groups: [api.orders.entity, api]
+        mealExtraIngredient:
+            read_only: true
+            serialized_name: mealExtraIngredient
+            groups: [api.orders.entity, api, api.entity]
+    virtual_properties:
+        getDiscountPrice:
+            read_only: true
+            groups: [api.orders.entity, api.entity]
+            serialized_name: discountPrice
+        getDiscountPriceIncludingTax:
+            read_only: true
+            groups: [api.orders.entity, api.entity]
+            serialized_name: discountPriceIncludingTax
+        getPriceIncludingTax:
+            read_only: true
+            groups: [api.orders.entity, api]
+            serialized_name: priceIncludingTax

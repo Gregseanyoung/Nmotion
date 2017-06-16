@@ -1,0 +1,74 @@
+parameters:
+    data_collector.request.class: Nmotion\NmotionBundle\Profiler\DataCollector\RequestDataCollector
+    nmotion_nmotion.upload.root_dir: %kernel.root_dir%/../web/upload
+    nmotion_nmotion.upload.root_web: /upload
+
+services:
+    nmotion_user.registration.form.type:
+        class: Nmotion\NmotionBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: nmotion_user_registration }
+
+    nmotion_facebook.api:
+        class: %nmotion_nmotion.facebook.api.class%
+        arguments:
+            config:
+                appId: %nmotion_nmotion.facebook.app_id%
+                secret: %nmotion_nmotion.facebook.secret%
+
+    nmotion_user_provider:
+        class: Nmotion\NmotionBundle\Security\User\UserProvider
+        arguments: [@fos_user.user_manager, @service_container]
+
+    wsse.security.authentication.provider:
+        class:  Nmotion\NmotionBundle\Security\Authentication\Provider\WsseProvider
+        arguments: ['', %kernel.cache_dir%/security/nonces]
+
+    wsse.security.authentication.listener:
+        class:  Nmotion\NmotionBundle\Security\Firewall\WsseListener
+        arguments: [@security.context, @security.authentication.manager]
+
+    cpcl.translator:
+        class:  Nmotion\NmotionBundle\Util\CPCLTranslator
+        arguments: [@service_container, @security.authentication.manager]
+
+    nmotion_link_request_listener:
+        class: Nmotion\NmotionBundle\EventListener\LinkRequestListener
+        arguments: [@controller_resolver, @router]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    nmotion.validator.uniqueRestaurantNameAndPostalCode:
+        class: Nmotion\NmotionBundle\Validator\Constraints\UniqueRestaurantNamePostalCodeValidator
+        arguments: [@doctrine]
+        tags:
+            - { name: validator.constraint_validator, alias: nmotion.validator.uniqueRestaurantNameAndPostalCode }
+
+    nmotion.validator.uniqueInCollectionEntity:
+        class: Nmotion\NmotionBundle\Validator\Constraints\UniqueInCollectionEntityValidator
+        arguments: [@doctrine]
+        tags:
+            - { name: validator.constraint_validator, alias: nmotion.validator.uniqueInCollectionEntity }
+
+    nmotion.validator.uniqueUserEmail:
+        class: Nmotion\NmotionBundle\Validator\Constraints\UniqueUserEmailValidator
+        arguments: [@doctrine]
+        tags:
+            - { name: validator.constraint_validator, alias: nmotion.validator.uniqueUserEmail }
+
+    nmotion.printer.mailbox:
+        class:  Nmotion\NmotionBundle\Util\PrinterMailbox
+        arguments: [@service_container]
+
+    nmotion.restaurant.import:
+        class:  Nmotion\NmotionBundle\Util\RestaurantImport
+        arguments: [@service_container]
+
+    nmotion.restaurant.export:
+        class:  Nmotion\NmotionBundle\Util\RestaurantExport
+        arguments: [@service_container]
+        
+    nmotion.google.pushNotification:
+        class:  Nmotion\NmotionBundle\Util\GooglePushNotification
+        arguments: [@service_container]

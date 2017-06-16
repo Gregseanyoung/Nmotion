@@ -1,0 +1,41 @@
+{% extends 'NmotionNmotionBundle::public.html.twig' %}
+
+{% block title %}{{ 'layout.page.default.title'|trans({}, 'NmotionNmotionBundle') }}{% endblock %}
+
+{% block content %}
+<div class="marginBig">
+    <div class="columns">
+        <div class="columnsInner">
+            <div class="columnItem">
+                <h2 class="title2">Skal din restaurant <br/>være Nmotion?</h2>
+                <div class="leftPhoto"><img src="img/photo1.png"></div>
+                Giv dine gæster mulighed for at gennemse menukortet, bestille og betale direkte fra deres smartphone.
+                <a onClick="showVideoPopup('Aeiy7u4-Y_g')" class="button hasArrow"><strong><span>Se video</span></strong></a>
+            </div>
+            <div class="columnItem">
+                <h2 class="title2">Nmotion til <br/>iPhone og Android</h2>
+                <div class="rightPhoto"><img src="img/photo2.png"></div>
+                Nmotion bliver tilgængelig til både iPhone og Android. Vi knokler, for at få de sidste funktioner færdige.
+                <div class="columnItemButtonSocial apps">
+                    <a target="_blank" href="{{ iosUrl }}"><img src="{{ asset('bundles/nmotionnmotion/img/iphone.png') }}"></a>
+                    <a target="_blank" href="{{ androidUrl }}"><img src="{{ asset('bundles/nmotionnmotion/img/android.png') }}"></a>
+                </div>
+                <a class="button5 button_no_pointer"><strong><span>Get the App</span></strong></a>
+            </div>
+            <div class="columnItem">
+                <h2 class="title2">Sådan virker <br/>Nmotion</h2>
+                Bestille og betale direkte via din smartphone på de restauranter der er Nmotion. Nem login via din  Facebook konto.
+                <a onClick="showVideoPopup('gi6WurQljZg')" class="button hasArrow"><strong><span>Se mere</span></strong></a>
+            </div>
+            <div class="columnItem right">
+                <h2 class="title2">Nmotion på Facebook</h2>
+                <br/>Følg Nmotion på Facebook, så er du sikret gode tilbud samt indblik i nye funktioner og nye Nmotion steder.
+                <div class="columnItemButtonSocial">
+                    <a><img src="img/fSmall.gif"></a>
+                </div>
+                <a class="button" href="http://facebook.com/nmotion.dk"><strong><span>Find os</span></strong></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

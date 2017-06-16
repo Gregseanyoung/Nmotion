@@ -1,0 +1,40 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\MenuCategory:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice]
+        name:
+            groups: [api, backoffice]
+        timeFrom:
+            type: integer
+            serialized_name: timeFrom
+            groups: [backoffice]
+        timeTo:
+            type: integer
+            serialized_name: timeTo
+            groups: [backoffice]
+        discountPercent:
+            type: integer
+            groups: [api, backoffice]
+            serialized_name: discountPercent
+        visible:
+            type: boolean
+            groups: [backoffice]
+        position:
+            type: integer
+            groups: [api, backoffice]
+        createdAt:
+            serialized_name: createdAt
+            groups: [backoffice]
+        updatedAt:
+            serialized_name: updatedAt
+            groups: [backoffice]
+        menuMeals:
+            type: array
+            serialized_name: meals
+            groups: [backoffice.entity]
+        restaurant:
+            groups: [backoffice.entity]

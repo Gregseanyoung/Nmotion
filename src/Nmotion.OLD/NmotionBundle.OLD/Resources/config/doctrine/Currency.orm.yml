@@ -1,0 +1,16 @@
+Nmotion\NmotionBundle\Entity\Currency:
+    type: entity
+    table: nmtn_currency
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        sign:
+            type: string
+            length: 5
+        description:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

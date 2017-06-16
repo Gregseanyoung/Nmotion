@@ -1,0 +1,54 @@
+<div class="panel">
+    <div class="panel-heading">Order information</div>
+    <table style="width:350px;float:left" class="table">
+        <tbody>
+        <tr>
+            <td>Order number</td>
+            <td><%= order.id %></td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td><%= new Date(order.updatedAt * 1000).format('default') %></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><%= order.serviceType.name.toUpperCaseFirst() %></td>
+        </tr>
+        <% if (order.serviceType.id !== 2) { %>
+        <tr>
+            <td>Table number</td>
+            <td><%= order.tableNumber %></td>
+        </tr>
+        <% } %>
+        <tr>
+            <td>Status</td>
+            <td><%= order.orderStatus.name.toUpperCase() %></td>
+        </tr>
+        </tbody>
+    </table>
+    <table style="width:200px;float:left;margin-left:20px" class="table">
+        <tbody>
+        <tr>
+            <td>Product total</td>
+            <td><%= order.consolidatedProductTotal %> DKK</td>
+        </tr>
+        <tr>
+            <td>Discount</td>
+            <td><%= order.consolidatedDiscount %> DKK</td>
+        </tr>
+        <tr>
+            <td>Sales tax</td>
+            <td><%= order.consolidatedSalesTax %> DKK</td>
+        </tr>
+        <tr>
+            <td>Tips</td>
+            <td><%= order.consolidatedTips %> DKK</td>
+        </tr>
+        <tr>
+            <td>Order total</td>
+            <td><%= order.consolidatedOrderTotal %> DKK</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,21 @@
+nmotion_restaurant_page_homepage:
+    pattern:  /
+    defaults:
+        _controller: NmotionRestaurantPageBundle:Default:index
+
+nmotion_restaurant_page_menu:
+    pattern:  /menu/
+    defaults:
+        _controller: NmotionRestaurantPageBundle:Default:menu
+
+nmotion_restaurant_page_cart:
+    pattern: /cart/checkout/
+    defaults:
+        _controller: NmotionRestaurantPageBundle:Cart:checkout
+    #resource: Nmotion\RestaurantPageBundle\Controller\CartController
+    #prefix: nmotion_restaurant_page_
+
+nmotion_restaurant_page_paymentconfirmed:
+    pattern: /cart/paymentconfirmed/
+    defaults:
+        _controller: NmotionRestaurantPageBundle:Cart:paymentconfirmed

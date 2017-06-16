@@ -1,0 +1,10 @@
+Nmotion\NmotionBundle\Entity\RestaurantAdmin:
+    type: entity
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\UserRepository
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    oneToOne:
+        restaurant:
+            targetEntity: Restaurant
+            mappedBy: adminUser

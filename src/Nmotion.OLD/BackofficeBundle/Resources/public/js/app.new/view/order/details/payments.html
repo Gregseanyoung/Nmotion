@@ -1,0 +1,33 @@
+<div class="panel">
+    <div class="panel-heading">Payments</div>
+    <% if (payments.length) { %>
+    <table style="width:600px" class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>amount</th>
+            <th>date</th>
+            <th>status</th>
+            <th>card type</th>
+            <th>card number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(payments, function(payment) { %>
+        <tr>
+            <td style="width:10px"><%= payment.test ? 'T' : '' %></td>
+            <td>
+                <span style="white-space: nowrap;"><%= payment.amount / 100 %> DKK</span>
+            </td>
+            <td><%= new Date(payment.createdAt * 1000).format('default') %></td>
+            <td><%= payment.status %></td>
+            <td><%= payment.cardTypeName ? payment.cardTypeName : 'n/a' %></td>
+            <td><%= payment.cardNumberMasked ? payment.cardNumberMasked : 'n/a' %></td>
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+    Order has no payments
+    <% } %>
+</div>

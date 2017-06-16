@@ -1,0 +1,94 @@
+Nmotion\NmotionBundle\Entity\MenuCategory:
+    type: entity
+    table: nmtn_menu_category
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\MenuCategoryRepository
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        timeFrom:
+            type: integer
+            unsigned: true
+            nullable: true
+            default: 0
+            column: time_from
+            gedmo: [ versioned ]
+        timeTo:
+            type: integer
+            unsigned: true
+            nullable: true
+            default: 0
+            column: time_to
+            gedmo: [ versioned ]
+        discountPercent:
+            type: smallint
+            unsigned: true
+            nullable: false
+            default: 0
+            column: discount_percent
+            gedmo: [ versioned ]
+        visible:
+            type: boolean
+            nullable: false
+            default: false
+            gedmo: [ versioned ]
+        position:
+            type: integer
+            nullable: false
+            gedmo:
+                - versioned
+                - sortablePosition
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    oneToMany:
+        menuMeals:
+            targetEntity: Meal
+            mappedBy: menuCategory
+            orderBy:
+                position: ASC
+                name: ASC
+            cascade:
+              - persist
+              - remove
+    manyToOne:
+        restaurant:
+            targetEntity: Restaurant
+            inversedBy: menuCategories
+            cascade:
+              - persist
+            joinColumn:
+                restaurant_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+            gedmo:
+                - sortableGroup
+    lifecycleCallbacks: {  }

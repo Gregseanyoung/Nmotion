@@ -1,0 +1,253 @@
+user:
+    email:
+        unique: "User with such email is already existing."
+        notBlank: "Email must not be blank."
+        email: "Email \"{{ value }}\" is not a valid email."
+        maxMessage: "Email is too long. It must have {{ limit }} character or less.|Email is too long. It must have {{ limit }} characters or less. /danish"
+    firstName:
+        notBlank: "First name must not be blank."
+        maxMessage: "First name is too long. It must have {{ limit }} character or less.|First name is too long. It must have {{ limit }} characters or less. /danish"
+    lastName:
+        notBlank: "Last name must not be blank."
+        maxMessage: "Last name is too long. It must have {{ limit }} character or less.|Last name is too long. It must have {{ limit }} characters or less. /danish"
+    password:
+        notBlank: "Password must not be blank."
+        minMessage: "Password is too short. It must have {{ limit }} character or more.|Password is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "Password is too long. It must have {{ limit }} character or less.|Password is too long. It must have {{ limit }} characters or less. /danish"
+
+restaurant:
+    name:
+        notBlank: "Restaurant name must not be blank. /danish"
+        minMessage: "|Restaurant name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Restaurant name is too long. It must have {{ limit }} characters or less. /danish"
+    fullDescription:
+        notBlank: "Full description must not be blank. /danish"
+        minMessage: "|Full description is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Full description is too long. It must have {{ limit }} characters or less. /danish"
+    facebookPlaceId:
+        maxMessage: "|Facebook place ID is too long. It must have {{ limit }} characters or less. /danish"
+    feedbackUrl:
+        url: "Feedback URL should be a valid URL. /danish"
+        maxMessage: "|Feedback URL is too long. It must have {{ limit }} characters or less. /danish"
+    videoUrl:
+        url: "Video URL should be a valid URL."
+        maxMessage: "|Video URL is too long. It must have {{ limit }} characters or less."
+    checkOutTime:
+        notBlank: "Check-out time must not be blank. /danish"
+        minMessage: "|Check-out time must be {{ limit }} or more. /danish"
+        maxMessage: "|Check-out time must be {{ limit }} or less. /danish"
+    phone:
+        notBlank: "Phone must not be blank. /danish"
+        minMessage: "|Phone is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Phone is too long. It must have {{ limit }} characters or less. /danish"
+    email:
+        notBlank: "Email must not be blank. /danish"
+        email: "|Email \"{{ value }}\" is not a valid email. /danish"
+        maxMessage: "|Email is too long. It must have {{ limit }} characters or less. /danish"
+    siteUrl:
+        url: "Site URL should be a valid URL. /danish"
+        maxMessage: "|Site URL is too long. It must have {{ limit }} characters or less. /danish"
+    contactPersonName:
+        minMessage: "|Contact person name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Contact person name is too long. It must have {{ limit }} characters or less. /danish"
+    contactPersonEmail:
+        email: "Contact person email \"{{ value }}\" is not a valid email. /danish"
+        maxMessage: "|Contact person email is too long. It must have {{ limit }} characters or less. /danish"
+    contactPersonPhone:
+        minMessage: "|Contact person phone is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Contact person phone is too long. It must have {{ limit }} characters or less. /danish"
+    legalEntity:
+        maxMessage: "|Legal entity is too long. It must have {{ limit }} characters or less. /danish"
+    invoicingPeriod:
+        notBlank: "Invoicing period must not be blank. /danish"
+        regex: "Invoicing period must be \"monthly\", \"weekly\" or \"14 days\". /danish"
+    vatNo:
+        notBlank: "VAT no. must not be blank. /danish"
+        type: "VAT no. {{ value }} is not a valid {{ type }}. /danish"
+        minMessage: "|VAT no. is too short. It must have {{ limit }} digits or more. /danish"
+        maxMessage: "|VAT no. is too long. It must have {{ limit }} digits or less. /danish"
+        exactMessage: "|VAT no. must have exactly {{ limit }} digits. /danish"
+    regNo:
+        notBlank: "Reg no. must not be blank. /danish"
+        type: "Reg no. {{ value }} is not a valid {{ type }}. /danish"
+        minMessage: "|Reg no. is too short. It must have {{ limit }} digits or more. /danish"
+        maxMessage: "|Reg no. is too long. It must have {{ limit }} digits or less. /danish"
+        exactMessage: "|Reg no. must have exactly {{ limit }} digits. /danish"
+    kontoNo:
+        notBlank: "Konto no. must not be blank. /danish"
+        type: "Konto no. {{ value }} is not a valid {{ type }}. /danish"
+        minMessage: "|Konto no. is too short. It must have {{ limit }} digits or more. /danish"
+        maxMessage: "|Konto no. is too long. It must have {{ limit }} digits or less. /danish"
+        exactMessage: "|Konto no. must have exactly {{ limit }} digits. /danish"
+    serviceType:
+        atLeastOneType: "At least one service type has to be selected. /danish"
+
+restaurantAddress:
+    longitude:
+        notBlank: "Longitude must not be blank. /danish"
+        type: "Longitude {{ value }} is not a valid {{ type }}. /danish"
+    latitude:
+        notBlank: "Latitude must not be blank. /danish"
+        type: "Latitude {{ value }} is not a valid {{ type }}. /danish"
+    addressLine1:
+        notBlank: "Address line must not be blank. /danish"
+        minMessage: "|Address line is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Address line is too long. It must have {{ limit }} characters or less. /danish"
+    city:
+        notBlank: "City must not be blank. /danish"
+        minMessage: "|City is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|City is too long. It must have {{ limit }} characters or less. /danish"
+    postalCode:
+        notBlank: "Postal code must not be blank. /danish"
+        minMessage: "|Postal code is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Postal code is too long. It must have {{ limit }} characters or less. /danish"
+
+restaurantOperationTime:
+    dayOfTheWeek:
+        notBlank: "Day of week must not be blank. /danish"
+        minMessage: "|Day of week must be be a valid weekday index for date (1 = Sunday, 2 = Monday, ..., 7 = Saturday). /danish"
+        maxMessage: "|Day of week must be be a valid weekday index for date (1 = Sunday, 2 = Monday, ..., 7 = Saturday). /danish"
+        invalidMessage: "Day of week must be be a valid number - weekday index for date (1 = Sunday, 2 = Monday, ..., 7 = Saturday). /danish"
+    timeFrom:
+        notBlank: "Time \"from\" must not be blank. /danish"
+        minMessage: "|Time \"from\" must be {{ limit }} or more. /danish"
+        maxMessage: "|Time \"from\" must be {{ limit }} or less. /danish"
+        invalidMessage: "Time \"from\" must be a valid number. /danish"
+    timeTo:
+        notBlank: "Time \"to\" must not be blank. /danish"
+        minMessage: "|Time \"to\" must be {{ limit }} or more. /danish"
+        maxMessage: "|Time \"to\" must be {{ limit }} or less. /danish"
+        invalidMessage: "Time \"to\" must be a valid number. /danish"
+        laterThanTimeFrom: "Time \"to\" must be later than time \"from\" /danish"
+
+menuCategory:
+    name:
+        unique: "Category with such name is already exist for given restaurant. /danish"
+        notBlank: "Category name must not be blank. /danish"
+        minMessage: "|Category name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Category name is too long. It must have {{ limit }} characters or less. /danish"
+    timeFrom:
+        notBlank: "Time \"from\" must not be blank. /danish"
+        minMessage: "|Time \"from\" must be {{ limit }} or more. /danish"
+        maxMessage: "|Time \"from\" must be {{ limit }} or less. /danish"
+        invalidMessage: "Time \"from\" must be a valid number. /danish"
+    timeTo:
+        notBlank: "Time \"to\" must not be blank. /danish"
+        minMessage: "|Time \"to\" must be {{ limit }} or more. /danish"
+        maxMessage: "|Time \"to\" must be {{ limit }} or less. /danish"
+        invalidMessage: "Time \"to\" must be a valid number. /danish"
+    discountPercent:
+        type: "Discount {{ value }} is not a valid {{ type }}. /danish"
+        minMessage: "|Discount must be {{ limit }} percents or more. /danish"
+        maxMessage: "|Discount must be {{ limit }} percents or less. /danish"
+        invalidMessage: "Discount must be a valid number. /danish"
+    visible:
+        notBlank: "Category visible field must not be blank. /danish"
+        type: "Visible {{ value }} is not a valid {{ type }}. /danish"
+    position:
+        minMessage: "|Position must be {{ limit }} or more. /danish"
+        maxMessage: "|Position must be {{ limit }} or less. /danish"
+        invalidMessage: "Position must be a valid number. /danish"
+
+meal:
+    name:
+        unique: "Meal with such name is already exist for given category. /danish"
+        notBlank: "Meal name must not be blank. /danish"
+        minMessage: "|Meal name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Meal name is too long. It must have {{ limit }} characters or less. /danish"
+    description:
+        notBlank: "Description must not be blank. /danish"
+        minMessage: "|Description is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Description is too long. It must have {{ limit }} characters or less. /danish"
+    price:
+        notBlank: "Price must not be blank. /danish"
+        minMessage: "|Price must be {{ limit }} or more. /danish"
+        invalidMessage: "Price must be a valid number. /danish"
+    discountPercent:
+        type: "Discount {{ value }} is not a valid {{ type }}. /danish"
+        minMessage: "|Discount must be {{ limit }} percents or more. /danish"
+        maxMessage: "|Discount must be {{ limit }} percents or less. /danish"
+        invalidMessage: "Discount must be a valid number. /danish"
+    visible:
+        notBlank: "Visible field must not be blank. /danish"
+        type: "Visible {{ value }} is not a valid {{ type }}. /danish"
+    timeFrom:
+        minMessage: "|Time \"from\" must be {{ limit }} or more. /danish"
+        maxMessage: "|Time \"from\" must be {{ limit }} or less. /danish"
+        invalidMessage: "Time \"from\" must be a valid number. /danish"
+    timeTo:
+        minMessage: "|Time \"to\" must be {{ limit }} or more. /danish"
+        maxMessage: "|Time \"to\" must be {{ limit }} or less. /danish"
+        invalidMessage: "Time \"to\" must be a valid number. /danish"
+    position:
+        minMessage: "|Position must be {{ limit }} or more. /danish"
+        maxMessage: "|Position must be {{ limit }} or less. /danish"
+        invalidMessage: "Position must be a valid number. /danish"
+
+mealOption:
+    name:
+        notBlank: "Option name must not be blank. /danish"
+        minMessage: "|Option name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Option name is too long. It must have {{ limit }} characters or less. /danish"
+    price:
+        notBlank: "Price must not be blank. /danish"
+        minMessage: "|Price must be {{ limit }} or more. /danish"
+        invalidMessage: "Price must be a valid number. /danish"
+
+mealExtraIngredient:
+    name:
+        unique: "Ingredient with such name already exists for given meal. /danish"
+        duplicated: 'Ingredient with such name is duplicated for given meal. /danish'
+        notBlank: "Ingredient name must not be blank. /danish"
+        minMessage: "|Ingredient name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Ingredient name is too long. It must have {{ limit }} characters or less. /danish"
+    price:
+        notBlank: "Price must not be blank. /danish"
+        minMessage: "|Price must be {{ limit }} or more. /danish"
+        invalidMessage: "Price must be a valid number. /danish"
+
+payment:
+    orderId:
+        notBlank: "OrderId must not be blank. /danish"
+        type: "OrderId {{ value }} is not a valid {{ type }}. /danish"
+        minMessage: "|OrderId must be {{ limit }} or more. /danish"
+        invalidMessage: "OrderId must be a valid number. /danish"
+    status:
+        maxMessage: "|Status is too long. It must have {{ limit }} characters or less. /danish"
+    amount:
+        minMessage: "|Amount must be {{ limit }} or more. /danish"
+        invalidMessage: "Amount must be a valid number. /danish"
+    fee:
+        minMessage: "|Fee must be {{ limit }} or more. /danish"
+        invalidMessage: "Fee must be a valid number. /danish"
+    currency:
+        maxMessage: "|Currency is too long. It must have {{ limit }} characters or less. /danish"
+    test:
+        maxMessage: "|Test is too long. It must have {{ limit }} characters or less. /danish"
+    transaction:
+        maxMessage: "|Transaction is too long. It must have {{ limit }} characters or less. /danish"
+    acquirer:
+        maxMessage: "|Acquirer is too long. It must have {{ limit }} characters or less. /danish"
+    cardNumberMasked:
+        maxMessage: "|CardNumberMasked is too long. It must have {{ limit }} characters or less. /danish"
+    expMonth:
+        maxMessage: "|ExpMonth is too long. It must have {{ limit }} characters or less. /danish"
+    expYear:
+        maxMessage: "|ExpYear is too long. It must have {{ limit }} characters or less. /danish"
+    cardTypeName:
+        maxMessage: "|CardTypeName is too long. It must have {{ limit }} characters or less. /danish"
+    merchant:
+        maxMessage: "|Merchant is too long. It must have {{ limit }} characters or less. /danish"
+    ticket:
+        maxMessage: "|Ticket is too long. It must have {{ limit }} characters or less. /danish"
+    allParameters:
+        notBlank: "All parameters field must be filled. /danish"
+
+config:
+    name:
+        unique: "Such config parameter name already exists. /danish"
+        notBlank: "Config parameter name must not be blank. /danish"
+        minMessage: "|Config parameter name is too short. It must have {{ limit }} characters or more. /danish"
+        maxMessage: "|Config parameter name is too long. It must have {{ limit }} characters or less. /danish"
+    value:
+        notBlank: "Config parameter value must not be blank. /danish"

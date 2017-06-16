@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionNmotionBundle/Resources/public/css/home.css'
+    %}
+    <link rel="stylesheet" href="{{  asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+<body class="home">
+    <div style="text-align: center; margin: 310px auto auto; width: 100%">
+
+        <a href="{{ androidUrl }}" target="_blank">
+            <img src="/bundles/nmotionnmotion/img/GooglePlayLogo.png" height="69">
+        </a>
+        <a href="{{ iosUrl }}">
+            <img src="/bundles/nmotionnmotion/img/AppStoreLogo.jpg">
+        </a>
+
+    </div>
+</body>
+{% endblock %}

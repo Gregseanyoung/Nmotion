@@ -1,0 +1,9 @@
+Hello {{ restaurant.adminUser.firstName|raw }}!
+
+You have been assigned as a restaurant admin of the restaurant "{{ restaurant.name|raw }}".
+
+In order to log in to Nmotion backoffice to control your restaurant please set your password first using the link below:
+{{ url('nmotion_nmotion_reset_password', {'token': restaurant.adminUser.confirmationToken}) }}
+
+After successfull password change you can login using your email and password here:
+{{ url('nmotion_nmotion_default_login') }}

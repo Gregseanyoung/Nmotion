@@ -1,0 +1,34 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\MealOption:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice, api.orders.entity]
+        name:
+            groups: [api, backoffice]
+        price:
+            type: float
+            groups: [api, backoffice]
+        createdAt:
+            type: integer
+            serialized_name: createdAt
+            groups: [backoffice]
+        updatedAt:
+            type: integer
+            serialized_name: updatedAt
+            groups: [backoffice]
+    virtual_properties:
+        getDiscountPrice:
+            read_only: true
+            groups: [api]
+            serialized_name: discountPrice
+        getDiscountPriceIncludingTax:
+            read_only: true
+            groups: [api]
+            serialized_name: discountPriceIncludingTax
+        getPriceIncludingTax:
+            read_only: true
+            groups: [api, backoffice]
+            serialized_name: priceIncludingTax

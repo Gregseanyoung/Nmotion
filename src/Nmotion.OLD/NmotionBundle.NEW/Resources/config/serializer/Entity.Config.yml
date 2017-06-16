@@ -1,0 +1,24 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Config:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice]
+        name:
+            groups: [api, backoffice]
+        value:
+            groups: [api, backoffice]
+        description:
+            groups: [api, backoffice]
+        system:
+            groups: [backoffice]
+        type:
+            groups: [backoffice]
+        createdAt:
+            serialized_name: createdAt
+            groups: [backoffice]
+        updatedAt:
+            serialized_name: updatedAt
+            groups: [backoffice]

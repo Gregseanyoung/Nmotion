@@ -1,0 +1,39 @@
+paths:
+    tests: .
+    log: ../build/logs
+    data: _data
+    helpers: _helpers
+settings:
+    bootstrap: _bootstrap.demo.php
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: false
+    memory_limit: 1024M
+    log: true
+modules:
+    config:
+        Db:
+            dsn: 'mysql:dbname=nmotion_demo_test;host=nmotion-server.pp.ciklum.com'
+            user: nmotion_demo
+            password: adHP592FsVUcQfsU
+            dump: _data/dump.sql
+            populate: true
+            cleanup: false
+        SecondDbHelper:
+            dsn: 'mysql:dbname=nmotion_demo_test_mailsystem;host=nmotion-server.pp.ciklum.com'
+            user: nmotion_demo
+            password: adHP592FsVUcQfsU
+            dump: _data/mailsystem.sql
+            populate: true
+            cleanup: false
+        REST:
+            url: "http://demo.test.nmotion.pp.ciklum.com"
+        PhpBrowser:
+            url: "http://demo.test.nmotion.pp.ciklum.com"
+        Facebook:
+            app_id: 330287150421549
+            secret: c1401d09eee401a6930be458b9dbfbf9
+            test_user:
+                permissions: [email, publish_stream]
+
+coverage:
+    enabled: false

@@ -1,0 +1,120 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Restaurant:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice, restaurant.search, api.orders.entity, api.list, api.orders.entity]
+        name:
+            groups: [api, backoffice, restaurant.search, api.orders.entity, api.list, api.orders.entity]
+        fullDescription:
+            serialized_name: fullDescription
+            groups: [api, backoffice, restaurant.search]
+        logoAsset:
+            serialized_name: logoAsset
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+        currency:
+            serialized_name: currency
+            groups: [api, backoffice, restaurant.search, api.orders.entity, api.list, api.orders.entity]
+        facebookPlaceId:
+            serialized_name: facebookPlaceId
+            groups: [api, backoffice]
+        feedbackUrl:
+            serialized_name: feedbackUrl
+            groups: [api, backoffice, restaurant.search]
+        videoUrl:
+            serialized_name: videoUrl
+            groups: [api, backoffice, restaurant.search]
+        timeZone:
+            serialized_name: timeZone
+            groups: [api, backoffice]
+        phone:
+            serialized_name: phone
+            groups: [api, backoffice, restaurant.search]
+        email:
+            serialized_name: email
+            groups: [api, backoffice]
+        siteUrl:
+            serialized_name: siteUrl
+            groups: [api, backoffice, restaurant.search]
+        contactPersonName:
+            serialized_name: contactPersonName
+            groups: [api, backoffice]
+        contactPersonEmail:
+            serialized_name: contactPersonEmail
+            groups: [api, backoffice]
+        contactPersonPhone:
+            serialized_name: contactPersonPhone
+            groups: [api, backoffice]
+        address:
+            serialized_name: address
+            groups: [api, backoffice, restaurant.search, api.orders.entity]
+        legalEntity:
+            serialized_name: legalEntity
+            groups: [backoffice]
+        checkOutTime:
+            serialized_name: checkOutTime
+            groups: [backoffice, restaurant.search]
+        visible:
+            type: boolean
+            groups: [backoffice]
+        inHouse:
+            type: boolean
+            serialized_name: inHouse
+            groups: [api, restaurant.search, backoffice]
+        takeaway:
+            type: boolean
+            groups: [api, restaurant.search, backoffice]
+        roomService:
+            type: boolean
+            serialized_name: roomService
+            groups: [api, restaurant.search, backoffice]
+        taMember:
+            serialized_name: taMember
+            type: boolean
+            groups: [backoffice]
+        invoicingPeriod:
+            serialized_name: invoicingPeriod
+            groups: [backoffice]
+        vatNo:
+            serialized_name: vatNo
+            groups: [backoffice]
+        regNo:
+            serialized_name: regNo
+            groups: [backoffice]
+        kontoNo:
+            serialized_name: kontoNo
+            groups: [backoffice]
+        adminUser:
+            serialized_name: adminUser
+            groups: [backoffice]
+        staff:
+            serialized_name: staff
+            groups: [backoffice.entity]
+        createdAt:
+            serialized_name: createdAt
+            groups: [backoffice]
+        updatedAt:
+            serialized_name: updatedAt
+            groups: [backoffice]
+        operationTimes:
+            serialized_name: operationTimes
+            groups: [api, backoffice]
+        menuCategories:
+            serialized_name: menuCategories
+            groups: [api, backoffice.entity]
+        menuMeals:
+            serialized_name: menuMeals
+            groups: [api]
+        distance:
+            read_only: true
+            groups: [restaurant.search]
+        checkins:
+            read_only: true
+            groups: []
+    virtual_properties:
+        isOpen:
+            read_only: true
+            groups: [api, restaurant.search]
+            serialized_name: isOpen

@@ -1,0 +1,20 @@
+Nmotion\NmotionBundle\Entity\Country:
+    type: entity
+    table: nmtn_country
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

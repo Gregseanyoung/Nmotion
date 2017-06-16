@@ -1,0 +1,7 @@
+parameters:
+#    nmotion_backoffice.example.class: Nmotion\BackofficeBundle\Example
+
+services:
+#    nmotion_backoffice.example:
+#        class: %nmotion_backoffice.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

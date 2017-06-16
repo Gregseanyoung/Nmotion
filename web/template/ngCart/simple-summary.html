@@ -1,0 +1,36 @@
+<div class="row small-collapse medium-uncollapse">
+	<div class="small-12 medium-12">
+		<div class="row" ng-repeat="item in ngCart.getCart().items track by $index">
+			<div class="row">
+				<div class="small-1 medium-1 column">
+					{{ item.getQuantity() | number }}
+				</div>
+				<div class="small-1 medium-1 column center">
+					x
+				</div>
+				<div class="small-6 medium-6 column">
+					{{ item.getName() }}
+					</div>
+				<div class="small-4 medium-4 column text-right">
+					<span class="text-right">{{ item.getTotal() | currency }}</span>
+				</div>
+			</div>
+			<hr ng-show="ngCart.getTotalItems() > 0"/>
+		</div>
+
+		<div class="row small-collapse medium-uncollapse">
+			<div class="small-12 medium-12">
+				<div class="small-8 medium-8 column">Total:</div>
+				<div class="small-4 medium-4 column text-right">
+					{{ ngCart.totalCost() | currency }}
+				</div>
+			</div>
+			<div class="small-12 medium-12">
+				<div class="small-8 medium-8 column">Heraf moms:</div>
+				<div class="small-4 medium-4 column text-right">
+					{{ ngCart.getTotalTax() | currency }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

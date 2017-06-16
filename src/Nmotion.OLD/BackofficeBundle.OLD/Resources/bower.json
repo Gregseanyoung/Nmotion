@@ -1,0 +1,17 @@
+{
+  "name": "Nmotion",
+  "version": "1.0",
+  "main": "app.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "bootstrap": "2.3.2",
+    "bootstrap-datepicker": "1.1.2",
+    "jquery_pagination": "git://github.com/gbirke/jquery_pagination.git#2.2.1",
+    "requirejs-plugins": "1.0.2",
+    "r.js": "2.1.6"
+  }
+}

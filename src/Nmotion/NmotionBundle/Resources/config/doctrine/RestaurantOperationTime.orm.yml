@@ -1,0 +1,45 @@
+Nmotion\NmotionBundle\Entity\RestaurantOperationTime:
+    type: entity
+    table: nmtn_restaurant_operation_time
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        dayOfTheWeek:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: day_of_the_week
+        timeFrom:
+            type: integer
+            unsigned: true
+            nullable: true
+            default: 0
+            column: time_from
+        timeTo:
+            type: integer
+            unsigned: true
+            nullable: true
+            default: 0
+            column: time_to
+    manyToOne:
+        restaurant:
+            targetEntity: Restaurant
+            inversedBy: operationTimes
+            cascade:
+              - persist
+            joinColumn:
+                restaurant_id:
+                    referencedColumnName: id
+                    nullable: false
+    indexes:
+        fk_nmtn_restaurant_operation_time_nmtn_restaurant1_idx:
+            columns: [restaurant_id]
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

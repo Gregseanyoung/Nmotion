@@ -1,0 +1,55 @@
+Nmotion\NmotionBundle\Entity\User:
+    type: entity
+    table: nmtn_user
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\UserRepository
+    inheritanceType: SINGLE_TABLE
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstName:
+            type: string
+            length: 25
+            fixed: false
+            nullable: false
+            column: first_name
+            gedmo: [ versioned ]
+        lastName:
+            type: string
+            length: 25
+            fixed: false
+            nullable: false
+            column: last_name
+            gedmo: [ versioned ]
+        registered:
+            type: boolean
+            nullable: false
+            gedmo: [ versioned ]
+        registrationOrigin:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: registration_origin
+            gedmo: [ versioned ]
+    discriminatorColumn:
+        name: role
+        type: string
+        length: 100
+    discriminatorMap:
+        ROLE_SOLUTION_ADMIN: SolutionAdmin
+        ROLE_RESTAURANT_ADMIN: RestaurantAdmin
+        ROLE_RESTAURANT_STAFF: RestaurantStaff
+        ROLE_RESTAURANT_GUEST: RestaurantGuest
+    options:
+        charset: utf8
+        type: InnoDB
+    lifecycleCallbacks: {  }

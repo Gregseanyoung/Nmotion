@@ -1,0 +1,6 @@
+imports:
+    - { resource: config_demo.yml }
+    - { resource: parameters/demo_test.yml }
+
+swiftmailer:
+    disable_delivery: true

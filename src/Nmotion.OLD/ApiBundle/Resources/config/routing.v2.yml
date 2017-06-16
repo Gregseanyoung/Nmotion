@@ -1,0 +1,62 @@
+v2_users:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\UsersController
+    name_prefix: api_v2_
+
+v2_user_devices:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\UserDevicesController
+    name_prefix: api_v2_
+
+v2_restaurants_search:
+    type: rest
+    prefix: /restaurants
+    resource: Nmotion\ApiBundle\Controller\V2\Restaurants\SearchController
+    name_prefix: api_v2_
+
+v2_restaurants:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\RestaurantsController
+    name_prefix: api_v2_
+
+v2_restaurant_menu_categories:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\Restaurants\MenuCategoryController
+    name_prefix: api_v2_
+
+v2_restaurant_category_meals:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\Restaurants\MenuMealsController
+    name_prefix: api_v2_
+
+v2_meal_extra_ingredients:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\Restaurants\MealExtraIngredientsController
+    name_prefix: api_v2_
+
+v2_orders:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\OrdersController
+    name_prefix: api_v2_
+
+v2_config:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\ConfigController
+    name_prefix: api_v2_
+    
+v2_payment:
+    type: rest
+    resource: Nmotion\ApiBundle\Controller\V2\PaymentController
+    name_prefix: api_v2_
+
+api_v2_not_found:
+    path: /{path}
+    pattern: /{path}
+    defaults:  { _controller: NmotionApiBundle:V2\NotFound:json, path: '' }
+    requirements:
+        path: ".+"
+
+api_v2_not_found_slash:
+    path: /
+    pattern: /
+    defaults:  { _controller: NmotionApiBundle:V2\NotFound:json }

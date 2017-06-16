@@ -1,0 +1,19 @@
+order:
+    tableNumber:
+        minMessage: 'Table number should be {{ limit }} or more.'
+        maxMessage: 'Table number should be {{ limit }} or less.'
+    orderMeals:
+        notEmpty: 'You have to chose one meal at least.'
+
+orderMeal:
+    meal:
+        notBlank: 'Order should not be blank.'
+        restaurantMismatched: 'Meal "{{ mealName }}" does not belong to this restaurant.'
+    quantity:
+        notBlank: 'Quantity should not be blank.'
+        minMessage: 'Quantity should be {{ limit }} or more.'
+        maxMessage: 'Quantity should be {{ limit }} or less.'
+    option:
+        mealMismatched: 'Meal option "{{ optionName }}" does not belong to the meal "{{ mealName }}".'
+    mealComment:
+        maxMessage: 'Meal comment too long. It should be {{ limit }} or less.'

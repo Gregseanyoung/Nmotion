@@ -1,0 +1,52 @@
+Nmotion\NmotionBundle\Entity\MealExtraIngredient:
+    type: entity
+    table: nmtn_meal_extra_ingredient
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        price:
+            type: decimal
+            precision: 14
+            scale: 4
+            nullable: false
+            default: 0
+            gedmo: [ versioned ]
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    manyToOne:
+        meal:
+            targetEntity: Meal
+            inversedBy: mealExtraIngredients
+            joinColumn:
+                name: meal_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

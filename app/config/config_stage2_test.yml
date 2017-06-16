@@ -1,0 +1,5 @@
+imports:
+    - { resource: config_stage_test.yml }
+
+parameters:
+    database_name: nmotion_stage2_test

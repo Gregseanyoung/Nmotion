@@ -1,0 +1,14 @@
+# Codeception Test Suite Configuration
+
+# suite for api tests.
+
+class_name: ApiGuy
+
+modules:
+  enabled:
+    - PhpBrowser
+    - REST
+    - Db
+    - SecondDbHelper
+    - Facebook
+    - ApiHelper

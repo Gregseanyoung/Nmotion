@@ -1,0 +1,18 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     nmotion-server.pp.ciklum.com
+    database_port:     ~
+    database_name:     nmotion_demo_test
+    database_user:     nmotion_demo
+    database_password: adHP592FsVUcQfsU
+
+    mailer_transport:  smtp
+    mailer_host:       localhost
+    mailer_user:       no-reply-test@nmotion.dk
+    mailer_password:   mcWB9LyV
+
+    facebook_app_id:   330287150421549
+    facebook_secret:   c1401d09eee401a6930be458b9dbfbf9
+
+    locale:            en
+    secret:            d9a7f53b978be44f8c8af10c2530444331c28a80

@@ -1,0 +1,24 @@
+{
+  "name": "Tiger.js",
+  "version": "1.0",
+  "main": "app.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "jquery": "1.8",
+    "underscore": "1.4.4",
+    "json2": "latest",
+    "backbone": "1.0.0",
+    "requirejs": "2.1.5",
+    "r.js": "2.1.6",
+    "requirejs-text": "2.0.5",
+    "require-css": "0.0.6",
+    "jquery-iframe-transport": "git://github.com/tiger-seo/jquery-iframe-transport.git",
+    "jquery.maskedinput": "git://github.com/digitalBush/jquery.maskedinput.git",
+    "date.format": "1.2.*",
+    "pnotify": "git://github.com/sciactive/pnotify.git#1.2.0"
+  }
+}

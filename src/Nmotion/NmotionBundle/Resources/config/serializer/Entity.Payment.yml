@@ -1,0 +1,45 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Payment:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            expose: true
+            groups: [backoffice]
+        status:
+            read_only: true
+            expose: true
+            groups: [backoffice]
+        amount:
+            read_only: true
+            expose: true
+            groups: [backoffice]
+        fee:
+            read_only: true
+            expose: true
+            groups: [backoffice]
+        test:
+            read_only: true
+            expose: true
+            groups: [backoffice]
+        cardNumberMasked:
+            read_only: true
+            expose: true
+            serialized_name: cardNumberMasked
+            groups: [backoffice]
+        cardTypeName:
+            read_only: true
+            expose: true
+            serialized_name: cardTypeName
+            groups: [backoffice]
+        createdAt:
+            read_only: true
+            expose: true
+            serialized_name: createdAt
+            groups: [backoffice]
+        updatedAt:
+            read_only: true
+            expose: true
+            serialized_name: updatedAt
+            groups: [backoffice]

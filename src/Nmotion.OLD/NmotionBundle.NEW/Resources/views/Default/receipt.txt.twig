@@ -1,0 +1,53 @@
+::::::::: new order :::::::::{{ "\n" }}
+.{{ "\n" }}
+.{{ "\n" }}
+Order # {{ order.id }}
+{% if order.serviceType and order.serviceType.id == 3 %}
+Room # {{ order.tableNumber }} at {{ "now"|date("H:i") }} on {{ "now"|date("M d") }}
+{% elseif order.serviceType and order.serviceType.id == 2 %}
+Take away Pickup time # at {{ order.takeawayPickupTime|date("H:i") }} on {{ order.takeawayPickupTime|date("M d") }} {{"\n" }}
+Contact Phone Number: {{ order.contactPhoneNumber | raw }}
+{% else %}
+Table # {{ order.tableNumber }} at {{ "now"|date("H:i") }} on {{ "now"|date("M d") }}
+{% endif %}
+_________________{{ "\n" }}
+{% if order.user.registered %}
+{{ order.user.firstName }} {{ order.user.lastName }}:{{ "\n" }}
+{% else %}
+Guest:{{ "\n" }}
+{% endif %}
+{% for meal in order.orderMeals %}
+{% if loop.index > 1 %}
+-----------------{{ "\n" }}
+{% endif %}
+{{ meal.quantity }}x {{ meal.name | raw }}{% if meal.orderMealExtraIngredients is not empty or meal.mealOptionName is not empty %}
+ ({% if meal.mealOptionName is not empty %}{{ meal.mealOptionName | raw }}{% endif %}
+{% if meal.orderMealExtraIngredients %}
+{% for extra in meal.orderMealExtraIngredients %}, +{{ extra.name | raw }}{% endfor %}{% endif %})
+{% endif %}{{ "\n" }}
+{% if meal.mealComment is not empty %}:{{ meal.mealComment | raw }}{{ "\n" }}{% endif %}
+{% endfor %}
+{% if order.slaves is not empty %}
+{% for orderSlave in order.slaves %}
+_________________{{ "\n" }}
+{% if orderSlave.user.registered %}
+{{ orderSlave.user.firstName }} {{ orderSlave.user.lastName }}:{{ "\n" }}
+{% else %}
+Guest {{ loop.index }}:{{ "\n" }}
+{% endif %}
+{% for meal in orderSlave.orderMeals %}
+{% if loop.index > 1 %}
+-----------------{{ "\n" }}
+{% endif %}
+{{ meal.quantity }}x {{ meal.name | raw }}{% if meal.orderMealExtraIngredients is not empty or meal.mealOptionName is not empty %}
+({% if meal.mealOptionName is not empty %}{{ meal.mealOptionName | raw }}{% endif %}
+{% if meal.orderMealExtraIngredients %}
+ {% for extra in meal.orderMealExtraIngredients %}, +{{ extra.name | raw }}{% endfor %}{% endif %})
+{% endif %}{{ "\n" }}
+{% if meal.mealComment is not empty %}:{{ meal.mealComment | raw }}{{ "\n" }}{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+.{{ "\n" }}
+.{{ "\n" }}
+::::::::: thank you :::::::::{{ "\n" }}

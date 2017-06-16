@@ -1,0 +1,99 @@
+Nmotion\NmotionBundle\Entity\OrderMeal:
+    type: entity
+    table: nmtn_order_meal
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        description:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        price:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+        discountPercent:
+            type: smallint
+            unsigned: true
+            nullable: false
+            default: 0
+            column: discount_percent
+        mealComment:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: meal_comment
+        quantity:
+            type: integer
+            unsigned: true
+            nullable: false
+        mealOptionName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: meal_option_name
+        mealOptionPrice:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+            column: meal_option_price
+    manyToOne:
+        order:
+            targetEntity: Order
+            inversedBy: orderMeals
+            joinColumns:
+                order_id:
+                    referencedColumnName: id
+        meal:
+            targetEntity: Meal
+            joinColumns:
+                meal_id:
+                    referencedColumnName: id
+            onDelete: 'SET NULL'
+            orphanRemoval: false
+        mealOption:
+            targetEntity: MealOption
+            joinColumns:
+                meal_option_id:
+                    referencedColumnName: id
+            onDelete: 'SET NULL'
+            orphanRemoval: false
+    oneToMany:
+        orderMealExtraIngredients:
+            targetEntity: OrderMealExtraIngredient
+            mappedBy: orderMeal
+            cascade:
+                - persist
+                - remove
+            orphanRemoval: true
+    indexes:
+        fk_nmtn_order_meal_nmtn_order1_idx:
+            columns: [order_id]
+        fk_nmtn_order_meal_nmtn_meal1_idx:
+            columns: [meal_id]
+        fk_nmtn_order_meal_nmtn_meal_option1_idx:
+            columns: [meal_option_id]
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

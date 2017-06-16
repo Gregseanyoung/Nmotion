@@ -1,0 +1,58 @@
+Nmotion\NmotionBundle\Entity\Config:
+    type: entity
+    table: nmtn_config
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        value:
+            type: text
+            length: null
+            nullable: false
+            gedmo: [ versioned ]
+        description:
+            type: text
+            length: null
+            nullable: true
+            gedmo: [ versioned ]
+        system:
+            type: boolean
+            nullable: false
+            default: true
+            gedmo: [ versioned ]
+        type:
+            type: string
+            length: 25
+            nullable: false
+            gedmo: [ versioned ]
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            gedmo:
+                timestampable:
+                    on: create
+            column: created_at
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+            column: updated_at
+    lifecycleCallbacks: {  }

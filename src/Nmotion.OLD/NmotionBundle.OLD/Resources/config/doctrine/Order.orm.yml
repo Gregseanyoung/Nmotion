@@ -1,0 +1,175 @@
+Nmotion\NmotionBundle\Entity\Order:
+    type: entity
+    table: nmtn_order
+    repositoryClass: Nmotion\NmotionBundle\Entity\Repositories\OrderRepository
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        tableNumber:
+            type: string
+            length: 255
+            nullable: false
+            column: table_number
+        productTotal:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+            column: product_total
+        discountPercent:
+            type: decimal
+            precision: 4
+            scale: 2
+            nullable: false
+            default: 0
+            column: discount_percent
+        discount:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+        taxPercent:
+            type: decimal
+            precision: 4
+            scale: 2
+            nullable: false
+            default: 0
+            column: tax_percent
+        salesTax:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+            column: sales_tax
+        tips:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+        orderTotal:
+            type: decimal
+            precision: 14
+            scale: 2
+            nullable: false
+            default: 0
+            column: order_total
+        takeawayPickupTime:
+            type: integer
+            scale: 5
+            unsigned: true
+            nullable: false
+            column: takeaway_pickup_time
+        contactPhoneNumber:
+            type: string
+            length: 25
+            column: contact_phone_number
+        pushToken:
+            type: string
+            length: 255
+            column: push_token
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+            column: created_at
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update
+            column: updated_at
+    oneToMany:
+        orderMeals:
+            targetEntity: OrderMeal
+            mappedBy: order
+            cascade:
+                - persist
+                - remove
+            orphanRemoval: true
+        slaves:
+            targetEntity: Order
+            mappedBy: master
+            cascade: {}
+        payments:
+            targetEntity: Payment
+            mappedBy: order
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+        restaurant:
+            targetEntity: Restaurant
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                restaurant_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+        serviceType:
+            targetEntity: RestaurantServiceType
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                service_type_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+        orderStatus:
+            targetEntity: OrderStatus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                order_status_id:
+                    referencedColumnName: id
+                    nullable: false
+            orphanRemoval: false
+            gedmo: [ versioned ]
+        master:
+            targetEntity: Order
+            inversedBy: slaves
+            referencedColumnName: id
+            nullable: true
+            column: master_id
+            onDelete: 'SET NULL'
+    indexes:
+        fk_order_user1_idx:
+            columns: [user_id]
+        fk_order_restaurant1_idx:
+            columns: [restaurant_id]
+        nmtn_order_ibfk_1:
+            columns: [order_status_id]
+    options:
+        charset: utf8
+        type: InnoDB
+    lifecycleCallbacks:
+        prePersist: [onPrePersist]
+        preUpdate: [onPreUpdate]

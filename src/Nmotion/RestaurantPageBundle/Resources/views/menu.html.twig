@@ -1,0 +1,164 @@
+{% extends 'NmotionLandingPageBundle::base_restaurant.html.twig' %}
+
+{% block title %}
+    {{ restaurant.getName() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionLandingPageBundle/Resources/public/css/emil/foundation.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/style.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/app.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/animations.css'
+    '@NmotionLandingPageBundle/Resources/public/css/emil/component.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block headScripts %}
+    {% javascripts
+    '@NmotionLandingPageBundle/Resources/public/js/emil/modernizr.custom.js' %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <body class="page-fade-in">
+    <nav class="navbar navbar-inverse" id="menu" role="navigation">
+        <div class="row collapse">
+            <div class="large-12 columns">
+                <div class="nav_container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/"><img
+                                    src="/upload/{{ restaurant.getLogoAsset().getPath() }}/{{ restaurant.getLogoAsset().getFilename() }}"
+                                    alt="Logo" id="demo_logo"></a>
+                    </div>
+                    <section class="section--menu">
+                        <nav class="menu">
+                            <ul class="menu__list">
+                                <li class="menu__item"><a href="/menu/" target="_blank" class="menu__link">Menu</a></li>
+                                <li class="menu__item"><a href="#contact" onclick="$('#contact').animatescroll();"
+                                                          class="menu__link">Kontakt</a></li>
+                                <li class="menu__item">|</li>
+                                <li class="menu__item"><a href="https://www.facebook.com/holtecafeemil/?ref=ts&fref=ts"
+                                                          class="menu__link social first" target="_blank"><span
+                                                class="icon-facebook-with-circle"></span></a></li>
+                                <li class="menu__item social"><a
+                                            href="https://www.instagram.com/explore/locations/292148079/"
+                                            class="menu__link social" target="_blank"><span
+                                                class="icon-instagram-with-circle"></span></a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                    <div id="m_button">
+                        <a href="#profile" class="profile-popup-link">
+                            <span class="icon-menu"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="divider_menu"></div>
+    <div class="row animatedParent" ng-app="RestaurantMenuApp">
+        <div class="large-12 columns" ng-controller="myCtrl">
+            <ngcart-summary template-url="/template/ngCart/summary.html"></ngcart-summary>
+            <ul>
+                {% for item in categoryViewModel %}
+                    <li>
+                        {{ item.category.getName() }}
+                        <ul>
+                            {% for meal in item.meals %}
+                                <li>
+                                    {{ meal.getName() }} - {{ meal.getPrice() }}
+                                    <ngcart-addtocart id="{{ meal.getId() }}" name="{{ meal.getName() }}" price="{{ meal.getPrice() }}" quantity="1" template-url="/template/ngCart/addtocart.html"></ngcart-addtocart>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="large-4 columns">
+                <div class="padding">
+                    <ul class="list_footer">
+                        <li><h3>{{ restaurant.getAddress().getAddressLine1() }}
+                                , {{ restaurant.getAddress().getPostalCode() }} {{ restaurant.getAddress().getCity() }}</h3>
+                        </li>
+                        <li><h3><a href="tel:{{ restaurant.getPhone() }}">{{ restaurant.getPhone() }}</a></h3></li>
+                        <li><h3 class="form_underline"><a
+                                        href="mailto:{{ restaurant.getEmail() }}">{{ restaurant.getEmail() }}</a></h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="large-4 columns">
+                <div class="padding">
+                    <div class="dummy-column booking_mobile">
+                        <a class="dummy-media-object menu__link" href="https://goo.gl/maps/Ck6V7LK1DCs" target="_blank">
+                            <h3>rutevejledning</h3>
+                        </a>
+                    </div>
+                    <div class="center">
+                        <ul class="menu__list">
+                            <li class="menu__item"><a href="https://www.facebook.com/holtecafeemil/?ref=ts&fref=ts"
+                                                      class="menu__link social footer" target="_blank"><span
+                                            class="icon-facebook-with-circle"></span></a></li>
+                            <li class="menu__item"><a href="https://www.instagram.com/explore/locations/292148079/"
+                                                      class="menu__link social footer" target="_blank"><span
+                                            class="icon-instagram-with-circle"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="large-4 columns">
+                <ul class="list_footer">
+                    <li><h3>mandag - torsdag / <span class="month">9:30 - 22</span></h3></li>
+                    <li><h3>fredag - lørdag / <span class="month">9:30 - 23</span></h3></li>
+                    <li><h3>søn- & helligdage / <span class="month">10 - 22</span></h3></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="small-12 columns center callout">
+            <img src="/img/emil/smiley.svg" alt="Smiley">
+        </div>
+    </div>
+
+
+    <div class="wrap_white2">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="callout no_margin">
+                    <p class="copyright"><a href="http://www.nmotion.dk" target="_blank">&copy; - Hosted by NMotion</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        {% javascripts
+        '@NmotionLandingPageBundle/Resources/public/js/emil/foundation.min.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular.min.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular/locale_da-dk.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/angular/ngCart.min.js'
+        '@NmotionRestaurantPageBundle/Resources/public/js/emil/app.js'
+        '@NmotionLandingPageBundle/Resources/public/js/emil/css3-animate-it.js'
+        '@NmotionLandingPageBundle/Resources/public/js/emil/main.js'
+        '@NmotionLandingPageBundle/Resources/public/js/emil/nav.js'
+        '@NmotionLandingPageBundle/Resources/public/js/emil/animatescroll.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+    {% endblock %}
+    </body>
+{% endblock %}

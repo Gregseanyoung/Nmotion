@@ -1,0 +1,121 @@
+Nmotion\NmotionBundle\Entity\Payment:
+    type: entity
+    table: nmtn_payment
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        status:
+            type: string
+            length: 36
+            fixed: false
+            nullable: true
+            gedmo: [ versioned ]
+        amount:
+            type: decimal
+            unsigned: true
+            precision: 14
+            scale: 2
+            nullable: true
+        fee:
+            type: decimal
+            unsigned: true
+            precision: 14
+            scale: 2
+            nullable: true
+        currency:
+            type: string
+            length: 3
+            fixed: false
+            nullable: true
+        test:
+            type: string
+            length: 3
+            fixed: false
+            nullable: true
+        transaction:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        acquirer:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        cardNumberMasked:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: card_number_masked
+        expMonth:
+            type: string
+            length: 2
+            fixed: true
+            nullable: true
+            column: exp_month
+        expYear:
+            type: string
+            length: 2
+            fixed: true
+            nullable: true
+            column: exp_year
+        cardTypeName:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+            column: card_type_name
+        merchant:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+        ticket:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+        allParameters:
+            type: text
+            length: null
+            nullable: false
+            column: all_parameters
+        paymentComment:
+            type: text
+            length: null
+            nullable: true
+            column: payment_comment
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    manyToOne:
+        order:
+            targetEntity: Order
+            inversedBy: payments
+            joinColumn:
+                name: order_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

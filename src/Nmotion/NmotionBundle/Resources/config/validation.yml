@@ -1,0 +1,551 @@
+Nmotion\NmotionBundle\Entity\User:
+    constraints:
+        - Nmotion\NmotionBundle\Validator\Constraints\UniqueUserEmail:
+            message: "user.email.unique"
+            groups:
+                - registration
+                - profile
+    properties:
+        email:
+            - NotBlank:
+                message: "user.email.notBlank"
+                groups:
+                    - registration
+                    - profile
+            - Email:
+                message: "user.email.email"
+                groups:
+                    - registration
+                    - profile
+            - Length:
+                max: 255
+                maxMessage: "user.email.maxMessage"
+                groups:
+                    - registration
+                    - profile
+        firstName:
+            - NotBlank:
+                message: "user.firstName.notBlank"
+                groups:
+                    - registration
+                    - profile
+            - Length:
+                max: 25
+                maxMessage: "user.firstName.maxMessage"
+                groups:
+                    - registration
+                    - profile
+        lastName:
+            - NotBlank:
+                message: "user.lastName.notBlank"
+                groups:
+                    - registration
+                    - profile
+            - Length:
+                max: 25
+                maxMessage: "user.lastName.maxMessage"
+                groups:
+                    - registration
+                    - profile
+        plainPassword:
+            - NotBlank:
+                message: "user.password.notBlank"
+                groups:
+                    - registration
+            - Length:
+                min: 6
+                minMessage: "user.password.minMessage"
+                max: 255
+                maxMessage: "user.password.maxMessage"
+                groups:
+                    - registration
+                    - profile
+
+Nmotion\NmotionBundle\Entity\Restaurant:
+    constraints:
+        - Nmotion\NmotionBundle\Validator\Constraints\UniqueRestaurantNamePostalCode: ~
+        - Callback:
+            methods: [isValidServiceType]
+    properties:
+        name:
+            - NotBlank:
+                message: "restaurant.name.notBlank"
+            - Length:
+                min: 3
+                minMessage: "restaurant.name.minMessage"
+                max: 255
+                maxMessage: "restaurant.name.maxMessage"
+        fullDescription:
+            - NotBlank:
+                message: "restaurant.fullDescription.notBlank"
+            - Length:
+                min: 2
+                minMessage: "restaurant.fullDescription.minMessage"
+                max: 2000
+                maxMessage: "restaurant.fullDescription.maxMessage"
+        facebookPlaceId:
+            - Length:
+                max: 32
+                maxMessage: "restaurant.facebookPlaceId.maxMessage"
+        feedbackUrl:
+            - Url:
+                message: "restaurant.feedbackUrl.url"
+            - Length:
+                max: 120
+                maxMessage: "restaurant.feedbackUrl.maxMessage"
+        videoUrl:
+            - Url:
+                message: "restaurant.videoUrl.url"
+            - Length:
+                max: 255
+                maxMessage: "restaurant.videoUrl.maxMessage"
+        checkOutTime:
+            - NotBlank:
+                message: "restaurant.checkOutTime.notBlank"
+            - Range:
+                min: 0
+                minMessage: "restaurant.checkOutTime.minMessage"
+                max: 480
+                maxMessage: "restaurant.checkOutTime.maxMessage"
+        phone:
+            - NotBlank:
+                message: "restaurant.phone.notBlank"
+            - Length:
+                min: 7
+                minMessage: "restaurant.phone.minMessage"
+                max: 40
+                maxMessage: "restaurant.phone.maxMessage"
+        email:
+            - NotBlank:
+                message: "restaurant.email.notBlank"
+            - Email:
+                message: "restaurant.email.email"
+            - Length:
+                max: 120
+                maxMessage: "restaurant.email.maxMessage"
+        siteUrl:
+            - Url:
+                message: "restaurant.siteUrl.url"
+            - Length:
+                max: 120
+                maxMessage: "restaurant.siteUrl.maxMessage"
+        contactPersonName:
+            - Length:
+                min: 2
+                minMessage: "restaurant.contactPersonName.minMessage"
+                max: 255
+                maxMessage: "restaurant.contactPersonName.maxMessage"
+        contactPersonEmail:
+            - Email:
+                message: "restaurant.contactPersonEmail.email"
+            - Length:
+                max: 120
+                maxMessage: "restaurant.contactPersonEmail.maxMessage"
+        contactPersonPhone:
+            - Length:
+                min: 7
+                minMessage: "restaurant.contactPersonPhone.minMessage"
+                max: 40
+                maxMessage: "restaurant.contactPersonPhone.maxMessage"
+        legalEntity:
+            - Length:
+                max: 50
+                maxMessage: "restaurant.legalEntity.maxMessage"
+        invoicingPeriod:
+            - NotBlank:
+                message: "restaurant.invoicingPeriod.notBlank"
+            - Regex:
+                pattern: "/^(monthly|weekly|14 days)$/i"
+                message: "restaurant.invoicingPeriod.regex"
+        vatNo:
+            - NotBlank:
+                message: "restaurant.vatNo.notBlank"
+            - Type:
+                type: numeric
+                message: "restaurant.vatNo.type"
+            - Length:
+                min: 8
+                minMessage: "restaurant.vatNo.minMessage"
+                max: 8
+                maxMessage: "restaurant.vatNo.maxMessage"
+                exactMessage: "restaurant.vatNo.exactMessage"
+        regNo:
+            - NotBlank:
+                message: "restaurant.regNo.notBlank"
+            - Type:
+                type: numeric
+                message: "restaurant.regNo.type"
+            - Length:
+                min: 4
+                minMessage: "restaurant.regNo.minMessage"
+                max: 4
+                maxMessage: "restaurant.regNo.maxMessage"
+                exactMessage: "restaurant.regNo.exactMessage"
+        kontoNo:
+            - NotBlank:
+                message: "restaurant.kontoNo.notBlank"
+            - Type:
+                type: numeric
+                message: "restaurant.kontoNo.type"
+            - Length:
+                min: 2
+                minMessage: "restaurant.kontoNo.minMessage"
+                max: 15
+                maxMessage: "restaurant.kontoNo.maxMessage"
+                exactMessage: "restaurant.kontoNo.exactMessage"
+        address:
+            - Valid: ~
+        adminUser:
+            - Valid: ~
+        operationTimes:
+            - Valid: ~
+
+Nmotion\NmotionBundle\Entity\RestaurantAddress:
+    properties:
+        longitude:
+            - NotBlank:
+                message: "restaurantAddress.longitude.notBlank"
+            - Type:
+                type: float
+                message: "restaurantAddress.longitude.type"
+        latitude:
+            - NotBlank:
+                message: "restaurantAddress.latitude.notBlank"
+            - Type:
+                type: float
+                message: "restaurantAddress.latitude.type"
+        addressLine1:
+            - NotBlank:
+                message: "restaurantAddress.addressLine1.notBlank"
+            - Length:
+                min: 2
+                minMessage: "restaurantAddress.addressLine1.minMessage"
+                max: 120
+                maxMessage: "restaurantAddress.addressLine1.maxMessage"
+        city:
+            - NotBlank:
+                message: "restaurantAddress.city.notBlank"
+            - Length:
+                min: 2
+                minMessage: "restaurantAddress.city.minMessage"
+                max: 50
+                maxMessage: "restaurantAddress.city.maxMessage"
+        postalCode:
+            - NotBlank:
+                message: "restaurantAddress.postalCode.notBlank"
+            - Length:
+                min: 3
+                minMessage: "restaurantAddress.postalCode.minMessage"
+                max: 30
+                maxMessage: "restaurantAddress.postalCode.maxMessage"
+
+Nmotion\NmotionBundle\Entity\RestaurantOperationTime:
+    constraints:
+        - Callback:
+            methods: [isValid]
+    properties:
+        dayOfTheWeek:
+            - NotBlank:
+                message: "restaurantOperationTime.dayOfTheWeek.notBlank"
+            - Range:
+                min: 1
+                minMessage: "restaurantOperationTime.dayOfTheWeek.minMessage"
+                max: 7
+                maxMessage: "restaurantOperationTime.dayOfTheWeek.maxMessage"
+                invalidMessage: "restaurantOperationTime.dayOfTheWeek.invalidMessage"
+        timeFrom:
+            - Range:
+                min: 0
+                minMessage: "restaurantOperationTime.timeFrom.minMessage"
+                max: 86400
+                maxMessage: "restaurantOperationTime.timeFrom.maxMessage"
+                invalidMessage: "restaurantOperationTime.timeFrom.invalidMessage"
+        timeTo:
+            - Range:
+                min: 0
+                minMessage: "restaurantOperationTime.timeTo.minMessage"
+                max: 86400
+                maxMessage: "restaurantOperationTime.timeTo.maxMessage"
+                invalidMessage: "restaurantOperationTime.timeTo.invalidMessage"
+
+Nmotion\NmotionBundle\Entity\MenuCategory:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [restaurant, name]
+            message: "menuCategory.name.unique"
+            errorPath: "name"
+        - Callback:
+            methods: [isValidOperationTime]
+    properties:
+        name:
+            - NotBlank:
+                message: "menuCategory.name.notBlank"
+            - Length:
+                min: 2
+                minMessage: "menuCategory.name.minMessage"
+                max: 255
+                maxMessage: "menuCategory.name.maxMessage"
+        timeFrom:
+            - Range:
+                min: 0
+                minMessage: "menuCategory.timeFrom.minMessage"
+                max: 86400
+                maxMessage: "menuCategory.timeFrom.maxMessage"
+                invalidMessage: "menuCategory.timeFrom.invalidMessage"
+        timeTo:
+            - Range:
+                min: 0
+                minMessage: "menuCategory.timeTo.minMessage"
+                max: 86400
+                maxMessage: "menuCategory.timeTo.maxMessage"
+                invalidMessage: "menuCategory.timeTo.invalidMessage"
+        discountPercent:
+            - Type:
+                type: integer
+                message: "menuCategory.discountPercent.type"
+            - Range:
+                min: 0
+                minMessage: "menuCategory.discountPercent.minMessage"
+                max: 99
+                maxMessage: "menuCategory.discountPercent.maxMessage"
+                invalidMessage: "menuCategory.discountPercent.invalidMessage"
+        visible:
+            - NotBlank:
+                message: "menuCategory.visible.notBlank"
+            - Type:
+                type: bool
+                message: "menuCategory.visible.type"
+        position:
+            - Range:
+                min: 0
+                minMessage: "menuCategory.position.minMessage"
+                max: 999
+                maxMessage: "menuCategory.position.maxMessage"
+                invalidMessage: "menuCategory.position.invalidMessage"
+
+Nmotion\NmotionBundle\Entity\Meal:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [menuCategory, name]
+            message: "meal.name.unique"
+            errorPath: "name"
+        - Callback:
+            methods: [isValidOperationTime]
+    properties:
+        name:
+            - NotBlank:
+                message: "meal.name.notBlank"
+            - Length:
+                min: 2
+                minMessage: "meal.name.minMessage"
+                max: 255
+                maxMessage: "meal.name.maxMessage"
+        description:
+            - NotBlank:
+                message: "meal.description.notBlank"
+            - Length:
+                min: 2
+                minMessage: "meal.description.minMessage"
+                max: 255
+                maxMessage: "meal.description.maxMessage"
+        price:
+            - NotBlank:
+                message: "meal.price.notBlank"
+            - Range:
+                min: 0
+                minMessage: "meal.price.minMessage"
+                invalidMessage: "meal.price.invalidMessage"
+        discountPercent:
+            - Type:
+                type: integer
+                message: "meal.discountPercent.type"
+            - Range:
+                min: 0
+                minMessage: "meal.discountPercent.minMessage"
+                max: 99
+                maxMessage: "meal.discountPercent.maxMessage"
+                invalidMessage: "meal.discountPercent.invalidMessage"
+        visible:
+            - NotBlank:
+                message: "meal.visible.notBlank"
+            - Type:
+                type: bool
+                message: "meal.visible.type"
+        timeFrom:
+            - Range:
+                min: 0
+                minMessage: "meal.timeFrom.minMessage"
+                max: 86400
+                maxMessage: "meal.timeFrom.maxMessage"
+                invalidMessage: "meal.timeFrom.invalidMessage"
+        timeTo:
+            - Range:
+                min: 0
+                minMessage: "meal.timeTo.minMessage"
+                max: 86400
+                maxMessage: "meal.timeTo.maxMessage"
+                invalidMessage: "meal.timeTo.invalidMessage"
+        position:
+            - Range:
+                min: 0
+                minMessage: "meal.position.minMessage"
+                max: 999
+                maxMessage: "meal.position.maxMessage"
+                invalidMessage: "meal.position.invalidMessage"
+
+Nmotion\NmotionBundle\Entity\MealOption:
+    properties:
+        name:
+            - NotBlank:
+                message: "mealOption.name.notBlank"
+            - Length:
+                min: 2
+                minMessage: "mealOption.name.minMessage"
+                max: 255
+                maxMessage: "mealOption.name.maxMessage"
+        price:
+            - NotBlank:
+                message: "mealOption.price.notBlank"
+            - Range:
+                min: 0
+                minMessage: "mealOption.price.minMessage"
+                invalidMessage: "mealOption.price.invalidMessage"
+
+Nmotion\NmotionBundle\Entity\MealExtraIngredient:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [meal, name]
+            message: "mealExtraIngredient.name.unique"
+            errorPath: "name"
+        - Nmotion\NmotionBundle\Validator\Constraints\UniqueInCollectionEntity:
+            fields: [meal, name]
+            message: "mealExtraIngredient.name.duplicated"
+            errorPath: "name"
+            justNew: true
+    properties:
+        name:
+            - NotBlank:
+                message: "mealExtraIngredient.name.notBlank"
+            - Length:
+                min: 2
+                minMessage: "mealExtraIngredient.name.minMessage"
+                max: 255
+                maxMessage: "mealExtraIngredient.name.maxMessage"
+        price:
+            - NotBlank:
+                message: "mealExtraIngredient.price.notBlank"
+            - Range:
+                min: 0
+                minMessage: "mealExtraIngredient.price.minMessage"
+                invalidMessage: "mealExtraIngredient.price.invalidMessage"
+
+Nmotion\NmotionBundle\Entity\Payment:
+    properties:
+        status:
+            - Length:
+                max: 36
+                maxMessage: "payment.status.maxMessage"
+        amount:
+            - Range:
+                min: 0
+                minMessage: "payment.amount.minMessage"
+                invalidMessage: "payment.amount.invalidMessage"
+        fee:
+            - Range:
+                min: 0
+                minMessage: "payment.fee.minMessage"
+                invalidMessage: "payment.fee.invalidMessage"
+        currency:
+            - Length:
+                max: 3
+                maxMessage: "payment.currency.maxMessage"
+        test:
+            - Length:
+                max: 1
+                maxMessage: "payment.test.maxMessage"
+        transaction:
+            - Length:
+                max: 20
+                maxMessage: "payment.transaction.maxMessage"
+        acquirer:
+            - Length:
+                max: 20
+                maxMessage: "payment.acquirer.maxMessage"
+        cardNumberMasked:
+            - Length:
+                max: 50
+                maxMessage: "payment.cardNumberMasked.maxMessage"
+        expMonth:
+            - Length:
+                max: 2
+                maxMessage: "payment.expMonth.maxMessage"
+        expYear:
+            - Length:
+                max: 2
+                maxMessage: "payment.expYear.maxMessage"
+        cardTypeName:
+            - Length:
+                max: 50
+                maxMessage: "payment.cardTypeName.maxMessage"
+        merchant:
+            - Length:
+                max: 50
+                maxMessage: "payment.merchant.maxMessage"
+        ticket:
+            - Length:
+                max: 100
+                maxMessage: "payment.ticket.maxMessage"
+        allParameters:
+            - NotBlank:
+                message: "payment.allParameters.notBlank"
+
+Nmotion\NmotionBundle\Entity\Order:
+    properties:
+        tableNumber:
+            - Length:
+                max: 255
+                maxMessage: "order.tableNumber.maxMessage"
+        orderMeals:
+            - Count:
+                min: 1
+                minMessage: "order.orderMeals.notEmpty"
+
+Nmotion\NmotionBundle\Entity\OrderMeal:
+    constraints:
+        - Callback:
+            methods: [isValidMeal, isValidOption]
+    properties:
+        meal:
+            - NotBlank:
+                message: "orderMeal.meal.notBlank"
+        quantity:
+            - NotBlank:
+                message: "orderMeal.quantity.notBlank"
+            - Range:
+                min: 1
+                max: 65535
+                minMessage: "orderMeal.quantity.minMessage"
+                maxMessage: "orderMeal.quantity.maxMessage"
+        mealComment:
+            - Length:
+                max: 255
+                maxMessage: "orderMeal.mealComment.maxMessage"
+
+Nmotion\NmotionBundle\Entity\Config:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [name]
+            message: "config.name.unique"
+            errorPath: "name"
+    properties:
+        name:
+            - NotBlank:
+                message: "config.name.notBlank"
+            - Length:
+                min: 2
+                minMessage: "config.name.minMessage"
+                max: 100
+                maxMessage: "config.name.maxMessage"
+        value:
+            - NotBlank:
+                message: "config.value.notBlank"

@@ -1,0 +1,54 @@
+paths:
+    tests: .
+    log: ../build/logs
+    data: _data
+    helpers: _helpers
+
+settings:
+    bootstrap: _bootstrap.stage.php
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: false
+    memory_limit: 1024M
+    log: true
+
+modules:
+    config:
+        Db:
+            dsn: 'mysql:dbname=nmotion_stage2_test;host=nmotion-server.pp.ciklum.com'
+            user: nmotion_stage
+            password: AQAmzsG9Gj7uSH9y
+            dump: _data/dump.sql
+            populate: true
+            cleanup: false
+        SecondDbHelper:
+            dsn: 'mysql:dbname=nmotion_stage2_test_mailsystem;host=nmotion-server.pp.ciklum.com'
+            user: nmotion_stage
+            password: AQAmzsG9Gj7uSH9y
+            dump: _data/mailsystem.sql
+            populate: true
+            cleanup: false
+        REST:
+            url: "http://stage2.test.nmotion.pp.ciklum.com"
+            timeout: 75
+        PhpBrowser:
+            url: "http://stage2.test.nmotion.pp.ciklum.com"
+        Facebook:
+            app_id: 124395924385734
+            secret: dc763525e278934e44d003331308c672
+            test_user:
+                permissions: [email, publish_stream]
+
+coverage:
+    enabled: true
+    remote: true
+    remote_config: tests/codeception.stage2.yml
+    whitelist:
+        include:
+            - ../src/*/*.php
+        exclude:
+            - ../src/Tiger/*/*.php
+            - ../src/*/*Bundle.php
+    blacklist:
+        include:
+            - ../app/*/*.php
+            - ../vendor/*/*.php

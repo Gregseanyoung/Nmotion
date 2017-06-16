@@ -1,0 +1,38 @@
+<div id="checkoutForm" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <form data-abide id="checkoutFormData">
+        <h2 id="modalTitle">Gennemfør bestilling</h2>
+        <p class="lead"></p>
+        <div class="row">
+            <div class="medium-6 column">
+                <h4>Dine detaljer</h4>
+                <p>
+                    <label>Fornavn <input type="text" name="firstname" ng-model="firstname" required /></label>
+                    <label>Efternavn <input type="text" name="lastname" ng-model="lastname" required /></label>
+                    <label>Email <input type="email" name="email" ng-model="email" required /></label>
+                    <label>Telefon nummer <input type="text" name="phone" ng-model="phone" required /></label>
+                </p>
+            </div>
+            <div class="medium-6 column">
+                <h4>Din bestilling</h4>
+                <ngcart-simple-summary></ngcart-simple-summary>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="medium-12 center column">
+                <a ng-click="cancel()" class="button round alert">Fortryd bestilling</a>&nbsp;&nbsp;
+                <a ng-click="checkout()" class="button round success">Gennemfør bestilling</a>
+            </div>
+        </div>
+    </form>
+
+    <FORM id="dibsForm" NAME="RedirForm" ACTION="https://payment.architrade.com/paymentweb/start.action" METHOD="POST" CHARSET="UTF-8">
+        <input type="hidden" name="merchant" ng-value="merchant" />
+        <input type="hidden" name="amount" ng-value="amount" />
+        <input type="hidden" name="accepturl" value="http://tdc.nm.agamborg.dk/paymentconfirmation/" />
+        <input type="hidden" name="orderid" ng-value="orderId" />
+        <input type="hidden" name="currency" ng-value="currency" />
+        <input type="hidden" name="md5key" ng-value="checksum" />
+    </FORM>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

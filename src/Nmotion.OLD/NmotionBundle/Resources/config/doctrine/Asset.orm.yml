@@ -1,0 +1,76 @@
+Nmotion\NmotionBundle\Entity\Asset:
+    type: entity
+    table: nmtn_asset
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        mimeType:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: mime_type
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        originalFilename:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: original_filename
+        filename:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        path:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        isAbsolutePath:
+            type: boolean
+            nullable: false
+            column: is_absolute_path
+        size:
+            type: integer
+            unsigned: false
+            nullable: false
+        width:
+            type: integer
+            unsigned: false
+            nullable: true
+        height:
+            type: integer
+            unsigned: false
+            nullable: true
+        md5:
+            type: string
+            length: 32
+            fixed: false
+            nullable: true
+        createdAt:
+            type: integer
+            unsigned: true
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+            column: created_at
+        updatedAt:
+            type: integer
+            unsigned: true
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update
+            column: updated_at
+    lifecycleCallbacks: {  }

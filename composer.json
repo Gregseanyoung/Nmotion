@@ -1,0 +1,63 @@
+{
+    "name": "ciklum/nmotion",
+    "description": "Nmotion",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/tiger-seo/Codeception"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.7",
+
+        "doctrine/orm"                    : "~2.2,>=2.2.3,<2.5",
+        "doctrine/doctrine-bundle"        : "1.*",
+        "doctrine/inflector"              : "dev-master",
+        "mobiledetect/mobiledetectlib"    : "2.*",
+        "symfony/assetic-bundle"          : "2.*",
+        "symfony/symfony"                 : "2.2.*",
+        "symfony/swiftmailer-bundle"      : "2.*",
+        "symfony/monolog-bundle"          : "2.*",
+        "sensio/distribution-bundle"      : "2.*",
+        "sensio/framework-extra-bundle"   : "2.*",
+        "sensio/generator-bundle"         : "2.*",
+        "jms/security-extra-bundle"       : "1.*",
+        "jms/di-extra-bundle"             : "1.*",
+        "jms/serializer-bundle"           : "0.12.0",
+        "jms/debugging-bundle"            : "dev-master",
+        "friendsofsymfony/user-bundle"    : "1.*",
+        "friendsofsymfony/rest-bundle"    : "0.12.x",
+        "friendsofsymfony/facebook-bundle": "1.2.*",
+        "gedmo/doctrine-extensions"       : "2.*",
+        "twig/extensions"                 : "1.*",
+        "facebook/php-sdk"                : "3.*",
+        "codeception/codeception"         : "1.6.2",
+        "kriswallsmith/assetic"           : "1.1.x-dev",
+        "stof/doctrine-extensions-bundle" : "1.1.x-dev",
+        "liuggio/excelbundle"             : ">=1.0.4",
+        "phpoffice/phpexcel"              : "dev-develop"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "symlink"
+    }
+}

@@ -1,0 +1,149 @@
+imports:
+    - { resource: security.yml }
+    - { resource: "@NmotionNmotionBundle/Resources/config/services.yml" }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: en }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: "%kernel.debug%"
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    session:         ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    exception_controller: Nmotion\NmotionBundle\Controller\ExceptionController::showAction
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:
+      - NmotionNmotionBundle
+      - NmotionLandingPageBundle
+      - NmotionRestaurantPageBundle
+      - NmotionBackofficeBundle
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+            mailsystem:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%_mailsystem"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+    orm:
+        auto_mapping:                true
+        auto_generate_proxy_classes: "%kernel.debug%"
+        proxy_namespace:             Proxies
+        proxy_dir:                   "%kernel.cache_dir%/doctrine/orm/Proxies"
+        metadata_cache_driver:
+            type: memcache
+            host: localhost #nmotion-server.pp.ciklum.com
+        query_cache_driver:
+            type: memcache
+            host: localhost #nmotion-server.pp.ciklum.com
+        result_cache_driver:
+            type: memcache
+            host: localhost #nmotion-server.pp.ciklum.com
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
+            sortable: true
+            loggable: true
+
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+#    spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Nmotion\NmotionBundle\Entity\User
+    use_listener:           true
+    use_username_form_type: true
+    registration:
+        form:
+            type: nmotion_user_registration
+
+nmotion_nmotion:
+    facebook:
+        file:   %kernel.root_dir%/../vendor/facebook/src/base_facebook.php
+        app_id: "%facebook_app_id%"
+        secret: "%facebook_secret%"
+
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }
+
+# Rest-Bundle configuration
+fos_rest:
+    view:
+        view_response_listener: force
+        failed_validation: HTTP_PRECONDITION_FAILED
+        default_engine: php
+        formats:
+            json: true
+    format_listener:
+        prefer_extension: true
+    body_listener:
+        decoders:
+            json: fos_rest.decoder.json
+    routing_loader:
+        default_format: json
+    exception:
+        messages:
+            'Symfony\Component\HttpKernel\Exception\HttpException': true
+            'Symfony\Component\HttpKernel\Exception\NotFoundHttpException': true
+            'Nmotion\NmotionBundle\Exception\ConflictException': true
+            'Nmotion\NmotionBundle\Exception\NotModifiedException': true
+            'Nmotion\NmotionBundle\Exception\PreconditionFailedException': true
+
+# JMSSerializerBundle configuration
+# http://jmsyst.com/bundles/JMSSerializerBundle/master/configuration
+jms_serializer:
+    property_naming:
+        separator:  '_'
+        lower_case: true
+        enable_cache: true
+    metadata:
+        auto_detection: true
+        directories:
+            FOSUserBundle:
+                namespace_prefix: FOS\UserBundle
+                path: "@NmotionNmotionBundle/Resources/config/serializer/fos"

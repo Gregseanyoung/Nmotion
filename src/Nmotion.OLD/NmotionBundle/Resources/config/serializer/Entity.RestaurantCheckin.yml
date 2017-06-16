@@ -1,0 +1,38 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\RestaurantCheckin:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        id:
+            expose: true
+            type: integer
+            read_only: true
+            groups: [api, backoffice]
+        serviceType:
+            expose: true
+            groups: [api, backoffice]
+            serialized_name: serviceType
+        tableNumber:
+            expose: true
+            groups: [api, backoffice]
+            serialized_name: tableNumber
+        takeawayPickupTime:
+            expose: true
+            type: double
+            serialized_name: takeawayPickupTime
+            groups: [api, backoffice]
+        checkedOut:
+            expose: true
+            type: boolean
+            groups: [api, backoffice]
+            serialized_name: checkedOut
+        createdAt:
+            expose: true
+            type: integer
+            groups: [api, backoffice]
+            serialized_name: createdAt
+        updatedAt:
+            expose: true
+            type: integer
+            groups: [api, backoffice]
+            serialized_name: updatedAt

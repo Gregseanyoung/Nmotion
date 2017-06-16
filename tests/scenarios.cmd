@@ -1,0 +1,1 @@
+php "../vendor/Codeception/Codeception/codecept" generate:scenarios --single-file -f html api & pause

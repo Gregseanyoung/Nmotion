@@ -1,0 +1,8 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\RestaurantStaff:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        restaurant:
+            expose: false
+            groups: []

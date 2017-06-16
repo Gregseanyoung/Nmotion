@@ -1,0 +1,22 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+FOS\UserBundle\Model\User:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        id:
+            expose: true
+            type: string
+            read_only: true
+            groups: [api, backoffice]
+        email:
+            expose: true
+            type: string
+            groups: [api, backoffice]
+        username:
+            expose: true
+            type: string
+            groups: [export]
+        roles:
+            expose: true
+            type: array
+            groups: [api, backoffice]

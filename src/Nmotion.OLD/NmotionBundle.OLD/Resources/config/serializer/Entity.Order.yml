@@ -1,0 +1,136 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Order:
+    exclusion_policy: NONE
+    access_type: public_method
+    accessor_order: custom
+    custom_accessor_order:
+        - id
+        - resourceUrl
+        - restaurant
+        - orderMeals
+        - serviceType
+        - tableNumber
+        - orderStatus
+        - productTotal
+        - discount
+        - salesTax
+        - tips
+        - orderTotal
+        - orderTotalInCents
+        - orderTotalWhenSlave
+        - consolidatedProductTotal
+        - consolidatedDiscount
+        - consolidatedSalesTax
+        - consolidatedTips
+        - consolidatedOrderTotal
+        - consolidatedOrderTotalInCents
+    properties:
+        id:
+            read_only: true
+            groups: [api.orders.entity, api, api.list, backoffice]
+        restaurant:
+            groups: [api.orders.entity, api, api.list, backoffice]
+        user:
+            groups: [api, api.list, backoffice.entity]
+        orderMeals:
+            type: array
+            read_only: true
+            serialized_name: orderMeals
+            accessor:
+                getter: getOrderMealsAsArray
+            groups: [api, api.entity, api.orders.entity, backoffice.entity]
+        orderStatus:
+            groups: [api, api.orders.entity, backoffice]
+            serialized_name: orderStatus
+        serviceType:
+            serialized_name: serviceType
+            groups: [api.orders.entity, api, api.entity, backoffice]
+        payments:
+            groups: [backoffice.entity]
+        tableNumber:
+            serialized_name: tableNumber
+            groups: [api.orders.entity, api, api.entity, backoffice]
+        productTotal:
+            type: double
+            serialized_name: productTotal
+            groups: [api.orders.entity, backoffice]
+        discount:
+            type: double
+            groups: [api.orders.entity, backoffice]
+        salesTax:
+            type: double
+            serialized_name: salesTax
+            groups: [api.orders.entity, backoffice]
+        tips:
+            type: double
+            groups: [api.orders.entity, api.list, backoffice]
+        orderTotal:
+            type: double
+            serialized_name: orderTotal
+            groups: [api, api.orders.entity, api.list, backoffice]
+        takeawayPickupTime:
+            type: double
+            serialized_name: takeawayPickupTime
+            groups: [api, api.orders.entity, api.list, backoffice]
+        contactPhoneNumber:
+            type: string
+            serialized_name: contactPhoneNumber
+            groups: [api, api.orders.entity, api.list, backoffice]
+        pushToken:
+            type: string
+            serialized_name: pushToken
+            groups: [api, api.orders.entity, api.list, backoffice]
+        createdAt:
+            serialized_name: createdAt
+            groups: [api, api.orders.entity, api.list, backoffice]
+        updatedAt:
+            serialized_name: updatedAt
+            groups: [api, api.orders.entity, api.list, backoffice]
+        resourceUrl:
+            serialized_name: resourceUrl
+            groups: [api, api.orders.entity, api.list]
+    virtual_properties:
+        getOrderTotalInCents:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api]
+            serialized_name: orderTotalInCents
+        getOrderTotalWhenSlave:
+            type: double
+            serialized_name: orderTotalWhenSlave
+            groups: [api, api.orders.entity, api.list]
+        getConsolidatedProductTotal:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api, backoffice]
+            serialized_name: consolidatedProductTotal
+        getConsolidatedDiscount:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api, backoffice]
+            serialized_name: consolidatedDiscount
+        getConsolidatedSalesTax:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api, backoffice]
+            serialized_name: consolidatedSalesTax
+        getConsolidatedTips:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api, backoffice]
+            serialized_name: consolidatedTips
+        getConsolidatedOrderTotal:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api, api.list, backoffice]
+            serialized_name: consolidatedOrderTotal
+        getConsolidatedOrderTotalInCents:
+            read_only: true
+            type: double
+            groups: [api.orders.entity, api]
+            serialized_name: consolidatedOrderTotalInCents
+        getIsMaster:
+            read_only: true
+            type: boolean
+            groups: [backoffice]
+            serialized_name: isMaster

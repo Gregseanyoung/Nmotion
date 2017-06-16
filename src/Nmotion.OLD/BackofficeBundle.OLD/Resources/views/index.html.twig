@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html{% if optimized and appcache %} manifest="/backoffice.appcache"{% endif %}>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Nmotion Backoffice</title>
+
+    <script language="javascript">
+        var require = {
+            paths: {
+                {% if not optimized %}
+                app: "/bundles/nmotionbackoffice/js/app/app.min"
+                {% else %}
+                app: "/bundles/nmotionbackoffice/js/app/app"
+                {% endif %}
+            },
+			urlArgs: "v=1.0.0"
+        }
+    </script>
+
+    {% if not optimized %}
+    <script data-main="/bundles/tigerjs/js/bootstrap" src="/bundles/tigerjs/js/lib.js"></script>
+    {% else %}
+    <script data-main="/bundles/tigerjs/js/bootstrap" src="/bundles/tigerjs/js/components/requirejs/require.js"></script>
+    {% endif %}
+
+    <style type="text/css">
+        .container-fluid {
+            padding: 10px;
+        }
+        .row-fluid .span10 {
+            margin-left: 20px;
+        }
+
+        form.form-horizontal form.form-horizontal {
+            {# remove bottom margin from nested forms #}
+            margin-bottom: 0;
+        }
+        div.nested-form>div.controls {
+            margin: 0;
+        }
+        form fieldset div.control-group:last-child {
+            margin-bottom: 0;
+        }
+        form fieldset:not(:first-child) {
+            margin-top: 10px;
+        }
+        #mealList div#headerTitle.well {
+            background-color: #F0F8FF;
+            border-color: #dbe3eb;
+        }
+
+        img#logo {
+            padding: 5px 0;
+        }
+        #mainmenu {
+            padding: 10px 10px 800px 10px;
+            background-color: #656565;
+        }
+
+        div#loading {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+        }
+        div#loading>img {
+            position: relative;
+            left: -64px;
+            top: -64px;
+        }
+
+        /* hide icons if small screen */
+        @media (max-width: 1360px) {
+            .table .btn>i[class^=icon] {display: none}
+        }
+
+        /* fix Bootstrap issues with Google Maps */
+        #mapCanvas img { max-width: none; }
+        /*#mapCanvas label { width: auto; display:inline; }*/
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .field-name.error .help-inline,
+        .field-name.error .checkbox,
+        .field-name.error .radio,
+        .field-name.error input,
+        .field-name.error select,
+        .field-name.error textarea {
+          color: #b94a48;
+        }
+
+        .field-name.error input,
+        .field-name.error select,
+        .field-name.error textarea {
+          border-color: #b94a48;
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .field-name.error input:focus,
+        .field-name.error select:focus,
+        .field-name.error textarea:focus {
+          border-color: #953b39;
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+        }
+
+        .field-name.error .input-prepend .add-on,
+        .field-name.error .input-append .add-on {
+          color: #b94a48;
+          background-color: #f2dede;
+          border-color: #b94a48;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>

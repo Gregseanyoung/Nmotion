@@ -1,0 +1,22 @@
+imports:
+    - { resource: config_dev.yml }
+    - { resource: parameters/test.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+# Doctrine Configuration
+doctrine:
+    orm:
+        metadata_cache_driver: array
+        query_cache_driver:    array
+        result_cache_driver:   array

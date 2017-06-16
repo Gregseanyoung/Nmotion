@@ -1,0 +1,70 @@
+Nmotion\NmotionBundle\Entity\RestaurantAddress:
+    type: entity
+    table: nmtn_restaurant_address
+    gedmo:
+        loggable:
+            logEntryClass: Nmotion\NmotionBundle\Entity\LogEntry
+    id:
+        id:
+            type: integer
+            unsigned: true
+            primary: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    fields:
+        longitude:
+            type: decimal
+            precision: 9
+            scale: 6
+            nullable: true
+            gedmo: [ versioned ]
+        latitude:
+            type: decimal
+            precision: 9
+            scale: 6
+            nullable: true
+            gedmo: [ versioned ]
+        addressLine1:
+            type: string
+            length: 120
+            fixed: false
+            nullable: false
+            column: address_line1
+            gedmo: [ versioned ]
+        city:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            gedmo: [ versioned ]
+        state:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            gedmo: [ versioned ]
+        postalCode:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+            column: postal_code
+            gedmo: [ versioned ]
+#    manyToOne:
+#        country:
+#            targetEntity: Country
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: null
+#            joinColumns:
+#                country_id:
+#                    referencedColumnName: id
+#                    nullable: false
+#            orphanRemoval: false
+#    indexes:
+#        fk_nmtn_restaurant_address_nmtn_country1_idx:
+#            columns: [country_id]
+    options:
+        type: InnoDB
+    lifecycleCallbacks: {  }

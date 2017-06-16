@@ -1,0 +1,27 @@
+# Global strings
+layout:
+    logout: Log ud
+    login: Log ind
+    page:
+        default:
+            title: 'NMotion | Login-side'
+
+# Security
+security:
+    "Bad credentials": Ugyldigt brugernavn eller adgangskode
+    user:
+        email: "Email"
+        password: "Kodeord"
+        forgot: "Glemt kodeord?"
+    login:
+        submit: Login
+    form:
+        forgot:
+            enterYourEmail: "Vær indtaste din e-mail i formularen nedenfor"
+
+# Form field labels
+form:
+    email: "Email:"
+    new_password: "Nyt kodeord:"
+    new_password_confirmation: "Gentag kodeord:"
+    submit: Indsend

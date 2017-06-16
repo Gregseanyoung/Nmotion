@@ -1,0 +1,81 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\Meal:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice, api.orders.entity]
+        name:
+            groups: [api, backoffice]
+        description:
+            groups: [api, backoffice]
+        price:
+            type: float
+            groups: [api, backoffice]
+        discountPercent:
+            type: integer
+            groups: [api, backoffice]
+            serialized_name: discountPercent
+        logoAsset:
+            serialized_name: logoAsset
+            groups: [api.entity, backoffice]
+        thumbLogoAsset:
+            serialized_name: thumbLogoAsset
+            groups: [api.entity, api.orders.entity, api.list, backoffice]
+        visible:
+            type: boolean
+            groups: [backoffice]
+        timeFrom:
+            type: integer
+            serialized_name: timeFrom
+            groups: [backoffice]
+        timeTo:
+            type: integer
+            serialized_name: timeTo
+            groups: [backoffice]
+        position:
+            type: integer
+            groups: [api.list, backoffice]
+        createdAt:
+            type: integer
+            serialized_name: createdAt
+            groups: [backoffice]
+        updatedAt:
+            type: integer
+            serialized_name: updatedAt
+            groups: [backoffice]
+        menuCategory:
+            serialized_name: menuCategory
+            groups: [backoffice.entity]
+        mealOptions:
+            serialized_name: mealOptions
+            groups: [api.entity, backoffice.entity]
+        mealOptionDefaultId:
+            serialized_name: mealOptionDefaultId
+            groups: [api.entity, backoffice]
+        mealExtraIngredients:
+            type: array
+            serialized_name: mealExtraIngredients
+            groups: [api.entity, backoffice.entity]
+    virtual_properties:
+        getMealOptionDefault:
+            read_only: true
+            groups: [api.entity, api.orders.entity]
+            serialized_name: mealOptionDefault
+        getMealDiscountPercent:
+            read_only: true
+            groups: [api]
+            serialized_name: mealDiscountPercent
+        getDiscountPrice:
+            read_only: true
+            groups: [api]
+            serialized_name: discountPrice
+        getDiscountPriceIncludingTax:
+            read_only: true
+            groups: [api]
+            serialized_name: discountPriceIncludingTax
+        getPriceIncludingTax:
+            read_only: true
+            groups: [api, backoffice]
+            serialized_name: priceIncludingTax

@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+# {timestamp}
+
+CACHE:
+/bundles/tigerjs/js/lib.js
+/bundles/nmotionbackoffice/js/app/app.min.js
+
+NETWORK:
+*

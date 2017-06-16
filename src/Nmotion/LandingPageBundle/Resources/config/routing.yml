@@ -1,0 +1,23 @@
+nmotion_landing_page_index:
+    pattern: /
+    defaults:  { _controller: NmotionLandingPageBundle:Default:index }
+    requirements:
+        _method:  GET
+
+nmotion_landing_page_business:
+    pattern: /business/
+    defaults:  { _controller: NmotionLandingPageBundle:Default:business }
+    requirements:
+        _method:  GET
+
+nmotion_landing_page_about:
+    pattern: /about/
+    defaults:  { _controller: NmotionLandingPageBundle:Default:about }
+    requirements:
+        _method:  GET
+
+nmotion_landing_page_contacts:
+    pattern: /contacts/
+    defaults:  { _controller: NmotionLandingPageBundle:Default:contacts }
+    requirements:
+        _method:  GET

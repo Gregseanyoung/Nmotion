@@ -1,0 +1,37 @@
+{% extends 'NmotionLandingPageBundle::base_restaurant.html.twig' %}
+
+{% block title %}
+    {{ restaurant.getName() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+    '@NmotionRestaurantPageBundle/Resources/public/css/foundation.min.css'
+    '@NmotionRestaurantPageBundle/Resources/public/css/foundation-icons.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+<body ng-app="NmotionApp">
+    <div class="row">
+        <div class="medium-12 columns">
+            <h2><img src="/upload/{{ restaurant.getLogoAsset().getPath() }}/{{ restaurant.getLogoAsset().getFilename() }}" alt="Logo" style="height: 45px" /> {{ restaurant.getName() }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-12 columns">
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 medium-12 columns">
+            <h3>Tak for din bestilling.</h3>
+            Din bestilling er nu gennemført og bliver leveret næstkommende fredag.<br />
+            <br />
+            Alle bestillinger bliver leveret på lageret.
+        </div>
+    </div>
+</body>
+{% endblock %}

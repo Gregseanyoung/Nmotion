@@ -1,0 +1,115 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'layout.page.default.title'|trans({}, 'NmotionNmotionBundle') }}{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" media="all" href="/bundles/nmotionnmotion/css/common.css" />
+{% endblock %}
+
+{% if isMobile %}
+    {% block metas %}
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% endblock %}
+{% endif %}
+
+{% block headScripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/bundles/nmotionnmotion/js/browser.detect.js"></script>
+<script type="text/javascript" src="/js/cryptojs.v3.0.2/rollups/md5.js"></script>
+<script type="text/javascript" >
+    var ROLE_SOLUTION_ADMIN   = 'ROLE_SOLUTION_ADMIN';
+    var ROLE_RESTAURANT_ADMIN = 'ROLE_RESTAURANT_ADMIN';
+    var ROLE_RESTAURANT_STAFF = 'ROLE_RESTAURANT_STAFF';
+    var LOCAL_STORAGE_KEY_AUTH_TOKEN = 'authToken';
+    $(document).ready(function() {
+        if (!localStorage) {
+            // TO DO
+            alert("Unsupported browser.\nYou have to use Internet Explorer 9+, Firefox 14+ or Chrome 20+.");
+            return ;
+        }
+        $('#form_login').submit(function(event) {
+            event.preventDefault();
+            $('#info_bad_credentials').css('display', 'none');
+            var authToken = 'NmotionToken ' + $('#email').val() + '|' + CryptoJS.MD5($('#password').val());
+            $.ajax({
+                url: "{{ path('api_v2_get_users_me') }}",
+                type: 'GET',
+                contentType: 'application/json',
+                headers: {
+                    'Auth': authToken,
+                    'CONTENT_TYPE': 'application/json'
+                },
+                statusCode: {
+                    200: function(data, textStatus, jqXHR) {
+                        var roles = data.entries[0].roles || '';
+                        if ((roles.indexOf(ROLE_SOLUTION_ADMIN) > -1)
+                            || (roles.indexOf(ROLE_RESTAURANT_ADMIN) > -1)
+                            || (roles.indexOf(ROLE_RESTAURANT_STAFF) > -1)
+                        ) {
+                            sessionStorage.clear();
+                            localStorage.setItem(LOCAL_STORAGE_KEY_AUTH_TOKEN, authToken);
+                            window.location.href = "{{ path('nmotion_backoffice_main') }}";
+                        } else {
+                            // TO DO
+                            alert('Forbidden');
+                        }
+                    },
+                    401: function(jqXHR, textStatus, errorThrown) {
+                        $('#info_bad_credentials').css('display', 'block');
+                    },
+                    403: function() {
+                        alert('Forbidden');
+                    },
+                    500: function() {
+                        alert('Internal Server Error');
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+{% block body %}
+<body{% if not isMobile %} class="withCover"{% endif %}>
+    {% if not isMobile %}
+    <div id="div_unsupported_browser">
+        Unsupported browser!<br/>
+        You have to use
+        <a target="_blank" href="http://windows.microsoft.com/en-US/internet-explorer/download-ie">Internet Explorer 9+</a>,
+        <a target="_blank" href="http://www.mozilla.org/en-US/firefox/all/">Firefox 14+</a>
+        or
+        <a target="_blank" href="http://www.google.com/chrome">Chrome 20+</a>
+        for proper operation of the site.
+    </div>
+    <script type="text/javascript">
+        if (
+            (BrowserDetect.browser != 'Explorer' && BrowserDetect.browser != 'Firefox' && BrowserDetect.browser != 'Chrome')
+            || (BrowserDetect.browser == 'Explorer' && parseInt(BrowserDetect.version) < 9)
+            || (BrowserDetect.browser == 'Firefox'  && parseInt(BrowserDetect.version) < 14)
+            || (BrowserDetect.browser == 'Chrome'   && parseInt(BrowserDetect.version) < 20)
+        ) {
+            $('#div_unsupported_browser').css('display', 'block');
+        }
+    </script>
+    {% endif %}
+
+    <div id="login-wrapper">
+        <form id="form_login" action="{{ path('api_v2_get_users_me') }}" method="post" autocomplete="on" class="form">
+            <img src="/bundles/nmotionnmotion/img/logo.png" />
+            <div class="input-group">
+                <input type="email" id="email" name="_email" value="" required="required" placeholder="{{ 'security.user.email'|trans({}, 'NmotionNmotionBundle') }}" />
+                <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.user.password'|trans({}, 'NmotionNmotionBundle') }}" />
+                <p>
+                    <a href="{{ path("nmotion_nmotion_forgot_password") }}">{{ 'security.user.forgot'|trans({}, 'NmotionNmotionBundle') }}</a>
+                </p>
+            </div>
+            <div id="login_control_bar">
+                <input type="submit" id="login_submit" class="button" name="_submit" value="{{ 'security.login.submit'|trans({}, 'NmotionNmotionBundle') }}" />
+                <div id="info_bad_credentials" class="error_message">{{ 'security.Bad credentials'|trans({}, 'NmotionNmotionBundle') }}</div>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

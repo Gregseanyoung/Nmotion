@@ -1,0 +1,5 @@
+nmotion_nmotion_upload:
+    type: rest
+    resource: Nmotion\NmotionBundle\Controller\UploaderController
+    name_prefix: nmotion_nmotion_upload_
+    defaults:  { _format: ~ }

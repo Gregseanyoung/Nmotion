@@ -1,0 +1,81 @@
+{% extends 'NmotionNmotionBundle::public.html.twig' %}
+{% block title %}{{ 'layout.page.default.title'|trans({}, 'NmotionNmotionBundle') }}{% endblock %}
+{% block content %}
+
+        <div class="tabsBlock homeTabs">
+            <div class="tabsItems">
+                <ul>
+                    <li class="first active"><a><span>Bruger vilkår</span></a></li>
+                </ul>
+            </div>
+            <div class="tabsBlocks scrollTabContent">
+                <div class="tabsBlocksInner">
+                    <div class="tabItem active">
+                        <div class="tabItemColumn flexcroll">
+                            <div class="faqItem" id="q1">
+                                <h3 class="faqItemQuestion">Handels og leveringsbetingelser</h3>
+
+                                <div class="faqItemAnswer">
+                                    Ved køb via Nmotion acceptere du Nmotions vilkår i handelsebetingelserne. Du opfordres til at læse alle betingelserne igennem så du er bekendt med forpligtelserne inden du forsætter købet.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q2">
+                                <h3 class="faqItemQuestion">Priser</h3>
+
+                                <div class="faqItemAnswer">
+                                    Priser angivet på Nmotion systemet er angivet i danske kroner (DKK) og er inklusiv 25% moms.
+                                    Alle priser er dagspriser og opdateres løbende, da systemet opdateres løbende.
+                                    Der kan betales med Dankort, MasterCard, Maestro, Visa, Visa Electron, JCB og American Express.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q3">
+                                <h3 class="faqItemQuestion">Levering</h3>
+
+                                <div class="faqItemAnswer">
+                                    Nmotion skal betragtes som formidler af mad mellem restaurant og bruger. Såfremt der er forsinkelser, mangler, eller ligende kan Nmotion ikke drages til ansvar. Der skal rettes henvendelse til restaurantens personale.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q4">
+                                <h3 class="faqItemQuestion">Fortrydelsesret</h3>
+
+                                <div class="faqItemAnswer">
+                                    Eftersom mad, drikke og andre varer anses for at værende påbegyndt efter bekræftelse af bestillingen er der ingen fortrydelsesret efter forbrugeraftaleloven.
+                                    Nmotion kan stadig opkræve fuld betaling, selvom kunden ønsker at annullere ordren efter at have bekræftet. Det er brugers eget ansvar at tilsikre ordren er korrekt inden bekræftelsen.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q5">
+                                <h3 class="faqItemQuestion">Fejl og mangler</h3>
+
+                                <div class="faqItemAnswer">
+                                    Bruger er selv ansvarlig for at kontrollere maden for evt. fejl og mangler og der skal straks rettes henvendelse til restaurantens personale.
+                                    Nmotion bestræber sig på at holde systemet og kontakt indgangende uden driftsforstyrrelser, men uden garanti.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q6">
+                                <h3 class="faqItemQuestion">Personlige data</h3>
+
+                                <div class="faqItemAnswer">
+                                    Alle personlige data der indtastes via vores system, videregives eller sælges på ingen måde til trejdemand.
+                                    Alle kredit kort oplysninger håndteres krypteret og opbevares af DIBS A/S i deres system, der er godkendt af Finanstilsynet.
+                                    Nmotion gemmer ingen oplysninger omkring brugers kredit kort.
+                                </div>
+                            </div>
+                            <div class="faqItem" id="q7">
+                                <h3 class="faqItemQuestion">General</h3>
+
+                                <div class="faqItemAnswer">
+                                    Nmotion systemet er ejet og drevet af<br/>
+                                    Nmotion ApS Tinghøjvej 40 2860 Søborg<br/>
+                                    CVR 34803706<br/>
+                                    Tlf. 20207063<br/>
+                                    mail@nmotion.dk
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cb"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

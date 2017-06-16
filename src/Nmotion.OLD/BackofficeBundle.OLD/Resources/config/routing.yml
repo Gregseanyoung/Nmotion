@@ -1,0 +1,71 @@
+nmotion_backoffice_main:
+    path:  /
+    pattern:  /
+    defaults: { _controller: NmotionBackofficeBundle:Default:index }
+
+backoffice_restaurants:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\RestaurantsController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_menu_categories:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\MenuCategoryController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_meals:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\MealController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_mealoptions:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\MealOptionController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_meal_extra_ingredients:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\MealExtraIngredientController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_configs:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\ConfigController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+    
+backoffice_currencies:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\CurrencyController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_users:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\UsersController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_orders:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\OrdersController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_staff:
+    type: rest
+    resource: Nmotion\BackofficeBundle\Controller\StaffController
+    name_prefix: nmotion_backoffice_
+    defaults:  { _format: ~ }
+
+backoffice_not_found:
+    path: /{path}
+    pattern: /{path}
+    defaults:  { _controller: NmotionBackofficeBundle:NotFound:json, path: '' }
+    requirements:
+        path: ".+"

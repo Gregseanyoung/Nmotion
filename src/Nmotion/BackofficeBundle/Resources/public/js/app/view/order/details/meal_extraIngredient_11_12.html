@@ -1,0 +1,28 @@
+<script>
+    $.post("../getOrderMealExtraIngredients.php", {orderId: $('#orderId').text()})
+            .done(function(data) {
+        var data = $.parseJSON(data);
+        var html="";
+        
+        if( data.length > 0 ) {
+             html += "<thead><tr><th>name</th><th>price</th></tr></thead>";
+            $.each(data, function(i, e) {
+                var price = Number(e.price);
+                html += "<tr><td>" + e.name + "</td><td>"+$('#div_currecny').text()+" " + price.toFixed(2) + "</td></tr>";
+            });
+            html +="</table>";
+        }else{
+            html +="No extra ingredients";
+        }
+      $("#ajax_tbl").html(html);
+    });
+
+</script>
+<div class="panel">
+    <div id="div_currecny" style="display: none;"><%= currency %></div>
+    <div class="panel-heading">Meal Extra Ingredients</div>
+    <div id="orderId" style="display:none;"><%= orderId %></div>
+    <table style="width:600px" class="table" id="ajax_tbl">
+       
+    </table>
+</div>

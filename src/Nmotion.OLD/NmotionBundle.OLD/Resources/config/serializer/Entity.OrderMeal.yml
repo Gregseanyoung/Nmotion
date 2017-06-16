@@ -1,0 +1,68 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\OrderMeal:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api.orders.entity, api, backoffice]
+        name:
+            groups: [api.orders.entity, api, backoffice]
+        description:
+            groups: [api.orders.entity, api.entity, backoffice]
+        price:
+            groups: [api.orders.entity, api, backoffice]
+        discountPercent:
+            serialized_name: discountPercent
+            groups: [api.orders.entity, api.entity, backoffice]
+        mealOptionName:
+            serialized_name: mealOptionName
+            groups: [api.orders.entity, api.entity, backoffice]
+        mealOptionPrice:
+            serialized_name: mealOptionPrice
+            groups: [api.orders.entity, api.entity, backoffice]
+        mealComment:
+            serialized_name: mealComment
+            groups: [api.orders.entity, api.entity, backoffice]
+        quantity:
+            groups: [api.orders.entity, api, api.entity, backoffice]
+        meal:
+            read_only: true
+            groups: [api.orders.entity, api, api.entity]
+        mealOption:
+            read_only: true
+            serialized_name: mealOption
+            groups: [api.orders.entity, api, api.entity, backoffice]
+        orderMealExtraIngredients:
+            read_only: true
+            serialized_name: orderMealExtraIngredients
+            groups: [api.orders.entity, api, api.entity, backoffice]
+    virtual_properties:
+        getDiscountPrice:
+            read_only: true
+            groups: [api.orders.entity]
+            serialized_name: discountPrice
+        getMealOptionDiscountPrice:
+            read_only: true
+            groups: [api.orders.entity]
+            serialized_name: mealOptionDiscountPrice
+        getMealDiscountPercent:
+            read_only: true
+            groups: [api.orders.entity]
+            serialized_name: mealDiscountPercent
+        getDiscountPriceIncludingTax:
+            read_only: true
+            groups: [api.orders.entity]
+            serialized_name: discountPriceIncludingTax
+        getPriceIncludingTax:
+            read_only: true
+            groups: [api.orders.entity]
+            serialized_name: priceIncludingTax
+        getMealOptionDiscountPriceIncludingTax:
+            read_only: true
+            groups: [api.orders.entity]
+            serialized_name: mealOptionDiscountPriceIncludingTax
+        getMealOptionPriceIncludingTax:
+            read_only: true
+            groups: [api.orders.entity, api.entity]
+            serialized_name: mealOptionPriceIncludingTax

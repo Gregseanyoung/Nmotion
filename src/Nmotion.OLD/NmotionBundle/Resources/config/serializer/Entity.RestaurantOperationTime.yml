@@ -1,0 +1,20 @@
+# http://jmsyst.com/libs/serializer/master/reference/yml_reference
+Nmotion\NmotionBundle\Entity\RestaurantOperationTime:
+    exclusion_policy: NONE
+    access_type: public_method
+    properties:
+        id:
+            read_only: true
+            groups: [api, backoffice]
+        dayOfTheWeek:
+            type: integer
+            serialized_name: dayOfTheWeek
+            groups: [api, backoffice]
+        timeFrom:
+            type: integer
+            serialized_name: timeFrom
+            groups: [api, backoffice]
+        timeTo:
+            type: integer
+            serialized_name: timeTo
+            groups: [api, backoffice]
